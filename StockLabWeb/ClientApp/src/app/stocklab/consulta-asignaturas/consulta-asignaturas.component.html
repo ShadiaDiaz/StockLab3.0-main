@@ -1,0 +1,38 @@
+<div class="container-ConsultarAsignatura">
+    <div class="wrap-ConsultarAsignatura">
+        <h1 style="padding: 10px;">Consultar Asignaturas</h1>
+        <form>
+            <div class="form-group form-inline">
+                text search: <input name="searchText" class="form-control ml-2" type="text" [(ngModel)]="searchText" />
+            </div>
+        </form>
+
+        
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"><select [(ngModel)]="pageSize">
+                        <option selected>5</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option></select></th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Horario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let asignatura of asignaturas |filtroAsignatura: searchText |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{asignatura.codigo}}</td>
+                    <td>{{asignatura.nombre}}</td>
+                    <td>{{asignatura.horario}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="asignaturas.length"></ngb-pagination>
+    </div>
+</div>

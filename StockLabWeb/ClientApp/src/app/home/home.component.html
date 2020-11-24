@@ -1,0 +1,21 @@
+<header>
+    <h1 style="padding: 15px;">Solicitudes Pendientes</h1>
+</header>
+<div class="container">
+    <div class="card-deck row">
+        <div *ngFor="let solicitud of solicitudes;index as i">
+            <div
+                *ngIf="solicitud.estado != 'leido' && solicitud.estado != 'Aprobado' && solicitud.estado != 'Rechazado' && usuario.tipo != 'Docente'">
+                <div class="card border-primary mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Solicitud</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"># {{solicitud.numero}}</h6>
+                        <p class="card-text">Fecha: {{solicitud.fechaSolicitud}}</p>
+                        <a routerLink='/SolicitudIndividual/{{solicitud.numero}}' (click)="updateEstado(solicitud)"
+                            class="card-link">Ver Solicitud</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

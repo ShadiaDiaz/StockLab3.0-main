@@ -1,0 +1,21 @@
+<body>
+  <div class="container" *ngIf="logg == false; else logged">
+    <app-inicio-sesion></app-inicio-sesion>
+  </div>
+  <ng-template #logged>
+    <div class="d-flex content wrapper">
+      <app-sidebar></app-sidebar>
+      <div class="page-content">
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
+          <app-footer></app-footer>
+        </div>
+
+      </div>
+      
+    </div>
+
+  </ng-template>
+
+
+</body>

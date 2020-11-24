@@ -1,0 +1,56 @@
+
+<div class="container-registroInsumos">
+    <div class="wrap-registroInsumos">
+        
+        <div class="row">
+            <div class="col-md-9 offset-md-3">
+                <h3>Registro de insumos</h3>
+                <form autocomplete="off" [formGroup]="formGroup">
+
+                    <div class="form-group">
+                        <label>Descripcion</label>
+                        <input type="text"
+                        [ngClass]="{'is-invalid': control.descripcion.errors && control.descripcion.touched}"
+                            formControlName="descripcion" placeholder=""
+                        name="descripcion" class="form-control" />
+                        <div *ngIf="control.descripcion.errors" class="invalid-feedback">
+                            <div *ngIf="control.descripcion.errors.required">Se requiere la descripcion</div>
+                            <div *ngIf="control.descripcion.errors.maxlength">Caracteres mayores a 30</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Marca</label>
+                        <input type="text"
+                        [ngClass]="{'is-invalid': control.marca.errors && control.marca.touched}"
+                            formControlName="marca" placeholder=""
+                        name="marca" class="form-control" />
+                        <div *ngIf="control.marca.errors" class="invalid-feedback">
+                            <div *ngIf="control.marca.errors.required">Se requiere la marca</div>
+                            <div *ngIf="control.marca.errors.maxlength">Caracteres mayores a 20</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cantidad</label>
+                        <input type="number"
+                        [ngClass]="{'is-invalid': control.cantidad.errors && control.cantidad.touched}"
+                            formControlName="cantidad" placeholder=""
+                        name="cantidad" class="form-control" />
+                        <div *ngIf="control.cantidad.errors" class="invalid-feedback">
+                            <div *ngIf="control.cantidad.errors.required">Se requiere la cantidad</div>
+                            <div *ngIf="control.cantidad.errors.validCantidad">{{control.cantidad.errors.messageCantidad}}</div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary mr-1"
+                        (click)="onSubmit()" [disabled]="formGroup.invalid"
+                        style="background-color: rgb(147, 214, 214));">Register</button>
+                        <button class="btn btn-secondary" type="reset"
+                            style="background-color: rgb(247, 138, 138);">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

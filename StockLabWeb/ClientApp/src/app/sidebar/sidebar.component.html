@@ -1,0 +1,159 @@
+<!-- Sidebar -->
+<div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+    <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+    <!-- Bootstrap List Group -->
+    <ul class="list-group">
+        <!-- Separator with title -->
+        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+            <small>MENU</small>
+        </li>
+        <div>
+           
+            <a [routerLink]="['/Home']" class="list-group-item list-group-item-action bg-dark text-white">
+                <img src="../../assets/images/casa.png">
+                <span class="menu-collapsed">Inicio</span>
+            </a>
+        </div>
+        <div>
+            
+            <a [routerLink]="['/notificaciones']" class="list-group-item list-group-item-action bg-dark text-white">
+                <img src="../../assets/images/campana.png">
+                <span class="menu-collapsed">Notificaciones</span>
+            </a>
+        </div>
+        <!-- /END Separator -->
+        <!-- Menu with submenu -->
+        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+            <small>Monitor</small>
+        </li>
+        <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
+            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <img src="../../assets/images/add-file.png">
+                <span class="fa fa-dashboard fa-fw mr-3"></span>
+                <span class="menu-collapsed">Registros</span>
+                <span class="submenu-icon ml-auto"></span>
+            </div>
+        </a>
+        <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
+            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <img src="../../assets/images/buscar.png">
+                <span class="fa fa-dashboard fa-fw mr-3"></span>
+                <span class="menu-collapsed">Consultas</span>
+                <span class="submenu-icon ml-auto"></span>
+            </div>
+        </a>
+        <!-- Submenu content -->
+        <div id='submenu1' class="collapse sidebar-submenu">
+            <div *ngIf="usuario.tipo == 'Coordinador' || usuario.tipo == 'Administrador'">
+                <a class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed" [routerLink]="['/RegistroInsumos']">Registro Insumos</span>
+                </a>
+            </div>
+            <div *ngIf="usuario.tipo == 'Administrador'">
+                <a [routerLink]="['/RegistroDocentes']" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Registro Docentes</span>
+                </a>
+            </div>
+            <div *ngIf="usuario.tipo == 'Administrador'">
+                <a [routerLink]="['/RegistroAsignaturas']"
+                class="list-group-item list-group-item-action bg-dark text-white">
+                <span class="menu-collapsed">Registro Asignaturas</span>
+            </a>
+            </div>
+        </div>
+
+        <div id='submenu2' class="collapse sidebar-submenu">
+            <div *ngIf="usuario.tipo != 'Docente'">
+                <a class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed" [routerLink]="['/ConsultaInsumos']">Consultar Insumos</span>
+                </a>
+            </div>
+            
+            <div *ngIf="usuario.tipo == 'Administrador'">
+                <a [routerLink]="['/ConsultaAsignaturas']"
+                class="list-group-item list-group-item-action bg-dark text-white">
+                <span class="menu-collapsed">Consultar Asignaturas</span>
+            </a>
+            </div>
+            <div *ngIf="usuario.tipo == 'Administrador'">
+                <a [routerLink]="['/ConsultaSolicitudes']"
+                class="list-group-item list-group-item-action bg-dark text-white">
+                <span class="menu-collapsed">Consultar Solicitudes</span>
+            </a>
+            </div>
+        </div>
+        <!-- Separator with title -->
+
+        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+            <small>Docente</small>
+        </li>
+        <a href="#submenu3" data-toggle="collapse" aria-expanded="false"
+            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <img src="../../assets/images/solicitud.png">
+                <span class="fa fa-dashboard fa-fw mr-3"></span>
+                <span class="menu-collapsed">Solicitudes</span>
+                <span class="submenu-icon ml-auto"></span>
+            </div>
+        </a>
+
+        <!-- Submenu content -->
+
+        <div id='submenu3' class="collapse sidebar-submenu">
+
+            <div *ngIf="usuario.tipo == 'Docente' || usuario.tipo == 'Administrador'">
+                <a [routerLink]="['/GestionSolicitudes']" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Solicitar Pedido</span>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- /END Separator -->
+        <!-- Separator with title -->
+
+        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+            <small>Reportes</small>
+        </li>
+        <a href="#submenu4" data-toggle="collapse" aria-expanded="false"
+            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <img src="../../assets/images/tablero.png">
+                <span class="fa fa-dashboard fa-fw mr-3"></span>
+                <span class="menu-collapsed">Reportes</span>
+                <span class="submenu-icon ml-auto"></span>
+            </div>
+        </a>
+         <!-- Submenu content -->
+
+         <div id='submenu4' class="collapse sidebar-submenu">
+
+            <div>
+                <a [routerLink]="['/ReportesLaboratorios']" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Reporte Inventarios</span>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- /END Separator -->
+
+
+
+
+        <a (click)="Logout()" class="bg-dark list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <img src="../../assets/images/salida.png">
+                <span class="menu-collapsed">Cerrar Sesion</span>
+            </div>
+        </a>
+        <!-- Logo -->
+
+    </ul><!-- List Group END-->
+</div><!-- sidebar-container END -->
+
+<!-- MAIN -->

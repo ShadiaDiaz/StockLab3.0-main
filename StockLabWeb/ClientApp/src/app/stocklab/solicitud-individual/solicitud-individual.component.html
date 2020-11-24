@@ -1,0 +1,118 @@
+<div class="container-SolicitudIndividual">
+    <div class="wrap-SolicitudIndividual">
+        <div class="container">
+            <form>
+                <header style="text-align: center;">
+                    <h1>Consulta de solicitud</h1>
+                    <h2>Formato unico de pedido</h2>
+                    <h3>Fecha: {{Solicitud.fechaSolicitud}}</h3>
+                </header>
+                <div class="row">
+    
+    
+                    <div class="form-group">
+                        <div class="col-ml-6 offset-md-3">
+    
+    
+    
+                            <div class="form-group row">
+                                <label>Identificacion</label>
+                                
+                                    <input type="text" value="{{Solicitud.persona.identificacion}}" name="identificacion"
+                                        class="form-control" disabled />
+                                
+                            </div>
+    
+                            <div class="form-group row">
+                                <label>Nombre</label>
+                                
+                                    <input type="text" value="{{Solicitud.persona.nombre}}" name="nombre"
+                                        class="form-control" disabled />
+                                
+                            </div>
+    
+                            <div class="form-group row">
+                                <label>Apellidos</label>
+                                
+                                    <input type="text" value="{{Solicitud.persona.apellidos}}" name="apellidos"
+                                        class="form-control" disabled />
+                                
+                            </div>
+    
+                            <div class="form-group row">
+                                <label>Fecha de Solicitud</label>
+                                <input type="text" value="{{Solicitud.fecha}}" name="fecha" class="form-control" disabled />
+                            </div>
+    
+                            <div class="form-group row">
+                                <label>Asignatura</label>
+                                <input type="text" value="{{Solicitud.asignatura.nombre}}" class="form-control"
+                                    name="asignatura" id="asignatura" disabled>
+                            </div>
+    
+                        </div>
+                    </div>
+    
+    
+    
+                    <div class="row" style="padding-left: 50px;">
+                        <div class="col-md-4 offset-md-4">
+    
+                            <div class="form-group row">
+                                <label>Hora</label>
+                                <input type="text" value="{{Solicitud.hora}}" name="Hora" class="form-control" disabled />
+                            </div>
+    
+                            <div class="form-group row">
+                                <label>Monitor</label>
+                                <input type="text" value="{{Solicitud.monitor}}" name="monitor" class="form-control"
+                                    disabled />
+                            </div>
+    
+                            <h2>Insumos</h2>
+    
+    
+    
+                            <div class="form-group row">
+                                <label>Cantidad Total</label>
+                                <input type="number" value="{{Solicitud.cantidadinsumos}}" name="cantidad"
+                                    class="form-control" disabled />
+                            </div>
+    
+    
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let detalle of Solicitud.detalles; index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{detalle.insumo.item}}</td>
+                            <td>{{detalle.insumo.descripcion}}</td>
+                            <td>{{detalle.insumo.marca}}</td>
+                            <td>{{detalle.cantidad}}</td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+                <div *ngIf="usuario.tipo != 'Docente'" class="text-center">
+                    <button class="btn btn-primary mr-1" 
+                        >Aprobar</button>
+                    <button class="btn btn-secondary" type="reset"
+                        style="background-color: rgb(247, 138, 138);">Rechazar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

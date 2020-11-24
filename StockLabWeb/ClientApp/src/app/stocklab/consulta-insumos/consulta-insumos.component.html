@@ -1,0 +1,44 @@
+<div class="container-ConsultarInsumo">
+    <div class="wrap-ConsultarInsumo">
+        <h1>Consultar Inventario</h1>
+        <form>
+            <div class="form-group form-inline">
+                Full text search: <input name="searchText" class="form-control ml-2" type="text"
+                    [(ngModel)]="searchText" />
+            </div>
+        </form>
+        
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"><select [(ngModel)]="pageSize">
+                    <option selected>5</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option></select></th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Cantidad</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr
+                    *ngFor="let insumo of insumos | filtroInsumo: searchText |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{insumo.item}}</td>
+                    <td>{{insumo.descripcion}}</td>
+                    <td>{{insumo.marca}}</td>
+                    <td *ngIf="insumo.cantidad >= 500" class="EstadoAlto">{{insumo.cantidad}}</td>
+                    <td *ngIf="insumo.cantidad <500 && insumo.cantidad > 100" class="EstadoMedio">{{insumo.cantidad}}
+                    </td>
+                    <td *ngIf="insumo.cantidad <= 100" class="EstadoBajo">{{insumo.cantidad}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="insumos.length"></ngb-pagination>
+    </div>
+</div>

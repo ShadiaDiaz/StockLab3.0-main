@@ -1,0 +1,45 @@
+.container-ConsultarInsumo {
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: aliceblue;
+  }
+  .wrap-ConsultarInsumo {
+    width: 960px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 177px 130px 33px 95px;
+  }
+  .EstadoAlto {
+    background-color: rgb(188, 252, 212);
+  
+  }
+  .EstadoBajo {
+    background-color: rgb(248, 142, 142);
+  
+  }
+  .EstadoMedio {
+    background-color: rgb(252, 212, 159);
+  
+  }
+  .sinColor {
+    background-color: rgba(255, 255, 255, 0.986);
+    
+  }
