@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SolicitudService } from 'src/app/services/solicitud.service';
+import { Solicitud } from '../models/solicitud';
+import { Usuario } from '../models/usuario';
 
 @Component({
   selector: 'app-consulta-solicitudes',
@@ -7,9 +10,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultaSolicitudesComponent implements OnInit {
 
-  constructor() { }
+  solicitudes: Solicitud[];
+  usuario: Usuario;
+  constructor(private service: SolicitudService) { }
 
   ngOnInit(): void {
+    this.solicitudes = [];
+    this.usuario = new Usuario;
+    this.llenarUsuario();
+    this.get();
+  }
+
+
+  llenarUsuario() {
+    var lista = JSON.parse(sessionStorage.getItem('login'));
+    if (lista != null) {
+      this.usuario = lista;
+    }
+  }
+
+  get()
+  {
+    this.solicitudes = [];
+    this.service.gets().subscribe(result => {
+      if(this.usuario.tipo!="Docente")
+      {
+        this.solicitudes = result;
+        console.log(result);
+      }
+      else
+      {
+        for (let index = 0; index < result.length; index++) {
+          if(result[index].persona.identificacion == this.usuario.idPersona)
+          {
+            this.solicitudes.push(result[index]);
+          } 
+        }
+      }
+    });
   }
 
 }

@@ -55,7 +55,16 @@ export class SolicitudService {
 
   put(solicitud: Solicitud): Observable<Solicitud>
   {
+    var estado = solicitud.estado;
     return this.http.put<Solicitud>(this.baseUrl+'api/Solicitud/'+solicitud.numero, solicitud, httpOptions)
+    .pipe(tap(_ => this.handleErrorService.log('Solicitud Actualizada')),
+    catchError(this.handleErrorService.handleError<Solicitud>('Estado Solicitud'))
+      );
+  }
+
+  putAprobar(solicitud: Solicitud): Observable<Solicitud>
+  {
+    return this.http.put<Solicitud>(this.baseUrl+'api/AprobarSolicitud/'+solicitud.numero, httpOptionsPut)
     .pipe(tap(_ => this.handleErrorService.log('Solicitud Actualizada')),
     catchError(this.handleErrorService.handleError<Solicitud>('Estado Solicitud'))
       );

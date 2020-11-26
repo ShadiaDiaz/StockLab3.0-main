@@ -32,6 +32,7 @@ export class HomeComponent {
   get(){
     this.SolicitudService.gets().subscribe(result => {
       this.solicitudes = result;
+      console.log(result);
     })
   }
 

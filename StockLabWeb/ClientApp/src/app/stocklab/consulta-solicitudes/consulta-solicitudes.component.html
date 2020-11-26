@@ -13,17 +13,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr >
-                    <th scope="row">1</th>
-                    <td>maria</td>
-                    <td>aceptado</td>
-                    <td>5/11/2020</td>
+                <tr *ngFor="let solicitud of solicitudes;index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{solicitud.persona.nombre}}</td>
+                    <div *ngIf="solicitud.estado == 'Aprobado' || solicitud.estado == 'Rechazado';else pend">
+                        <td>{{solicitud.estado}}</td>
+                    </div>
+
+                    <ng-template #pend>
+                        <div>
+                            <td>Pendiente</td>
+                        </div>
+                    </ng-template>
+
+                    <td>{{solicitud.fechaSolicitud}}</td>
                     <td>
                         <div class="form-group row">
-                           
                                 <img src="../../assets/images/testigo.png">
-                                <input type="submit" onClick=" window.location.href='solicitud-individual.html'" />
-                           
+                                <a routerLink='/SolicitudIndividual/{{solicitud.numero}}'
+                                class="card-link">Ver</a>
                         </div>
                     </td>
                 </tr>

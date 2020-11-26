@@ -41,7 +41,6 @@ namespace Entity
         [Column(TypeName = "varchar(5)")]
         public string IdPeriodo { get; set; }
         
-        
         [Column(TypeName = "datetime")]
         public DateTime SolicitudFecha { get; set; }
         [NotMapped]

@@ -32,7 +32,15 @@ namespace StockLabWeb.Controllers
                 ModelState.AddModelError("Error al guardar la solicitud", response.Mensaje);
                 var detallesproblemas = new ValidationProblemDetails(ModelState);
 
-                detallesproblemas.Status = StatusCodes.Status500InternalServerError;
+                if(response.Mensaje == "Cantidad Insuficiente")
+                {
+                    detallesproblemas.Status = StatusCodes.Status400BadRequest;
+                }
+                else
+                {
+                    detallesproblemas.Status = StatusCodes.Status500InternalServerError;
+                }
+
                 return BadRequest(detallesproblemas);
             }
             return Ok(response.Solicitud);
@@ -90,11 +98,11 @@ namespace StockLabWeb.Controllers
                 ModelState.AddModelError("Error al modificar la solicitud", response.Mensaje);
                 var detallesproblemas = new ValidationProblemDetails(ModelState);
 
-                if(response.Mensaje == "No existe")
+                if(response.Estado == "No existe")
                 {
                     detallesproblemas.Status = StatusCodes.Status404NotFound;
                 }
-                else
+                if(response.Estado == "Error Aplicacion")
                 {
                     detallesproblemas.Status = StatusCodes.Status500InternalServerError;
                 }

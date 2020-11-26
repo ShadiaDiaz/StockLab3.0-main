@@ -6,6 +6,14 @@
                     <h1>Consulta de solicitud</h1>
                     <h2>Formato unico de pedido</h2>
                     <h3>Fecha: {{Solicitud.fechaSolicitud}}</h3>
+                    <div *ngIf="Solicitud.estado == 'Activo' || Solicitud.estado == 'leido';else esta">
+                        <h3>Estado: Pendiente</h3>
+                    </div>
+                    <ng-template #esta>
+                        <div>
+                            <h3>Estado: {{Solicitud.estado}}</h3>
+                        </div>
+                    </ng-template>
                 </header>
                 <div class="row">
     
@@ -106,11 +114,11 @@
     
                     </tbody>
                 </table>
-                <div *ngIf="usuario.tipo != 'Docente'" class="text-center">
-                    <button class="btn btn-primary mr-1" 
+                <div *ngIf="usuario.tipo != 'Docente' && (Solicitud.estado=='leido' || Solicitud.estado=='Activo')" class="text-center">
+                    <button class="btn btn-primary mr-1" (click)="AprobarSolicitud()"
                         >Aprobar</button>
-                    <button class="btn btn-secondary" type="reset"
-                        style="background-color: rgb(247, 138, 138);">Rechazar</button>
+                    <button class="btn btn-secondary" (click)="rechazarSolicitud()"
+                    style="background-color: rgb(247, 138, 138);">Rechazar</button>
                 </div>
             </form>
         </div>

@@ -24,9 +24,20 @@ namespace Logica
                 int suma = solicitud.Detalles.Sum(c => c.Cantidad);
                 solicitud.CantidadInsumos = suma;
                 solicitud.IdPeriodo = _context.PeriodosAcademicos.ToList().Max(d => d.Codigo);
+                var insumos = _context.Insumos.ToList();
                 foreach (var item in solicitud.Detalles)
                 {
                     item.NumeroDetalle += solicitud.Numero;
+                    foreach (var item2 in insumos)
+                    {
+                        if(item.CodigoInsumo == item2.Item)
+                        {
+                            if(item.Cantidad > item2.Cantidad)
+                            {
+                                return new GuardarSolicitudResponse("Cantidad Insuficiente");
+                            }
+                        }
+                    }
                 }
                 _context.Solicitudes.Add(solicitud);
                 _context.SaveChanges();
@@ -76,6 +87,7 @@ namespace Logica
                 {
                     solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
                     solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
+                    solicitudresponse.PeriodoAcademico = _context.PeriodosAcademicos.Find(solicitudresponse.IdPeriodo);
                     foreach (var item in solicitudresponse.Detalles)
                     {
                         item.Insumo = _context.Insumos.Find(item.CodigoInsumo);
@@ -107,12 +119,57 @@ namespace Logica
                 }
                 else
                 {
-                    return new ActualizarSolicitudResponse("No existe");
+                    return new ActualizarSolicitudResponse("La solicitud No existe","No existe");
                 }
             }
             catch(Exception e)
             {
-                return new ActualizarSolicitudResponse($"Error: {e.Message}");
+                return new ActualizarSolicitudResponse($"Error: {e.Message}", "Error Aplicacion");
+            }
+        }
+
+        public ActualizarSolicitudResponse AprobarSolicitud(string numero)
+        {
+            try
+            {
+                var solicitudes = _context.Solicitudes.Include(d => d.Detalles).ToList();
+                var solicitudresponse = solicitudes.Find(s =>s.Numero == numero);
+                var insumos = _context.Insumos.ToList();
+                if(solicitudresponse != null)
+                {
+                    solicitudresponse.Estado = "Aprobado";
+
+                    foreach (var item in solicitudresponse.Detalles)
+                    {
+                        foreach (var item2 in insumos)
+                        {
+                            if(item.CodigoInsumo == item2.Item)
+                            {
+                                if(item.Cantidad > item2.Cantidad)
+                                {
+                                    return new ActualizarSolicitudResponse("Los insumos son insuficientes","Insuficiente");
+                                }
+                                else
+                                {
+                                    var responseInsumo = _context.Insumos.Find(item2.Item);
+                                    responseInsumo.Cantidad -= item.Cantidad;
+                                    _context.Insumos.Update(responseInsumo);
+                                }
+                            }
+                        }
+                    }
+                    _context.Solicitudes.Update(solicitudresponse);
+                    _context.SaveChanges();
+                    return new ActualizarSolicitudResponse(solicitudresponse);
+                }
+                else
+                {
+                    return new ActualizarSolicitudResponse("No exsite la solicitud", "No existe" );
+                }
+            }
+            catch(Exception e)
+            {
+                return new ActualizarSolicitudResponse($"Error: {e.Message}", "Error Aplicacion");
             }
         }
 
@@ -123,11 +180,13 @@ namespace Logica
                 Solicitud = solicitud;
                 Error = false;
             }
-            public ActualizarSolicitudResponse(string mensaje)
+            public ActualizarSolicitudResponse(string mensaje, string estado)
             {
                 Error = true;
                 Mensaje = mensaje;
+                Estado = estado;
             }
+            public string Estado { get; set; }
             public bool Error { get; set; }
             public string Mensaje { get; set; }
             public Solicitud Solicitud { get; set; }
