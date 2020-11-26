@@ -32,6 +32,7 @@ import { AsignaturaService } from './services/asignatura.service';
 import { FiltroAsignaturaPipe } from './pipe/filtro-asignatura.pipe';
 import { FiltroInsumoPipe } from './pipe/filtro-insumo.pipe';
 import { ConsultaSolicitudesComponent } from './stocklab/consulta-solicitudes/consulta-solicitudes.component';
+import { ActualizarCantidadInsumoModalComponent } from './@base/modal/actualizar-cantidad-insumo-modal/actualizar-cantidad-insumo-modal.component';
 
 
 
@@ -60,6 +61,7 @@ import { ConsultaSolicitudesComponent } from './stocklab/consulta-solicitudes/co
     FiltroAsignaturaPipe,
     FiltroInsumoPipe,
     ConsultaSolicitudesComponent,
+    ActualizarCantidadInsumoModalComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

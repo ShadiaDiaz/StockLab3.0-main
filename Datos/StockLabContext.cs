@@ -15,7 +15,6 @@ namespace Datos
         public DbSet<Insumo> Insumos { get; set; }
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Solicitud> Solicitudes { get; set; }
-        public DbSet<Reporte> Reportes { get; set; }
         public DbSet<PeriodoAcademico> PeriodosAcademicos { get; set; }
         
         
@@ -40,10 +39,6 @@ namespace Datos
             modelBuilder.Entity<Solicitud>()
             .HasOne<PeriodoAcademico>().WithMany()
             .HasForeignKey(p => p.IdPeriodo);
-
-            modelBuilder.Entity<Reporte>()
-            .HasOne<Solicitud>().WithMany()
-            .HasForeignKey( r => r.IdSolicitud);
         }
     }
 }

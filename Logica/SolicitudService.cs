@@ -41,11 +41,6 @@ namespace Logica
                 }
                 _context.Solicitudes.Add(solicitud);
                 _context.SaveChanges();
-
-                Reporte reporte = new Reporte();
-                reporte.Codigo = (_context.Reportes.ToList().Count + 1).ToString();
-                reporte.IdSolicitud = solicitud.Numero;
-                _context.Reportes.Add(reporte);
                 return new GuardarSolicitudResponse(solicitud);
             }
             catch (Exception e)
