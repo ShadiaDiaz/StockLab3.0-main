@@ -31,11 +31,11 @@ namespace StockLabWeb.Controllers
             {
                 ModelState.AddModelError("Error al guardar asignatura", response.Mensaje);
                 var detallesproblemas = new ValidationProblemDetails(ModelState);
-            if (response.Mensaje == "Duplicado")
+            if (response.Estado == "Duplicado")
             {
                 detallesproblemas.Status = StatusCodes.Status400BadRequest;
             }
-            else
+            if(response.Estado == "Error")
             {
                 detallesproblemas.Status = StatusCodes.Status500InternalServerError;
             }

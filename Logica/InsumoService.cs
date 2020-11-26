@@ -26,7 +26,31 @@ namespace Logica
             }
             catch(Exception e)
             {
-                return new GuardarInsumoResponse($"Error: {e.Message}");
+                return new GuardarInsumoResponse($"Error en la aplicacion: {e.Message}", "Error");
+            }
+        }
+
+
+        public GuardarInsumoResponse ActualizarCantidadInsumo(string codigo, int cantidad)
+        {
+            try
+            {
+                var insumoresponse = _context.Insumos.Find(codigo);
+                if(insumoresponse != null)
+                {
+                    insumoresponse.Cantidad += cantidad;
+                    _context.Insumos.Update(insumoresponse);
+                    _context.SaveChanges();
+                    return new GuardarInsumoResponse(insumoresponse);
+                }
+                else
+                {
+                    return new GuardarInsumoResponse("No se encontro el insumo", "No existe");
+                }
+            }
+            catch(Exception e)
+            {
+                return new GuardarInsumoResponse($"Error en la aplicacion: {e.Message}", "Error");
             }
         }
 
@@ -67,11 +91,13 @@ namespace Logica
                 Insumo = insumo;
             }
 
-            public GuardarInsumoResponse(string mensaje)
+            public GuardarInsumoResponse(string mensaje, string estado)
             {
                 Error = true;
                 Mensaje = mensaje;
+                Estado = estado;
             }
+            public string Estado { get; set; }
             public bool Error { get; set; }
             public string Mensaje { get; set; }
             public Insumo Insumo { get; set; }

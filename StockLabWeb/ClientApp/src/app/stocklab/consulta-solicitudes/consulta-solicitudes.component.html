@@ -5,7 +5,12 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col"><select [(ngModel)]="pageSize">
+                        <option selected>5</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option></select></th>
+                    <th scope="col">Codigo</th>
                     <th scope="col">Docente</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Fecha</th>
@@ -13,8 +18,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let solicitud of solicitudes;index as i">
+                <tr *ngFor="let solicitud of solicitudes |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;index as i">
                     <th scope="row">{{i+1}}</th>
+                    <td>{{solicitud.numero}}</td>
                     <td>{{solicitud.persona.nombre}}</td>
                     <div *ngIf="solicitud.estado == 'Aprobado' || solicitud.estado == 'Rechazado';else pend">
                         <td>{{solicitud.estado}}</td>
@@ -37,5 +43,6 @@
                 </tr>
             </tbody>
         </table>
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="solicitudes.length"></ngb-pagination>
     </div>
 </div>

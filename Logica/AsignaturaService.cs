@@ -28,12 +28,12 @@ namespace Logica
                 }
                 else
                 {
-                    return new GuardarAsignaturaResponse("Duplicado");
+                    return new GuardarAsignaturaResponse("El codigo de la asignatura ya se encuentra registrado","Duplicado");
                 }
             }
             catch(Exception e)
             {
-                return new GuardarAsignaturaResponse($"Error en la aplicacion: {e.Message}");
+                return new GuardarAsignaturaResponse($"Error en la aplicacion: {e.Message}", "Error");
             }
         }
 
@@ -74,11 +74,13 @@ namespace Logica
                 Error = false;
             }
 
-            public GuardarAsignaturaResponse(string mensaje)
+            public GuardarAsignaturaResponse(string mensaje, string estado)
             {
                 Error = true;
                 Mensaje = mensaje;
+                Estado = estado;
             }
+            public string Estado { get; set; }
             public bool Error { get; set; }
             public string Mensaje { get; set; }
             public Asignaturas Asignatura { get; set; }

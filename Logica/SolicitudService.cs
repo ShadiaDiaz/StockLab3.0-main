@@ -58,7 +58,7 @@ namespace Logica
         {
             try
             {
-                List<Solicitud> Solicitudes = _context.Solicitudes.Include(s => s.Detalles).ToList();
+                List<Solicitud> Solicitudes = _context.Solicitudes.Include(s => s.Detalles).ToList().OrderBy(s => int.Parse(s.Numero)).ToList();
                 foreach (var item in Solicitudes)
                 {
                     item.Asignatura = _context.Asignaturas.Find(item.CodigoAsignatura);

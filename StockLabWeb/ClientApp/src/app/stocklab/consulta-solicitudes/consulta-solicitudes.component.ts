@@ -12,6 +12,8 @@ export class ConsultaSolicitudesComponent implements OnInit {
 
   solicitudes: Solicitud[];
   usuario: Usuario;
+  page = 1;
+  pageSize =5;
   constructor(private service: SolicitudService) { }
 
   ngOnInit(): void {
