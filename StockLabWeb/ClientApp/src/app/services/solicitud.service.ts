@@ -14,9 +14,7 @@ const httpOptionsPut = {
 
 
 const httpOptions = {
-  headers:new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -55,8 +53,7 @@ export class SolicitudService {
 
   put(solicitud: Solicitud): Observable<Solicitud>
   {
-    var estado = solicitud.estado;
-    return this.http.put<Solicitud>(this.baseUrl+'api/Solicitud/'+solicitud.numero, solicitud, httpOptions)
+    return this.http.put<Solicitud>(this.baseUrl+'api/Solicitud/'+solicitud.numero+";"+solicitud.estado, httpOptions)
     .pipe(tap(_ => this.handleErrorService.log('Solicitud Actualizada')),
     catchError(this.handleErrorService.handleError<Solicitud>('Estado Solicitud'))
       );
@@ -64,7 +61,7 @@ export class SolicitudService {
 
   putAprobar(solicitud: Solicitud): Observable<Solicitud>
   {
-    return this.http.put<Solicitud>(this.baseUrl+'api/AprobarSolicitud/'+solicitud.numero, httpOptionsPut)
+    return this.http.put<Solicitud>(this.baseUrl+'api/AprobarSolicitud/'+solicitud.numero,httpOptions)
     .pipe(tap(_ => this.handleErrorService.log('Solicitud Actualizada')),
     catchError(this.handleErrorService.handleError<Solicitud>('Estado Solicitud'))
       );

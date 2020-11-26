@@ -89,9 +89,10 @@ namespace StockLabWeb.Controllers
 
         //api/Solicitud/5
         [HttpPut("{numero}")]
-        public ActionResult<string> Put(string numero, SolicitudInputModel solicitud)
+        public ActionResult<string> Put(string numero)
         {
-            var response = _service.ActualizarEstado(numero, solicitud.Estado);
+            string[] solicitu = numero.Split(';');
+            var response = _service.ActualizarEstado(solicitu[0], solicitu[1]);
 
             if(response.Error)
             {

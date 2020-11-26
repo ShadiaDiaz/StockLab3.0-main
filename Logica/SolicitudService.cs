@@ -30,9 +30,9 @@ namespace Logica
                     item.NumeroDetalle += solicitud.Numero;
                     foreach (var item2 in insumos)
                     {
-                        if(item.CodigoInsumo == item2.Item)
+                        if (item.CodigoInsumo == item2.Item)
                         {
-                            if(item.Cantidad > item2.Cantidad)
+                            if (item.Cantidad > item2.Cantidad)
                             {
                                 return new GuardarSolicitudResponse("Cantidad Insuficiente");
                             }
@@ -83,7 +83,7 @@ namespace Logica
             {
                 var solicitudesresponse = _context.Solicitudes.Include(d => d.Detalles).ToList();
                 var solicitudresponse = solicitudesresponse.Find(s => s.Numero == numero);
-                if(solicitudresponse != null)
+                if (solicitudresponse != null)
                 {
                     solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
                     solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
@@ -99,7 +99,7 @@ namespace Logica
                     return new BuscarSolicitudResponse($"No existe");
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new BuscarSolicitudResponse($"Error: {e.Message}");
             }
@@ -109,20 +109,30 @@ namespace Logica
         {
             try
             {
-                var solicitudresponse = _context.Solicitudes.Find(numero);
-                if(solicitudresponse != null)
+                var solicitudesresponse = _context.Solicitudes.Include(d => d.Detalles).ToList();
+                var solicitudresponse = solicitudesresponse.Find(s => s.Numero == numero);
+                if (solicitudresponse != null)
                 {
                     solicitudresponse.Estado = estado;
+                    solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
+                    solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
+                    solicitudresponse.PeriodoAcademico = _context.PeriodosAcademicos.Find(solicitudresponse.IdPeriodo);
+
+                    foreach (var item in solicitudresponse.Detalles)
+                    {
+                        item.Insumo = _context.Insumos.Find(item.CodigoInsumo);
+                    }
+
                     _context.Solicitudes.Update(solicitudresponse);
                     _context.SaveChanges();
                     return new ActualizarSolicitudResponse(solicitudresponse);
                 }
                 else
                 {
-                    return new ActualizarSolicitudResponse("La solicitud No existe","No existe");
+                    return new ActualizarSolicitudResponse("La solicitud No existe", "No existe");
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new ActualizarSolicitudResponse($"Error: {e.Message}", "Error Aplicacion");
             }
@@ -133,24 +143,28 @@ namespace Logica
             try
             {
                 var solicitudes = _context.Solicitudes.Include(d => d.Detalles).ToList();
-                var solicitudresponse = solicitudes.Find(s =>s.Numero == numero);
+                var solicitudresponse = solicitudes.Find(s => s.Numero == numero);
                 var insumos = _context.Insumos.ToList();
-                if(solicitudresponse != null)
+                if (solicitudresponse != null)
                 {
                     solicitudresponse.Estado = "Aprobado";
-
+                    solicitudresponse.FechaEntrega = DateTime.Now.ToShortDateString();
+                    solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
+                    solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
+                    solicitudresponse.PeriodoAcademico = _context.PeriodosAcademicos.Find(solicitudresponse.IdPeriodo);
                     foreach (var item in solicitudresponse.Detalles)
                     {
                         foreach (var item2 in insumos)
                         {
-                            if(item.CodigoInsumo == item2.Item)
+                            if (item.CodigoInsumo == item2.Item)
                             {
-                                if(item.Cantidad > item2.Cantidad)
+                                if (item.Cantidad > item2.Cantidad)
                                 {
-                                    return new ActualizarSolicitudResponse("Los insumos son insuficientes","Insuficiente");
+                                    return new ActualizarSolicitudResponse("Los insumos son insuficientes", "Insuficiente");
                                 }
                                 else
                                 {
+                                    item.Insumo = item2;
                                     var responseInsumo = _context.Insumos.Find(item2.Item);
                                     responseInsumo.Cantidad -= item.Cantidad;
                                     _context.Insumos.Update(responseInsumo);
@@ -164,10 +178,10 @@ namespace Logica
                 }
                 else
                 {
-                    return new ActualizarSolicitudResponse("No exsite la solicitud", "No existe" );
+                    return new ActualizarSolicitudResponse("No exsite la solicitud", "No existe");
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new ActualizarSolicitudResponse($"Error: {e.Message}", "Error Aplicacion");
             }
