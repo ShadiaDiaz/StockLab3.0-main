@@ -27,7 +27,8 @@ namespace Datos.Migrations
                     Item = table.Column<string>(type: "varchar(5)", maxLength: 4, nullable: false),
                     Descripcion = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
                     Marca = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
-                    Cantidad = table.Column<int>(type: "int", nullable: false)
+                    Cantidad = table.Column<int>(type: "int", nullable: false),
+                    StockMinimo = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

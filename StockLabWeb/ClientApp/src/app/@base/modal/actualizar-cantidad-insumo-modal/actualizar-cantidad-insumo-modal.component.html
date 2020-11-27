@@ -8,39 +8,43 @@
                         <h2>Actualizar Stocks</h2>
 
 
-                        <form >
+                        <form>
                             <div class="form-group">​
 
                                 <label>Descripcion</label>​
 
-                                <input type="text"  disabled name="Descripcion" />​
+                                <input type="text" value="{{insumo.descripcion}}" disabled name="Descripcion"  />​
                             </div>
-                           
+
 
                             <div class="form-group">​
-
                                 <label>Marca</label>​
-                                <input type="text"
-                                   
-                                    formControlName="marca" name="marca" />​
+                                <input type="text" value="{{insumo.marca}}"  name="marca" disabled />​
                             </div>
 
 
+
+                        </form>
+                        <form autocomplete="off" [formGroup]="formGroup">
                             <div class="form-group">​
 
-                                <label>Cantidad</label>​
-                                <input type="text"
-                                   
-                                    formControlName="cantidad"  name="cantidad" />
+                                <label>Cantidad De Insumo</label>​
+                                <input type="number"
+                                    [ngClass]="{'is-invalid': control.cantidad.errors && control.cantidad.touched}"
+                                    formControlName="cantidad" name="cantidad" />
 
-                              ​
+                                ​<div *ngIf="control.cantidad.errors" class="invalid-feedback">
+                                    <div *ngIf="control.cantidad.errors.required">Se requiere la cantidad</div>
+                                    <div *ngIf="control.cantidad.errors.validCantidad">
+                                        {{control.cantidad.errors.messageCantidad}}</div>
+                                </div>
                             </div>
 
                             <div class="text-center">
-                                <button class="btn btn-primary mr-1" 
-                                style="background-color:rgb(171, 224, 173);">Actualizar</button>
-                                <button class="btn btn-secondary" type="reset" 
-                                 style="background-color: rgb(247, 138, 138);">Cancel</button>
+                                <button class="btn btn-primary mr-1" [disabled]="formGroup.invalid" (click)="onSubmit()"
+                                    style="background-color:rgb(171, 224, 173);">Actualizar</button>
+                                <button class=" btn btn-secondary" type="reset"
+                                    style="background-color: rgb(247, 138, 138);">Cancel</button>
                             </div>
                         </form>
                     </div>

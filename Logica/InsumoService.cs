@@ -50,7 +50,7 @@ namespace Logica
             }
             catch(Exception e)
             {
-                return new GuardarInsumoResponse($"Error en la aplicacion: {e.Message}", "Error");
+                return new GuardarInsumoResponse($"Error en la aplicacion: {e.Message}", "Error Aplicacion");
             }
         }
 
@@ -63,6 +63,26 @@ namespace Logica
             catch(Exception e)
             {
                 return new ConsultarInsumoResponse($"Error {e.Message}");
+            }
+        }
+
+        public GuardarInsumoResponse BuscarInsumo(string codigo){
+            try
+            {
+                var insumoresponse = _context.Insumos.Find(codigo);
+
+                if(insumoresponse != null)
+                {
+                    return new GuardarInsumoResponse(insumoresponse);
+                }
+                else
+                {
+                    return new GuardarInsumoResponse("El insumo no se encuentra registrado","No existe");
+                }
+            }
+            catch(Exception e)
+            {
+                return new GuardarInsumoResponse($"Error en la aplicacion: {e.Message}", "Error");
             }
         }
 

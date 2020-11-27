@@ -42,12 +42,20 @@
                             <div *ngIf="control.cantidad.errors.validCantidad">{{control.cantidad.errors.messageCantidad}}</div>
                         </div>
                     </div>
+
+
                     <div class="form-group">
                         <label>Stock minimo</label>
-                        <input type="number"
-                            formControlName="cantidad" placeholder=""
-                        name="no che" class="form-control" />
+                        <input type="number" [ngClass]="{'is-invalid': control.stockminimo.errors && control.stockminimo.touched}"
+                            formControlName="stockminimo" placeholder=""
+                        name="stockminimo" class="form-control" />
+
+                        <div *ngIf="control.stockminimo.errors" class="invalid-feedback">
+                            <div *ngIf="control.stockminimo.errors.required">Se requiere la cantidad</div>
+                            <div *ngIf="control.stockminimo.errors.validCantidad">{{control.stockminimo.errors.messageCantidad}}</div>
+                        </div>
                     </div>
+
                     <div class="text-center">
                         <button class="btn btn-primary mr-1"
                         (click)="onSubmit()" [disabled]="formGroup.invalid"

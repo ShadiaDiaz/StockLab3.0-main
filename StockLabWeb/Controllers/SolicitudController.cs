@@ -63,7 +63,7 @@ namespace StockLabWeb.Controllers
             return Ok(response.Solicitudes.Select(a => new SolicitudViewModel(a)));
         }
 
-        // GET: api/Persona/5​
+        // GET: api/Solicitud/5​
         [HttpGet("{numero}")]
         public ActionResult<SolicitudViewModel> Get(string numero)
         {

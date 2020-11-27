@@ -3,7 +3,7 @@
         <h1>Consultar Inventario</h1>
         <form>
             <div class="form-group form-inline">
-                Full text search: <input name="searchText" class="form-control ml-2" type="text"
+                Buscar por Descripcion: <input name="searchText" class="form-control ml-2" type="text"
                     [(ngModel)]="searchText" />
             </div>
         </form>
@@ -21,6 +21,7 @@
                     <th scope="col">Descripción</th>
                     <th scope="col">Marca</th>
                     <th scope="col">Cantidad</th>
+                    <th scope="col">Agregar Cantidad</th>
 
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                     <td *ngIf="insumo.cantidad <500 && insumo.cantidad > 100" class="EstadoMedio">{{insumo.cantidad}}
                     </td>
                     <td *ngIf="insumo.cantidad <= 100" class="EstadoBajo">{{insumo.cantidad}}</td>
+                    <td><button (click)="AgregarCantidad(insumo);">Agregar</button></td>
                 </tr>
             </tbody>
         </table>

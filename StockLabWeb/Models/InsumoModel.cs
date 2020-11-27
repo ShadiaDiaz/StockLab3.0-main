@@ -8,6 +8,7 @@ namespace StockLabWeb.Models
         public string Descripcion { get; set; }
         public string Marca { get; set; }
         public int Cantidad { get; set; }
+        public int StockMinimo { get; set; }
     }
       public class InsumoViewModel : InsumoInputModel
     {
@@ -22,6 +23,7 @@ namespace StockLabWeb.Models
             Descripcion = insumo.Descripcion;
             Marca = insumo.Marca;
             Cantidad = insumo.Cantidad;
+            StockMinimo = insumo.StockMinimo;
             
         }
     }

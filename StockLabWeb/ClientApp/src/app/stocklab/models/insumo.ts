@@ -3,4 +3,5 @@ export class Insumo {
     descripcion: string;
     marca: string;
     cantidad: number;
+    stockminimo: number;
 }

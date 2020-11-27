@@ -20,5 +20,8 @@ namespace Entity
         [Column(TypeName = "int")]
         [Required(ErrorMessage = "Proporcione una cantidad")]
         public int Cantidad { get; set; }
+        [Column(TypeName = "int")]
+        [Required(ErrorMessage = "Proporcione un stock minimo")]
+        public int StockMinimo { get; set; }
     }
 }

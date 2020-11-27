@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(StockLabContext))]
-    [Migration("20201127024840_InitialCreate")]
+    [Migration("20201127070323_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,6 +90,9 @@ namespace Datos.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(20)")
                         .HasMaxLength(20);
+
+                    b.Property<int>("StockMinimo")
+                        .HasColumnType("int");
 
                     b.HasKey("Item");
 

@@ -6,72 +6,65 @@
                     <h2>Perfil Usuario</h2>
                 </header>
                 <div class="row">
-    
-    
+
+
                     <div class="form-group">
                         <div class="col-ml-6 offset-md-3">
-    
-    
-    
+
+
+
                             <div class="form-group row">
                                 <label>Identificacion</label>
-                                
-                                    <input type="text" name="identificacion"
-                                        class="form-control" disabled />
-                                
-                            </div>
-    
-                            <div class="form-group row">
-                                <label>Nombre</label>
-                                
-                                    <input type="text"  name="nombre"
-                                        class="form-control" disabled />
-                                
-                            </div>
-    
-                            <div class="form-group row">
-                                <label>Apellidos</label>
-                                
-                                    <input type="text" name="apellidos"
-                                        class="form-control" disabled />
-                                
+
+                                <input type="text" value="{{usuario.idPersona}}" name="identificacion" class="form-control" disabled />
+
                             </div>
 
                             <div class="form-group row">
-                                <label>Asignatura</label>
-                                <input type="text"  class="form-control"
-                                    name="asignatura" id="asignatura" disabled>
+                                <label>Nombre</label>
+
+                                <input type="text" name="nombre" value="{{usuario.nombre}}" class="form-control" disabled />
+
                             </div>
+
+                            <div class="form-group row">
+                                <label>Apellidos</label>
+
+                                <input type="text" name="apellidos" value="{{usuario.apellidos}}" class="form-control" disabled />
+
+                            </div>
+
 
                             <div class="form-group row">
                                 <label>Correo</label>
-                                <input type="text"  name="Correo" class="form-control" disabled />
+                                <input type="text" value="{{usuario.usuario}}" name="Correo" class="form-control" disabled />
                             </div>
-    
+
                         </div>
                     </div>
                     <div class="row" style="padding-left: 50px;">
                         <div class="col-md-4 offset-md-4">
-    
+
                             <div class="card text-white bg-success mb-3" style="width: 18rem;">
                                 <div class="card-body">
-                                  <h5 class="card-title">Historial de Solicitudes</h5>
-                                  <p class="card-text">Historial de todas las solicitudes(Aprobadas y rechazadas en todo el periodo academico.</p>
-                                  <a href="#" class="card-link">ver</a>
+                                    <h5 class="card-title">Historial de Solicitudes</h5>
+                                    <p class="card-text">Historial de todas las solicitudes(Aprobadas y rechazadas en
+                                        todo el periodo academico.</p>
+                                    <a href="#" class="card-link">ver</a>
                                 </div>
-                              </div>
-    
-    
+                            </div>
+
+
                         </div>
                     </div>
-    
-    
-    
-    
+
+
+
+
                 </div>
-    
-               
-              
+
+
+
             </form>
         </div>
     </div>

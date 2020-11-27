@@ -19,10 +19,5 @@ namespace Entity
         [MaxLength(1, ErrorMessage = "Maximo 1 caracter")]
         public int Corte { get; set; }
         
-        
-        
-        
-        
-        
     }
 }

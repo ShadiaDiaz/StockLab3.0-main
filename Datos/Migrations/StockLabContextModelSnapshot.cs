@@ -89,6 +89,9 @@ namespace Datos.Migrations
                         .HasColumnType("varchar(20)")
                         .HasMaxLength(20);
 
+                    b.Property<int>("StockMinimo")
+                        .HasColumnType("int");
+
                     b.HasKey("Item");
 
                     b.ToTable("Insumos");
