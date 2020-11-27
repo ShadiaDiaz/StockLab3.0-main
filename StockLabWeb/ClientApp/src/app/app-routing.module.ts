@@ -13,6 +13,8 @@ import {ConsultaAsignaturasComponent} from './stocklab/consulta-asignaturas/cons
 import { SolicitudIndividualComponent } from './stocklab/solicitud-individual/solicitud-individual.component';
 import {ConsultaSolicitudesComponent} from './stocklab/consulta-solicitudes/consulta-solicitudes.component';
 import { NotificacionesComponent } from './notificaciones/notificaciones.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { PeriodoRegistroComponent } from './stocklab/periodo-registro/periodo-registro.component';
 
 import { combineLatest } from 'rxjs';
 import { AuthGuard } from './services/guard/auth.guard'; 
@@ -29,7 +31,10 @@ const routes : Routes = [
   { path: 'ConsultaAsignaturas', component: ConsultaAsignaturasComponent, canActivate: [AuthGuard] },
   { path: 'SolicitudIndividual/:numero', component: SolicitudIndividualComponent, canActivate: [AuthGuard] },
   { path: 'notificaciones', component: NotificacionesComponent, canActivate: [AuthGuard]},
-  { path: 'ConsultaSolicitudes', component: ConsultaSolicitudesComponent, canActivate: [AuthGuard]}
+  { path: 'ConsultaSolicitudes', component: ConsultaSolicitudesComponent, canActivate: [AuthGuard]},
+  { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard]},
+  { path: 'periodoRegistro', component: PeriodoRegistroComponent, canActivate: [AuthGuard]}
+
 
   
   

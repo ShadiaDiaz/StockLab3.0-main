@@ -1,4 +1,4 @@
-.container-registroAsignatura {
+.container-periodo {
     width: 100%;  
     min-height: 100vh;
     display: -webkit-box;
@@ -12,7 +12,7 @@
     padding: 15px;
     background-color:  rgb(223, 252, 224);
   }
-  .wrap-registroAsignatura {
+  .wrap-periodo {
     width: 960px;
     background: #fff;
     border-radius: 10px;

@@ -21,6 +21,13 @@
                 <span class="menu-collapsed">Notificaciones</span>
             </a>
         </div>
+        <div>
+            
+            <a [routerLink]="['/perfil']" class="list-group-item list-group-item-action bg-dark text-white">
+                <img src="../../assets/images/usuarios.png">
+                <span class="menu-collapsed">Perfil</span>
+            </a>
+        </div>
         <!-- /END Separator -->
         <!-- Menu with submenu -->
         <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
@@ -58,9 +65,15 @@
             </div>
             <div *ngIf="usuario.tipo == 'Administrador'">
                 <a [routerLink]="['/RegistroAsignaturas']"
-                class="list-group-item list-group-item-action bg-dark text-white">
-                <span class="menu-collapsed">Registro Asignaturas</span>
-            </a>
+                  class="list-group-item list-group-item-action bg-dark text-white">
+                 <span class="menu-collapsed">Registro Asignaturas</span>
+                 </a>
+            </div>
+            <div *ngIf="usuario.tipo == 'Administrador'">
+                <a [routerLink]="['/periodoRegistro']"
+                  class="list-group-item list-group-item-action bg-dark text-white">
+                  <span class="menu-collapsed">Registro Periodo Academico</span>
+               </a>
             </div>
         </div>
 

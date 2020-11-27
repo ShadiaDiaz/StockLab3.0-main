@@ -153,24 +153,6 @@ namespace Datos.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Reportes",
-                columns: table => new
-                {
-                    Codigo = table.Column<string>(type: "varchar(5)", nullable: false),
-                    IdSolicitud = table.Column<string>(type: "varchar(5)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reportes", x => x.Codigo);
-                    table.ForeignKey(
-                        name: "FK_Reportes_Solicitudes_IdSolicitud",
-                        column: x => x.IdSolicitud,
-                        principalTable: "Solicitudes",
-                        principalColumn: "Numero",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_DetalleInsumo_CodigoInsumo",
                 table: "DetalleInsumo",
@@ -185,11 +167,6 @@ namespace Datos.Migrations
                 name: "IX_Personas_UsuarioUser",
                 table: "Personas",
                 column: "UsuarioUser");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reportes_IdSolicitud",
-                table: "Reportes",
-                column: "IdSolicitud");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Solicitudes_CodigoAsignatura",
@@ -211,9 +188,6 @@ namespace Datos.Migrations
         {
             migrationBuilder.DropTable(
                 name: "DetalleInsumo");
-
-            migrationBuilder.DropTable(
-                name: "Reportes");
 
             migrationBuilder.DropTable(
                 name: "Insumos");

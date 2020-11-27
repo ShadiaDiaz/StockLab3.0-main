@@ -8,7 +8,7 @@
 
     #sidebar-container {
         min-height: 150vh;
-        background-color: #6395d6;
+        background-color: #8cd1a9;
         padding: 0;
         /* flex: unset; */
     }
@@ -30,7 +30,7 @@
 
     /* ----------| Submenu item*/    
     #sidebar-container .list-group li.list-group-item {
-        background-color:   #6395d6;
+        background-color:   #8cd1a9;
     }
     
     #sidebar-container .list-group .sidebar-submenu a {
@@ -44,22 +44,22 @@
 
     /* ----------| Separators */    
     .sidebar-separator-title {
-        background-color: #6395d6;
+        background-color: #8cd1a9;
         height: 35px;
     }
     
     .sidebar-separator {
-        background-color:  #6395d6;
+        background-color:  #8cd1a9;
         height: 25px;
     }
     
     .logo-separator {
-        background-color:  #6395d6;
+        background-color:  #8cd1a9;
         height: 60px;
     }
     
     a.bg-dark {
-        background-color: #6395d6 !important;
+        background-color: #8cd1a9 !important;
     }
 
   

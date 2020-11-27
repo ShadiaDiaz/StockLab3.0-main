@@ -1,15 +1,59 @@
 <div>
     <div class="modal-header">
-        
+        <div>
+            <div class="container form-group">
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <h2>Actualizar Stocks</h2>
+
+
+                        <form >
+                            <div class="form-group">​
+
+                                <label>Descripcion</label>​
+
+                                <input type="text"  disabled name="Descripcion" />​
+                            </div>
+                           
+
+                            <div class="form-group">​
+
+                                <label>Marca</label>​
+                                <input type="text"
+                                   
+                                    formControlName="marca" name="marca" />​
+                            </div>
+
+
+                            <div class="form-group">​
+
+                                <label>Cantidad</label>​
+                                <input type="text"
+                                   
+                                    formControlName="cantidad"  name="cantidad" />
+
+                              ​
+                            </div>
+
+                            <div class="text-center">
+                                <button class="btn btn-primary mr-1" 
+                                style="background-color:rgb(171, 224, 173);">Actualizar</button>
+                                <button class="btn btn-secondary" type="reset" 
+                                 style="background-color: rgb(247, 138, 138);">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
-
     </div>
     <div class="modal-body">
-        
-        <span [innerHTML]="cuerpo"></span>
-        
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>

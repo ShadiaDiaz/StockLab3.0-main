@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(StockLabContext))]
-    [Migration("20201125181230_InitialCreate")]
+    [Migration("20201127024840_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -151,21 +151,6 @@ namespace Datos.Migrations
                     b.ToTable("Personas");
                 });
 
-            modelBuilder.Entity("Entity.Reporte", b =>
-                {
-                    b.Property<string>("Codigo")
-                        .HasColumnType("varchar(5)");
-
-                    b.Property<string>("IdSolicitud")
-                        .HasColumnType("varchar(5)");
-
-                    b.HasKey("Codigo");
-
-                    b.HasIndex("IdSolicitud");
-
-                    b.ToTable("Reportes");
-                });
-
             modelBuilder.Entity("Entity.Solicitud", b =>
                 {
                     b.Property<string>("Numero")
@@ -267,13 +252,6 @@ namespace Datos.Migrations
                     b.HasOne("Entity.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioUser");
-                });
-
-            modelBuilder.Entity("Entity.Reporte", b =>
-                {
-                    b.HasOne("Entity.Solicitud", null)
-                        .WithMany()
-                        .HasForeignKey("IdSolicitud");
                 });
 
             modelBuilder.Entity("Entity.Solicitud", b =>

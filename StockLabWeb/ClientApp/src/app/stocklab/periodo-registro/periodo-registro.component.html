@@ -1,0 +1,50 @@
+<div class="container-periodo">
+    <div class="wrap-periodo">
+
+        <div class="row">
+
+            <div class="col-md-10 offset-md-3">
+                <h3>Registro de Periodo Academico</h3>
+                <form autocomplete="off">
+
+                    <div class="form-group">
+                        <label>Codigo</label>
+                        <input type="text"  formControlName="codigo" placeholder="2020"  name="codigo" class="form-control"  />
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label>Periodo</label>
+                        <input type="text" [
+                            formControlName="nombre" placeholder="2020-2" name="nombre" class="form-control"
+                            />
+                      
+                    </div>
+                    <div class="form-group">
+                        <label>Corte</label>
+                        <select class="form-control"
+                        formControlName="corte" name="corte" id="corte">
+                        <option selected>Seleccionar</option>
+                        <option>Primer Corte</option>
+                        <option>Segundo Corte</option>
+                        <option>Tercer Corte</option>
+                    </select>
+                    </div>
+
+
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mr-1" 
+                            style="background-color: rgb(171, 224, 173);">Register</button>
+                        <button class="btn btn-secondary" type="reset"
+                            style="background-color: rgb(247, 138, 138);">Cancel</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

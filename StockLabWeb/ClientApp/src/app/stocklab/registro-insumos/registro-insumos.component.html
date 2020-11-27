@@ -42,10 +42,16 @@
                             <div *ngIf="control.cantidad.errors.validCantidad">{{control.cantidad.errors.messageCantidad}}</div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label>Stock minimo</label>
+                        <input type="number"
+                            formControlName="cantidad" placeholder=""
+                        name="no che" class="form-control" />
+                    </div>
                     <div class="text-center">
                         <button class="btn btn-primary mr-1"
                         (click)="onSubmit()" [disabled]="formGroup.invalid"
-                        style="background-color: rgb(147, 214, 214));">Register</button>
+                        style="background-color:rgb(171, 224, 173);">Register</button>
                         <button class="btn btn-secondary" type="reset"
                             style="background-color: rgb(247, 138, 138);">Cancel</button>
                     </div>
