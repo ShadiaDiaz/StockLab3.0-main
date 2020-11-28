@@ -28,8 +28,6 @@ export class SolicitudIndividualComponent implements OnInit {
 
     this.solicitudService.get(id).subscribe(result => {
       this.Solicitud = result;
-      console.log(result.periodoAcademico);
-      console.log(this.Solicitud.periodoAcademico);
     });
 
     

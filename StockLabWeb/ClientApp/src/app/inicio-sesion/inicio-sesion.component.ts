@@ -31,7 +31,7 @@ export class InicioSesionComponent implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.usuario.password, this.usuario.user)
+    this.loginService.login(this.usuario.password, this.usuario.usuario)
       .pipe(first())
       .subscribe(data => {
         

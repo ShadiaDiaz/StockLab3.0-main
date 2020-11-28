@@ -4,7 +4,7 @@
             <div class="container form-group">
 
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-8 offset-md-3">
                         <h2>Actualizar Stocks</h2>
 
 
@@ -41,10 +41,8 @@
                             </div>
 
                             <div class="text-center">
-                                <button class="btn btn-primary mr-1" [disabled]="formGroup.invalid" (click)="onSubmit()"
-                                    style="background-color:rgb(171, 224, 173);">Actualizar</button>
-                                <button class=" btn btn-secondary" type="reset"
-                                    style="background-color: rgb(247, 138, 138);">Cancel</button>
+                                <button class="btn btn-success mr-1" [disabled]="formGroup.invalid" (click)="onSubmit()"
+                                    >Actualizar</button>
                             </div>
                         </form>
                     </div>
@@ -52,7 +50,7 @@
 
             </div>
         </div>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <button type="button" class="close btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>

@@ -91,7 +91,7 @@ export class RegistroDocentesComponent implements OnInit {
 
 
   mapear() {
-    this.usuario.user = this.formGroup.value.correo;
+    this.usuario.usuario = this.formGroup.value.correo;
     this.usuario.password = this.formGroup.value.password;
     this.docente = this.formGroup.value;
     this.usuario.nombre = this.docente.nombre;

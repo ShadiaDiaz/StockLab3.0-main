@@ -8,91 +8,95 @@
                     <h3>Fecha: {{Solicitud.fechaSolicitud}}</h3>
                     <div *ngIf="Solicitud.estado == 'Activo' || Solicitud.estado == 'leido';else esta">
                         <h3>Estado: Pendiente</h3>
+
                     </div>
                     <ng-template #esta>
                         <div>
                             <h3>Estado: {{Solicitud.estado}}</h3>
                         </div>
                     </ng-template>
+                    <h4>Periodo: {{Solicitud.periodoAcademico.periodo}} Corte: {{Solicitud.periodoAcademico.corte}}</h4>
                 </header>
                 <div class="row">
-    
-    
+
+
                     <div class="form-group">
                         <div class="col-ml-6 offset-md-3">
-    
-    
-    
+
+
+
                             <div class="form-group row">
                                 <label>Identificacion</label>
-                                
-                                    <input type="text" value="{{Solicitud.persona.identificacion}}" name="identificacion"
-                                        class="form-control" disabled />
-                                
+
+                                <input type="text" value="{{Solicitud.persona.identificacion}}" name="identificacion"
+                                    class="form-control" disabled />
+
                             </div>
-    
+
                             <div class="form-group row">
                                 <label>Nombre</label>
-                                
-                                    <input type="text" value="{{Solicitud.persona.nombre}}" name="nombre"
-                                        class="form-control" disabled />
-                                
+
+                                <input type="text" value="{{Solicitud.persona.nombre}}" name="nombre"
+                                    class="form-control" disabled />
+
                             </div>
-    
+
                             <div class="form-group row">
                                 <label>Apellidos</label>
-                                
-                                    <input type="text" value="{{Solicitud.persona.apellidos}}" name="apellidos"
-                                        class="form-control" disabled />
-                                
+
+                                <input type="text" value="{{Solicitud.persona.apellidos}}" name="apellidos"
+                                    class="form-control" disabled />
+
                             </div>
-    
+
                             <div class="form-group row">
                                 <label>Fecha de Solicitud</label>
-                                <input type="text" value="{{Solicitud.fecha}}" name="fecha" class="form-control" disabled />
+                                <input type="text" value="{{Solicitud.fecha}}" name="fecha" class="form-control"
+                                    disabled />
                             </div>
-    
+
                             <div class="form-group row">
                                 <label>Asignatura</label>
                                 <input type="text" value="{{Solicitud.asignatura.nombre}}" class="form-control"
                                     name="asignatura" id="asignatura" disabled>
                             </div>
-    
+
                         </div>
                     </div>
-    
-    
-    
+
+
+
                     <div class="row" style="padding-left: 50px;">
                         <div class="col-md-4 offset-md-4">
-    
+
                             <div class="form-group row">
                                 <label>Hora</label>
-                                <input type="text" value="{{Solicitud.hora}}" name="Hora" class="form-control" disabled />
+                                <input type="text" value="{{Solicitud.hora}}" name="Hora" class="form-control"
+                                    disabled />
                             </div>
-    
+
                             <div class="form-group row">
                                 <label>Monitor</label>
                                 <input type="text" value="{{Solicitud.monitor}}" name="monitor" class="form-control"
                                     disabled />
                             </div>
-    
+
                             <h2>Insumos</h2>
-    
-    
-    
+
+
+
                             <div class="form-group row">
                                 <label>Cantidad Total</label>
                                 <input type="number" value="{{Solicitud.cantidadinsumos}}" name="cantidad"
                                     class="form-control" disabled />
                             </div>
-    
-    
+
+
                         </div>
                     </div>
-    
+
                 </div>
-    
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -111,14 +115,14 @@
                             <td>{{detalle.insumo.marca}}</td>
                             <td>{{detalle.cantidad}}</td>
                         </tr>
-    
+
                     </tbody>
                 </table>
-                <div *ngIf="usuario.tipo != 'Docente' && (Solicitud.estado=='leido' || Solicitud.estado=='Activo')" class="text-center">
-                    <button class="btn btn-primary mr-1" (click)="AprobarSolicitud()" 
-                        style="background-color: rgb(171, 224, 173);" >Aprobar</button>
-                    <button class="btn btn-secondary" (click)="rechazarSolicitud()"
-                    style="background-color: rgb(247, 138, 138);">Rechazar</button>
+                <div *ngIf="usuario.tipo != 'Docente' && (Solicitud.estado=='leido' || Solicitud.estado=='Activo')"
+                    class="text-center">
+                    <button class="btn btn-success mr-1" (click)="AprobarSolicitud()">Aprobar</button>
+                    <button class="btn btn-danger" (click)="rechazarSolicitud()"
+                        >Rechazar</button>
                 </div>
             </form>
         </div>

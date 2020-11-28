@@ -11,8 +11,8 @@
                     <div class="input-group mb-3">
                         <input type="text" name="identificacion" [(ngModel)]="IdPersona" class="form-control" />
                         <div class="input-group-append">
-                            <button class="btn btn-primary mr-1" (click)="buscarpersona()"  
-                             style="background-color: rgb(223, 252, 224)">Buscar</button>
+                            <button class="btn btn-success mr-1" (click)="buscarpersona()"  
+                             >Buscar</button>
                         </div>
                     </div>
 
@@ -153,7 +153,7 @@
                                         formControlName="cantidad" name="cantidad" class="form-control" />
 
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary mr-1" (click)="agregardetalle()">Agregar</button>
+                                        <button class="btn btn-success mr-1" (click)="agregardetalle()">Agregar</button>
                                     </div>
                                 </div>
 
@@ -193,10 +193,10 @@
             </div>
 
             <div class="text-center">
-                <button class="btn btn-primary mr-1" (click)="onSubmit()"
-                style="background-color: rgb(223, 252, 224)"  [disabled]="formGroup.invalid" >Register</button>
-                <button class="btn btn-secondary" type="reset"
-                    style="background-color: rgb(247, 138, 138);">Cancel</button>
+                <button class="btn btn-success mr-1" (click)="onSubmit()"
+                  [disabled]="formGroup.invalid" >Register</button>
+                <button class="btn btn-danger" type="reset"
+                    >Cancel</button>
             </div>
         </form>
     </div>

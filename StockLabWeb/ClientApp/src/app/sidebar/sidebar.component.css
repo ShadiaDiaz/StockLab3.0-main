@@ -7,24 +7,24 @@
     }
 
     #sidebar-container {
-        min-height: 150vh;
+        min-height: 120vh;
         background-color: #8cd1a9;
         padding: 0;
-        /* flex: unset; */
+        flex: unset; 
     }
     
     .sidebar-expanded {
-        width: 230px;
+        width: 260px;
     }
     
     .sidebar-collapsed {
-        /*width: 60px;*/
+        
         width: 100px;
     }
 
     /* ----------| Menu item*/    
     #sidebar-container .list-group a {
-        height: 80px;
+        height: 70px;
         color: white;
     }
 
@@ -35,7 +35,7 @@
     
     #sidebar-container .list-group .sidebar-submenu a {
         height: 100px;
-        padding-left: 30px;
+        padding-left: 20px;
     }
     
     .sidebar-submenu {

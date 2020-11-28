@@ -20,6 +20,7 @@ export class Solicitud {
     constructor(){
         this.asignatura = new Asignatura;
         this.persona = new Persona;
+        this.periodoAcademico = new PeriodoAcademico;
         this.detalles = [];
         this.fecha = new Date(Date.now()).toDateString();
     }
