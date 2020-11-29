@@ -5,6 +5,7 @@ import { Solicitud } from '../stocklab/models/solicitud';
 import { LoginService } from './../services/login.service';
 import { Usuario } from './../stocklab/models/usuario';
 import * as Chart from 'chart.js';
+import { DetalleInsumo } from '../stocklab/models/detalle-insumo';
 
 
 @Component({
@@ -14,8 +15,10 @@ import * as Chart from 'chart.js';
 export class HomeComponent {
   usuario: Usuario;
   solicitudes: Solicitud[];
+  detalles: DetalleInsumo[];
   canvas: any;
   ctx: any;
+  numberdetalle: number[];
   constructor(private LoginService: LoginService, private SolicitudService: SolicitudService) {
   }
 
@@ -25,22 +28,66 @@ export class HomeComponent {
   ngOnInit(): void {
     this.usuario = new Usuario;
     this.solicitudes = []
+    this.detalles = [];
+    this.numberdetalle = [];
     this.get();
     this.obtenerUsuario();
-    this.graficaSolicitudes();
+    this.llenarinsumografica();
+  }
+
+  llenarinsumografica() {
+    console.log(this.solicitudes);
+    this.SolicitudService.gets().subscribe(result => {
+      if (result != null) {
+        for (let index = 0; index < result.length; index++) {
+
+          for (let index2 = 0; index2 < result[index].detalles.length; index2++) {
+            console.log(result[index].detalles[index2]);
+            var detallerespuesta = this.detalles.find(d => d.insumo.item == result[index].detalles[index2].insumo.item);
+            if (detallerespuesta != null) {
+              var numero = this.detalles.findIndex(d => d.insumo.item == result[index].detalles[index2].insumo.item)
+              this.detalles[numero].cantidad += result[index].detalles[index2].cantidad;
+            }
+            else {
+              this.detalles.push(result[index].detalles[index2]);
+            }
+          }
+
+        }
+        console.log(this.detalles);
+        this.graficaSolicitudes();
+      }
+    })
+
   }
 
   graficaSolicitudes() {
     this.canvas = document.getElementById('myChart');
     this.ctx = this.canvas.getContext('2d');
+    var labelsdetalle = [];
+    var colordetalle = [];
+    for (let index = 0; index < this.detalles.length; index++) {
+      labelsdetalle.push(this.detalles[index].insumo.descripcion);
+      this.numberdetalle.push(this.detalles[index].cantidad);
+      if (this.detalles[index].cantidad <= 100) {
+        colordetalle.push('red');
+      }
+      if (this.detalles[index].cantidad > 100 && this.detalles[index].cantidad < 500) {
+        colordetalle.push('orange');
+      }
+      if (this.detalles[index].cantidad >= 500) {
+        colordetalle.push('green');
+      }
+    }
+    console.log(this.numberdetalle);
     const myChart = new Chart(this.ctx, {
       type: 'bar',
       data: {
-        labels: ['USA', 'Spain', 'Italy', 'France', 'Germany', 'UK', 'Turkey', 'Iran', 'China', 'Russia', 'Brazil', 'Belgium', 'Canada', 'Netherlands', 'Switzerland', 'India', 'Portugal', 'Peru', 'Ireland', 'Sweden'],
+        labels: labelsdetalle,
         datasets: [{
           label: 'Total cases.',
-          data: [886789, 213024, 189973, 158183, 153129, 138078, 101790, 87026, 82804, 62773, 50036, 42797, 42110, 35729, 28496, 23502, 22353, 20914, 17607, 16755],
-          backgroundColor: ['red', , , , , , , , 'orange'],
+          data: this.numberdetalle,
+          backgroundColor: colordetalle,
           borderWidth: 1
         }]
       },
@@ -48,31 +95,43 @@ export class HomeComponent {
         legend: {
           display: false
         },
-        responsive: false
+        responsive: true
       }
     });
   }
 
-obtenerUsuario() {
-  var lista = JSON.parse(sessionStorage.getItem('login'));
-  if (lista != null) {
-    this.usuario = lista;
+  obtenerUsuario() {
+    var lista = JSON.parse(sessionStorage.getItem('login'));
+    if (lista != null) {
+      this.usuario = lista;
+    }
   }
-}
 
-get() {
-  this.SolicitudService.gets().subscribe(result => {
-    this.solicitudes = result;
-    console.log(result);
-  })
-}
+  get() {
+    this.SolicitudService.gets().subscribe(result => {
+      if (result != null) {
+        this.solicitudes = result;
+        this.graficaSolicitudesFecha();
+      }
+    });
+  }
 
-updateEstado(solicitud: Solicitud) {
-  solicitud.estado = "leido";
-  this.SolicitudService.put(solicitud).subscribe(result => {
-    solicitud = result;
-  });
-}
+  graficaSolicitudesFecha(){
+    var cantidadsolicitudes = 0;
+    var fechasolicitudes = [];
+    var labelsolicitudes = [];
+    for (let index = 0; index < this.solicitudes.length; index++) {
+      cantidadsolicitudes += 1;
+    }
+    
+  }
+
+  updateEstado(solicitud: Solicitud) {
+    solicitud.estado = "leido";
+    this.SolicitudService.put(solicitud).subscribe(result => {
+      solicitud = result;
+    });
+  }
 
 }
 

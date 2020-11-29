@@ -28,7 +28,7 @@ namespace StockLabWeb.Models
         {
             Numero = solicitud.Numero;
             Fecha = solicitud.Fecha.Year +"-"+solicitud.Fecha.Month+"-"+solicitud.Fecha.Day;
-            FechaSolicitud = solicitud.SolicitudFecha.ToShortDateString();
+            FechaSolicitud = solicitud.SolicitudFecha.Year +"-"+(solicitud.SolicitudFecha.Month + 1)+"-"+solicitud.SolicitudFecha.Day;
             Estado = solicitud.Estado;
             Hora = solicitud.Hora;
             Monitor = solicitud.Monitor;

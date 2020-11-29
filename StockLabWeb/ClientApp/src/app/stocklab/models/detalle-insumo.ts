@@ -8,4 +8,7 @@ export class DetalleInsumo {
     codigoinsumo: string;
     insumo: Insumo;
 
+    constructor(){
+        this.insumo = new Insumo;
+    }
 }

@@ -1,40 +1,59 @@
-<!-- Sidebar -->
-<div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
-    <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
-    <!-- Bootstrap List Group -->
-    <ul class="list-group">
-        <!-- Separator with title -->
-        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+
+    <div class="wrapper ">
+        <div class="sidebar" data-color="green">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                    CT
+                </a>
+                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                    Creative Tim
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                   <!-- Separator with title -->
+        <li>
             <small style="color: white;"><b>MENU</b></small>
         </li>
         <div>
            
-            <a [routerLink]="['/Home']" class="list-group-item list-group-item-action bg-dark text-white">
-                <img src="../../assets/images/casa.png">
-                <span class="menu-collapsed">Inicio</span>
-            </a>
+            <li>
+                <a [routerLink]="['/Home']" class="now-ui-icons">
+                    <img src="../../assets/images/casa.png">
+                    <span class="menu-collapsed">Inicio</span>
+                </a>
+            </li>
         </div>
         <div>
             
-            <a [routerLink]="['/notificaciones']" class="list-group-item list-group-item-action bg-dark text-white">
-                <img src="../../assets/images/campana.png">
-                <span class="menu-collapsed">Notificaciones</span>
-            </a>
+            <li>
+                <a [routerLink]="['/notificaciones']" class="now-ui-icons">
+                    <img src="../../assets/images/campana.png">
+                    <span class="">Notificaciones</span>
+                </a>
+            </li>
         </div>
+
         <div>
             
-            <a [routerLink]="['/perfil']" class="list-group-item list-group-item-action bg-dark text-white">
-                <img src="../../assets/images/usuarios.png">
-                <span class="menu-collapsed">Perfil</span>
-            </a>
+            <li>
+                <a [routerLink]="['/perfil']" class="now-ui-icons">
+                    <img src="../../assets/images/usuarios.png">
+                    <span class="menu-collapsed">Perfil</span>
+                </a>
+            </li>
         </div>
         <!-- /END Separator -->
         <!-- Menu with submenu -->
-        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+        <li class="text-muted d-flex align-items-center">
             <small style="color: white;"><b>Monitor</b></small>
         </li>
-        <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
-            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+        <li>
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
+            class="now-ui-icons">
             <div class="d-flex w-100 justify-content-start align-items-center">
                 <img src="../../assets/images/add-file.png">
                 <span class="fa fa-dashboard fa-fw mr-3"></span>
@@ -42,8 +61,11 @@
                 <span class="submenu-icon ml-auto"></span>
             </div>
         </a>
-        <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
-            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+        </li>
+
+        <li>
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
+            class="now-ui-icons">
             <div class="d-flex w-100 justify-content-start align-items-center">
                 <img src="../../assets/images/buscar.png">
                 <span class="fa fa-dashboard fa-fw mr-3"></span>
@@ -51,59 +73,76 @@
                 <span class="submenu-icon ml-auto"></span>
             </div>
         </a>
+        </li>
         <!-- Submenu content -->
         <div id='submenu1' class="collapse sidebar-submenu">
-            <div *ngIf="usuario.tipo == 'Coordinador' || usuario.tipo == 'Administrador'">
-                <a class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed" [routerLink]="['/RegistroInsumos']">Registro Insumos</span>
-                </a>
-            </div>
-            <div *ngIf="usuario.tipo == 'Administrador'">
-                <a [routerLink]="['/RegistroDocentes']" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Registro Docentes</span>
-                </a>
-            </div>
-            <div *ngIf="usuario.tipo == 'Administrador'">
-                <a [routerLink]="['/RegistroAsignaturas']"
-                  class="list-group-item list-group-item-action bg-dark text-white">
-                 <span class="menu-collapsed">Registro Asignaturas</span>
-                 </a>
-            </div>
-            <div *ngIf="usuario.tipo == 'Administrador'">
-                <a [routerLink]="['/periodoRegistro']"
-                  class="list-group-item list-group-item-action bg-dark text-white">
-                  <span class="menu-collapsed">Registro Periodo Academico</span>
-               </a>
-            </div>
+            <li>
+                <div *ngIf="usuario.tipo == 'Coordinador' || usuario.tipo == 'Administrador'">
+                    <a class="now-ui-icons text-white">
+                        <span class="menu-collapsed" [routerLink]="['/RegistroInsumos']">Registro Insumos</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div *ngIf="usuario.tipo == 'Administrador'">
+                    <a [routerLink]="['/RegistroDocentes']" class="now-ui-icons text-white">
+                        <span class="menu-collapsed">Registro Docentes</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div *ngIf="usuario.tipo == 'Administrador'">
+                    <a [routerLink]="['/RegistroAsignaturas']"
+                      class="now-ui-icons text-white">
+                     <span class="menu-collapsed">Registro Asignaturas</span>
+                     </a>
+                </div>
+            </li>
+            <li>
+                <div *ngIf="usuario.tipo == 'Administrador'">
+                    <a [routerLink]="['/periodoRegistro']"
+                      class="now-ui-icons text-white">
+                      <span class="menu-collapsed">Registro Periodo Academico</span>
+                   </a>
+                </div>
+            </li>
         </div>
 
         <div id='submenu2' class="collapse sidebar-submenu">
-            <div *ngIf="usuario.tipo != 'Docente'">
-                <a class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed" [routerLink]="['/ConsultaInsumos']">Consultar Insumos</span>
-                </a>
-            </div>
+            <li>
+                <div *ngIf="usuario.tipo != 'Docente'">
+                    <a class="now-ui-icons text-white">
+                        <span class="menu-collapsed" [routerLink]="['/ConsultaInsumos']">Consultar Insumos</span>
+                    </a>
+                </div>
+            </li>
             
-            <div *ngIf="usuario.tipo == 'Administrador'">
-                <a [routerLink]="['/ConsultaAsignaturas']"
-                class="list-group-item list-group-item-action bg-dark text-white">
-                <span class="menu-collapsed">Consultar Asignaturas</span>
-            </a>
-            </div>
-            <div>
-                <a [routerLink]="['/ConsultaSolicitudes']"
-                class="list-group-item list-group-item-action bg-dark text-white">
-                <span class="menu-collapsed">Consultar Solicitudes</span>
-            </a>
-            </div>
+            <li>
+                <div *ngIf="usuario.tipo == 'Administrador'">
+                    <a [routerLink]="['/ConsultaAsignaturas']"
+                    class="now-ui-icons text-white">
+                    <span class="menu-collapsed">Consultar Asignaturas</span>
+                </a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a [routerLink]="['/ConsultaSolicitudes']"
+                    class="now-ui-icons text-white">
+                    <span class="menu-collapsed">Consultar Solicitudes</span>
+                </a>
+                </div>
+            </li>
         </div>
         <!-- Separator with title -->
 
-        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+        <li class="">
             <small style="color: white;"><b>Docente</b></small>
         </li>
-        <a href="#submenu3" data-toggle="collapse" aria-expanded="false"
-            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+        
+        <li>
+            <a href="#submenu3" data-toggle="collapse" aria-expanded="false"
+            class="now-ui-icons">
             <div class="d-flex w-100 justify-content-start align-items-center">
                 <img src="../../assets/images/solicitud.png">
                 <span class="fa fa-dashboard fa-fw mr-3"></span>
@@ -111,16 +150,19 @@
                 <span class="submenu-icon ml-auto"></span>
             </div>
         </a>
+        </li>
 
         <!-- Submenu content -->
 
         <div id='submenu3' class="collapse sidebar-submenu">
 
+           <li>
             <div *ngIf="usuario.tipo == 'Docente' || usuario.tipo == 'Administrador'">
-                <a [routerLink]="['/GestionSolicitudes']" class="list-group-item list-group-item-action bg-dark text-white">
+                <a [routerLink]="['/GestionSolicitudes']" class="now-ui-icons text-white">
                     <span class="menu-collapsed">Solicitar Pedido</span>
                 </a>
             </div>
+           </li>
 
         </div>
 
@@ -128,11 +170,12 @@
         <!-- /END Separator -->
         <!-- Separator with title -->
 
-        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+        <li class="">
             <small style="color: white;"><b>Reportes</b></small>
         </li>
-        <a href="#submenu4" data-toggle="collapse" aria-expanded="false"
-            class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+        <li>
+            <a href="#submenu4" data-toggle="collapse" aria-expanded="false"
+            class="now-ui-icons">
             <div class="d-flex w-100 justify-content-start align-items-center">
                 <img src="../../assets/images/tablero.png">
                 <span class="fa fa-dashboard fa-fw mr-3"></span>
@@ -140,15 +183,18 @@
                 <span class="submenu-icon ml-auto"></span>
             </div>
         </a>
+        </li>
          <!-- Submenu content -->
 
          <div id='submenu4' class="collapse sidebar-submenu">
 
-            <div>
-                <a [routerLink]="['/ReportesLaboratorios']" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Reporte Inventarios</span>
-                </a>
-            </div>
+            <li>
+                <div>
+                    <a [routerLink]="['/ReportesLaboratorios']" class="now-ui-icons text-white">
+                        <span class="menu-collapsed">Reporte Inventarios</span>
+                    </a>
+                </div>
+            </li>
 
         </div>
 
@@ -165,8 +211,6 @@
             </div>
         </a>
         <!-- Logo -->
-
-    </ul><!-- List Group END-->
-</div><!-- sidebar-container END -->
-
-<!-- MAIN -->
+                </ul>
+            </div>
+        </div>

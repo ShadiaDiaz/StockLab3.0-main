@@ -11,11 +11,7 @@
                     
                         <thead class="text-warning">
                             <tr>
-                                <th scope="col"><select [(ngModel)]="pageSize">
-                                    <option selected>5</option>
-                                    <option>10</option>
-                                    <option>20</option>
-                                    <option>50</option></select></th>
+                                <th scope="col">#</th>
                                 <th scope="col">Codigo</th>
                                 <th scope="col">Docente</th>
                                 <th scope="col">Estado</th>
@@ -50,7 +46,15 @@
                         </tbody>
                     </table>
                 </div>
-                <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="solicitudes.length"></ngb-pagination>
+                
+                    <div class="d-flex justify-content-between p-2">
+                        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="solicitudes.length"></ngb-pagination>
+                        <select style="width: auto" [(ngModel)]="pageSize">
+                            <option selected value="5">5 items for page</option>
+                            <option value="10">10 items for page</option>
+                            <option value="20">20 items for page</option>
+                            <option value="50">50 items for page</option></select>
+                    </div>
             </div>
         </div>
     </div>
