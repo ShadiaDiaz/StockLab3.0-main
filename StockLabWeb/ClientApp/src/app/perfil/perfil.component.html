@@ -16,44 +16,53 @@
                             <div class="form-group row">
                                 <label>Identificacion</label>
 
-                                <input type="text" value="{{usuario.idPersona}}" name="identificacion" class="form-control" disabled />
+                                <input type="text" value="{{usuario.idPersona}}" name="identificacion"
+                                    class="form-control" disabled />
 
                             </div>
 
                             <div class="form-group row">
                                 <label>Nombre</label>
 
-                                <input type="text" name="nombre" value="{{usuario.nombre}}" class="form-control" disabled />
+                                <input type="text" name="nombre" value="{{usuario.nombre}}" class="form-control"
+                                    disabled />
 
                             </div>
 
                             <div class="form-group row">
                                 <label>Apellidos</label>
 
-                                <input type="text" name="apellidos" value="{{usuario.apellidos}}" class="form-control" disabled />
+                                <input type="text" name="apellidos" value="{{usuario.apellidos}}" class="form-control"
+                                    disabled />
 
                             </div>
 
 
                             <div class="form-group row">
                                 <label>Correo</label>
-                                <input type="text" value="{{usuario.usuario}}" name="Correo" class="form-control" disabled />
+                                <input type="text" value="{{usuario.usuario}}" name="Correo" class="form-control"
+                                    disabled />
                             </div>
 
                         </div>
                     </div>
                     <div class="row" style="padding-left: 50px;">
-                        <div class="col-md-4 offset-md-4">
-
-                            <div class="card border-success mb-3" style="width: 18rem;">
+                        <div class="col-md-10 offset-md-4">
+                            <div class="card card-chart">
+                                <div class="card-header">
+                                    <h5 class="card-category">2018 Sales</h5>
+                                    <h4 class="card-title">All products</h4>
+    
+                                </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Historial de Solicitudes</h5>
-                                    <p class="card-text">Historial de todas las solicitudes(Aprobadas y rechazadas en
-                                        todo el periodo academico.</p>
-                                    <a href="#" class="card-link">ver</a>
+                                    <canvas id="myChart" width="350" height="150"></canvas>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                                    </div>
                                 </div>
                             </div>
-
 
                         </div>
                     </div>
