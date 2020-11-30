@@ -31,25 +31,19 @@ export class InicioSesionComponent implements OnInit {
   }
 
   login() {
+    this.loading = true;
     this.loginService.login(this.usuario.password, this.usuario.usuario)
       .pipe(first())
-      .subscribe(data => {
-        
-        if(data != null)
-        {
-          const messageBox = this.modalService.open(ModalComponent)
-          messageBox.componentInstance.title = "Resultado Operación";
-          messageBox.componentInstance.cuerpo = 'Bienvenido!!! :-)';
-        }
-
-          
-      }),
+      .subscribe(
+      data => {
+        this.loading = false
+      },
       error => {
           const messageBox = this.modalService.open(ModalComponent)
           messageBox.componentInstance.title = "Resultado Operación";
           messageBox.componentInstance.cuerpo = 'Usuario o Contraseña incorrecta !!! :-)';
         console.log(error.error);
-      };
+      });
       window.location.reload();
   }
 }

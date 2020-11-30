@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "O0yxhq2baDZuRqxNiRT0iT0sW3/4efi/EGgJks3JVf8Gvkbbi6Oo6toOKK6UbHdPEj1F9k/QGl8jUgW7Zf/jDQ==",
+  "dgSpecHash": "EAdaPKcEfoExIxY8t0vDvWbCHl6QRVqMK5wkKVoAsRr463muxBFYMh9f2nrLJwGSeEsHL9BA0tD1TTmUCtoGlw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj",
+  "projectFilePath": "C:\\Users\\xshad\\Downloads\\StockLab3.0-main\\Entity\\Entity.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\norma\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\norma\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\norma\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512"
+    "C:\\Users\\xshad\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\xshad\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\xshad\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

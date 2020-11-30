@@ -1,6 +1,6 @@
 .container-registroInsumos {
     width: 100%;  
-    min-height: 100vh;
+    min-height: 80vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -9,7 +9,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding-top: 100px;
     background-color: rgb(223, 252, 224);
   }
   .wrap-registroInsumos {
@@ -18,7 +18,7 @@
     border-radius: 10px;
     overflow: hidden;
     
-  
+    padding: 100px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;

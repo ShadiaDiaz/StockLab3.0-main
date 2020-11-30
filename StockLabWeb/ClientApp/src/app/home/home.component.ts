@@ -60,46 +60,57 @@ export class HomeComponent {
     })
 
   }
+  randomColor(lista: any) {
+    return lista[Math.floor(Math.random() * lista.length)]
+  }
+
 
   graficaSolicitudes() {
     this.canvas = document.getElementById('myChart');
     this.ctx = this.canvas.getContext('2d');
     var labelsdetalle = [];
     var colordetalle = [];
+    var colordetalle2 = [];
+    var r = new Array("00", "33", "66", "99", "CC", "FF");
+    var g = new Array("00", "33", "66", "99", "CC", "FF");
+    var b = new Array("00", "33", "66", "99", "CC", "FF");
+
+    for (var i = 0; i < r.length; i++) {
+      for (var j = 0; j < g.length; j++) {
+        for (var k = 0; k < b.length; k++) {
+          var nuevoc = "#" + r[i] + g[j] + b[k];
+          colordetalle.push(nuevoc);
+        }
+      }
+    }
+
     for (let index = 0; index < this.detalles.length; index++) {
       labelsdetalle.push(this.detalles[index].insumo.descripcion);
       this.numberdetalle.push(this.detalles[index].cantidad);
-      if (this.detalles[index].cantidad <= 100) {
-        colordetalle.push('red');
-      }
-      if (this.detalles[index].cantidad > 100 && this.detalles[index].cantidad < 500) {
-        colordetalle.push('orange');
-      }
-      if (this.detalles[index].cantidad >= 500) {
-        colordetalle.push('green');
-      }
+      colordetalle2.push(this.randomColor(colordetalle));
+
     }
-    console.log(this.numberdetalle);
+
+    console.log(colordetalle2);
     const myChart = new Chart(this.ctx, {
-      type: 'bar',
+      type: 'doughnut',
       data: {
         labels: labelsdetalle,
         datasets: [{
           label: 'Total cases.',
           data: this.numberdetalle,
-          backgroundColor: colordetalle,
+          backgroundColor: colordetalle2,
           borderWidth: 1
         }]
       },
       options: {
         legend: {
-          display: false
+          display: true
         },
         responsive: true
       }
     });
   }
-
   obtenerUsuario() {
     var lista = JSON.parse(sessionStorage.getItem('login'));
     if (lista != null) {
@@ -116,14 +127,14 @@ export class HomeComponent {
     });
   }
 
-  graficaSolicitudesFecha(){
+  graficaSolicitudesFecha() {
     var cantidadsolicitudes = 0;
     var fechasolicitudes = [];
     var labelsolicitudes = [];
     for (let index = 0; index < this.solicitudes.length; index++) {
       cantidadsolicitudes += 1;
     }
-    
+
   }
 
   updateEstado(solicitud: Solicitud) {

@@ -9,7 +9,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 100px;
     background-color:  rgb(223, 252, 224);
   }
   .wrap-registroAsignatura {
@@ -17,7 +17,7 @@
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-  
+  padding: 100px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;

@@ -8,7 +8,7 @@
 
     #sidebar-container {
         min-height: 120vh;
-        background-color: #8cd1a9;
+        background-color: #64e26e;
         padding: 0;
         flex: unset; 
     }
@@ -30,7 +30,7 @@
 
     /* ----------| Submenu item*/    
     #sidebar-container .list-group li.list-group-item {
-        background-color:   #8cd1a9;
+        background-color:  #5dbb54;
     }
     
     #sidebar-container .list-group .sidebar-submenu a {
@@ -44,22 +44,22 @@
 
     /* ----------| Separators */    
     .sidebar-separator-title {
-        background-color: #8cd1a9;
+        background-color: #64e26e;
         height: 35px;
     }
     
     .sidebar-separator {
-        background-color:  #8cd1a9;
+        background-color: #64e26e;
         height: 25px;
     }
     
     .logo-separator {
-        background-color:  #8cd1a9;
+        background-color: #64e26e;
         height: 60px;
     }
     
     a.bg-dark {
-        background-color: #8cd1a9 !important;
+        background-color: #6bc463 !important;
     }
 
   /* Fixed sidenav, full height */
@@ -104,7 +104,7 @@
   
   /* Add an active class to the active dropdown button */
   .active {
-    background-color: green;
+    background-color: rgb(57, 134, 57);
     color: white;
   }
   

@@ -16,5 +16,8 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-  
+  Logout(){
+    sessionStorage.removeItem('login');
+    window.location.reload();
+  }
 }
