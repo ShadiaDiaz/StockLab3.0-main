@@ -33,7 +33,7 @@ export class RegistroInsumosComponent implements OnInit {
       descripcion: [this.insumo.descripcion, [Validators.required, Validators.maxLength(30)]],
       marca: [this.insumo.marca, [Validators.required, Validators.maxLength(20)]],
       cantidad: [this.insumo.cantidad, [Validators.required, this.ValidaCantidad]],
-      stockminimo: [this.insumo.stockminimo, [Validators.required, this.ValidaCantidad]]
+      stockminimo: [this.insumo.stockMinimo, [Validators.required, this.ValidaCantidad]]
     });
   }
 

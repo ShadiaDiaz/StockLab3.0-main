@@ -8,7 +8,6 @@
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-hover">
-                    
                         <thead class="text-warning">
                             <tr>
                                 <th scope="col">#</th>
@@ -27,13 +26,11 @@
                                 <div *ngIf="solicitud.estado == 'Aprobado' || solicitud.estado == 'Rechazado';else pend">
                                     <td>{{solicitud.estado}}</td>
                                 </div>
-            
                                 <ng-template #pend>
                                     <div>
                                         <td>Pendiente</td>
                                     </div>
                                 </ng-template>
-            
                                 <td>{{solicitud.fechaSolicitud}}</td>
                                 <td>
                                     <div class="form-group row">

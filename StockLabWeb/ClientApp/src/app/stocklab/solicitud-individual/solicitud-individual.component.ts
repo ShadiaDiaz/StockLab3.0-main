@@ -37,7 +37,7 @@ export class SolicitudIndividualComponent implements OnInit {
     var lista = JSON.parse(sessionStorage.getItem('login'));
     if (lista != null) {
       this.usuario = lista;
-      console.log(this.usuario.idPersona);
+      
     }
   }
 

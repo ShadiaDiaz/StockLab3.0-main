@@ -2925,7 +2925,7 @@ tbody.collapse.show {
   list-style: none; }
   .container-home {
     width: 100%;  
-    min-height: 100vh;
+    min-height: 50vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -2942,7 +2942,7 @@ tbody.collapse.show {
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-  padding: 100px;
+    padding: 100px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -2950,7 +2950,7 @@ tbody.collapse.show {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+    padding: 50px 50px 33px 20px;
   }
 .nav-link {
   display: block;

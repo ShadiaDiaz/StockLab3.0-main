@@ -1,46 +1,58 @@
 <div class="container-ConsultarInsumo">
     <div class="wrap-ConsultarInsumo">
-        <h1>Consultar Inventario</h1>
-        <form>
-            <div class="form-group form-inline">
-                Buscar por Descripcion: <input name="searchText" class="form-control ml-2" type="text"
-                    [(ngModel)]="searchText" />
+        <div class="col-lg-14 col-md-12">
+            <form>
+                <div class="form-group  row col-md-4">
+                    <label>Buscar por Descripcion</label> 
+                    <input name="searchText" class="form-control ml-2" type="text"
+                        [(ngModel)]="searchText" />
+                </div>
+            </form>
+            
+    
+            <div class="card">
+                <div class="card-header card-header-warning">
+                    <h4 class="card-title">Consultar Insumos</h4>
+                    <p class="card-category">New employees on 15th September, 2016</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-warning">
+                            <tr>
+                                <th scope="col"><select [(ngModel)]="pageSize">
+                                <option selected>5</option>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>50</option></select></th>
+                                <th scope="col">Items</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Stock Minimo</th>
+                                <th scope="col">Agregar Cantidad</th>
+            
+                            </tr>
+                        </thead>
+                        <tbody>
+            
+                            <tr
+                                *ngFor="let insumo of insumos | filtroInsumo: searchText |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;index as i">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{insumo.item}}</td>
+                                <td>{{insumo.descripcion}}</td>
+                                <td>{{insumo.marca}}</td>
+                                <td *ngIf="insumo.cantidad >= 500" class="EstadoAlto">{{insumo.cantidad}}</td>
+                                <td *ngIf="insumo.cantidad <500 && insumo.cantidad > 100" class="EstadoMedio">{{insumo.cantidad}}
+                                </td>
+                                <td *ngIf="insumo.cantidad <= 100" class="EstadoBajo">{{insumo.cantidad}}</td>
+                                <td>{{insumo.stockMinimo}}</td>
+                                <td><button (click)="AgregarCantidad(insumo);">Agregar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="insumos.length"></ngb-pagination>
             </div>
-        </form>
-        
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col"><select [(ngModel)]="pageSize">
-                    <option selected>5</option>
-                    <option>10</option>
-                    <option>20</option>
-                    <option>50</option></select></th>
-                    <th scope="col">Items</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Agregar Cantidad</th>
-
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr
-                    *ngFor="let insumo of insumos | filtroInsumo: searchText |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;index as i">
-                    <th scope="row">{{i+1}}</th>
-                    <td>{{insumo.item}}</td>
-                    <td>{{insumo.descripcion}}</td>
-                    <td>{{insumo.marca}}</td>
-                    <td *ngIf="insumo.cantidad >= 500" class="EstadoAlto">{{insumo.cantidad}}</td>
-                    <td *ngIf="insumo.cantidad <500 && insumo.cantidad > 100" class="EstadoMedio">{{insumo.cantidad}}
-                    </td>
-                    <td *ngIf="insumo.cantidad <= 100" class="EstadoBajo">{{insumo.cantidad}}</td>
-                    <td><button (click)="AgregarCantidad(insumo);">Agregar</button></td>
-                </tr>
-            </tbody>
-        </table>
-        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="insumos.length"></ngb-pagination>
+        </div>
     </div>
 </div>

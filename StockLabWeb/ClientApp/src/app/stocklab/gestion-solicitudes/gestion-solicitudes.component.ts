@@ -93,7 +93,7 @@ export class GestionSolicitudesComponent implements OnInit {
     this.solicitud.hora = this.time+ "";
     this.time = {hour: 0, minute: 0, second: 0};
 
-    console.log(JSON.stringify(this.fecha));
+    
 
 
     this.formGroup = this.formBuilder.group({
@@ -122,7 +122,7 @@ export class GestionSolicitudesComponent implements OnInit {
     var lista = JSON.parse(sessionStorage.getItem('login'));
     if (lista != null) {
       this.usuario = lista;
-      console.log(this.usuario.idPersona);
+      
     }
   }
 
@@ -181,10 +181,10 @@ export class GestionSolicitudesComponent implements OnInit {
   }
   private validafecha(control: AbstractControl) {
     const fecha = control.value;
-    console.log(fecha);
+    
     var fechactual = new Date(Date.now());
     var fecha2 = new Date(fecha.year,fecha.month - 1,fecha.day );
-    console.log(fecha2);
+    
     var day_as_milliseconds = 86400000;
     var diff_in_millisenconds = fecha2.getTime() - fechactual.getTime();
     var dias = (Math.round(diff_in_millisenconds / (1000 * 60 * 60 * 24))) + 1;
@@ -211,7 +211,7 @@ export class GestionSolicitudesComponent implements OnInit {
       messageBox.componentInstance.cuerpo = 'Error: No ha agregado ningun detalle';
       return;
     }
-    console.log(this.persona);
+    
     if (this.persona.identificacion == "" && this.usuario.tipo != "Docente") {
       const messageBox = this.modalService.open(ModalComponent)
       messageBox.componentInstance.title = "Resultado Operación";
@@ -258,7 +258,7 @@ export class GestionSolicitudesComponent implements OnInit {
     this.solicitud.estado = "Activo";
     this.solicitud.detalles = this.detalles;
     this.solicitud.asignatura = this.asignatura;
-    console.log(this.formGroup.value.hora);
+    
     var hora = this.formGroup.value.hora;
     this.solicitud.hora = this.formGroup.value.hora.hour+":"+this.formGroup.value.hora.minute + ":" + this.formGroup.value.hora.second;
     

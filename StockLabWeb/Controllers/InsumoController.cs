@@ -110,7 +110,8 @@ namespace StockLabWeb.Controllers
                 Item = insumoInput.Item,
                 Descripcion = insumoInput.Descripcion,
                 Marca = insumoInput.Marca,
-                Cantidad = insumoInput.Cantidad
+                Cantidad = insumoInput.Cantidad,
+                StockMinimo = insumoInput.StockMinimo
             };
             return insumo;
         }

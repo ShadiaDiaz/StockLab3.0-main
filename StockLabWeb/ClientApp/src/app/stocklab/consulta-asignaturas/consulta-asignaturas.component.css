@@ -25,7 +25,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space;
-    padding: 177px 130px 33px 95px;
+    padding: 100px 100px 33px 95px;
   }
 
   .pagination {

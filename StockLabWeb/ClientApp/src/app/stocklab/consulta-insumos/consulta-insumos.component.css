@@ -1,6 +1,6 @@
 .container-ConsultarInsumo {
     width: 100%;  
-    min-height: 100vh;
+    min-height: 80vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -9,6 +9,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    padding-top: 80px;
     padding: 15px;
     background-color: rgb(223, 252, 224);
   }
@@ -25,7 +26,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 177px 130px 33px 95px;
+    padding: 100px 100px 33px 95px;
   }
   .EstadoAlto {
     background-color: rgb(188, 252, 212);

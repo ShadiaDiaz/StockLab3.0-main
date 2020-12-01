@@ -16,7 +16,6 @@ using StockLabWeb.Servicios;
 namespace StockLabWeb.Controllers
 {
 
-    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class LoginController : ControllerBase

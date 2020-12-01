@@ -1,56 +1,73 @@
 <div class="container-registroAsignatura">
     <div class="wrap-registroAsignatura">
 
-        <div class="row">
+        <div class="container">
+            <div class="row">
 
-            <div class="col-md-6 offset-md-3">
-                <h3>Registro de Asignaturas</h3>
-                <form autocomplete="off" [formGroup]="formGroup">
+                <div class="col-lg-14 col-md-12">
 
-                    <div class="form-group">
-                        <label>Codigo</label>
-                        <input type="text" [ngClass]="{'is-invalid': control.codigo.errors && control.codigo.touched}"
-                            formControlName="codigo" placeholder="3F34" name="codigo" class="form-control" required />
-                        <div *ngIf="control.codigo.errors" class="invalid-feedback">
-                            <div *ngIf="control.codigo.errors.required">Se requiere el codigo</div>
-                            <div *ngIf="control.codigo.errors.maxlength">Caracteres mayores a 5</div>
+                    <div class="card">
+                        <div class="card-header card-header-warning">
+                            <h4 class="card-title">Registro Asignatura</h4>
+                            <p class="card-category">New employees on 15th September, 2016</p>
+                        </div>
+                        <div class="card-body col-md-8">
+                            <div class="offset-md-1">
+                                <form autocomplete="off" [formGroup]="formGroup">
+
+                                    <div class="form-group">
+                                        <label>Codigo</label>
+                                        <input type="text"
+                                            [ngClass]="{'is-invalid': control.codigo.errors && control.codigo.touched}"
+                                            formControlName="codigo" placeholder="3F34" name="codigo"
+                                            class="form-control" required />
+                                        <div *ngIf="control.codigo.errors" class="invalid-feedback">
+                                            <div *ngIf="control.codigo.errors.required">Se requiere el codigo</div>
+                                            <div *ngIf="control.codigo.errors.maxlength">Caracteres mayores a 5</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input type="text"
+                                            [ngClass]="{'is-invalid': control.nombre.errors && control.nombre.touched}"
+                                            formControlName="nombre" placeholder="quimica" name="nombre"
+                                            class="form-control" required />
+                                        <div *ngIf="control.nombre.errors" class="invalid-feedback">
+                                            <div *ngIf="control.nombre.errors.required">Se requiere el nombre</div>
+                                            <div *ngIf="control.codigo.errors.maxlength">Caracteres mayores a 25</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Horario</label>
+                                        <input type="text"
+                                            [ngClass]="{'is-invalid': control.horario.errors && control.horario.touched}"
+                                            formControlName="horario" placeholder="jueves 6-8 / viernes 4-6"
+                                            name="horario" class="form-control" required />
+                                        <div *ngIf="control.horario.errors" class="invalid-feedback">
+                                            <div *ngIf="control.horario.errors.required">Se requiere el horario</div>
+                                            <div *ngIf="control.codigo.errors.maxlength">Caracteres mayores a 30</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="padding-bottom: 50px;">
+
+                                    </div>
+
+                                    <div class="text-center  offset-md-4">
+                                        <button type="submit" class="btn btn-success mr-1" (click)="onSubmit()"
+                                            [disabled]="formGroup.invalid">Register</button>
+                                        <button class="btn btn-danger" type="reset" s>Cancel</button>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" [ngClass]="{'is-invalid': control.nombre.errors && control.nombre.touched}"
-                            formControlName="nombre" placeholder="quimica" name="nombre" class="form-control"
-                            required />
-                        <div *ngIf="control.nombre.errors" class="invalid-feedback">
-                            <div *ngIf="control.nombre.errors.required">Se requiere el nombre</div>
-                            <div *ngIf="control.codigo.errors.maxlength">Caracteres mayores a 25</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Horario</label>
-                        <input type="text" [ngClass]="{'is-invalid': control.horario.errors && control.horario.touched}"
-                            formControlName="horario" placeholder="jueves 6-8 / viernes 4-6" name="horario"
-                            class="form-control" required />
-                        <div *ngIf="control.horario.errors" class="invalid-feedback">
-                            <div *ngIf="control.horario.errors.required">Se requiere el horario</div>
-                            <div *ngIf="control.codigo.errors.maxlength">Caracteres mayores a 30</div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success mr-1" (click)="onSubmit()" [disabled]="formGroup.invalid"
-                            >Register</button>
-                        <button class="btn btn-danger" type="reset"
-                            s>Cancel</button>
-                    </div>
-
-                </form>
+                </div>
 
             </div>
-
         </div>
 
     </div>
