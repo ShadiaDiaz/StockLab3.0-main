@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace StockLabWeb.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PeriodoAcademicoController : ControllerBase
@@ -37,7 +38,7 @@ namespace StockLabWeb.Controllers
         }
 
 
-        public PeriodoAcademico MapearPeriodo(PeriodoAcademicoInputModel periodoAcademicoInput)
+        private PeriodoAcademico MapearPeriodo(PeriodoAcademicoInputModel periodoAcademicoInput)
         {
             var periodo = new PeriodoAcademico
             {

@@ -36,7 +36,8 @@ export class InicioSesionComponent implements OnInit {
       .pipe(first())
       .subscribe(
       data => {
-        this.loading = false
+        this.loading = false;
+        window.location.reload();
       },
       error => {
           const messageBox = this.modalService.open(ModalComponent)
@@ -44,6 +45,6 @@ export class InicioSesionComponent implements OnInit {
           messageBox.componentInstance.cuerpo = 'Usuario o Contraseña incorrecta !!! :-)';
         console.log(error.error);
       });
-      window.location.reload();
+      
   }
 }

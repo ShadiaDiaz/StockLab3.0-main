@@ -12,6 +12,7 @@ namespace StockLabWeb.Controllers
 {
     
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class SolicitudController : ControllerBase
     {

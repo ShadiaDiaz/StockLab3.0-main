@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace StockLabWeb.Controllers
 {
-    
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AsignaturasController : ControllerBase

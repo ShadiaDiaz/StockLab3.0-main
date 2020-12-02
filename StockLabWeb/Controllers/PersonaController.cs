@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace StockLabWeb.Controllers
 {
-    
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PersonaController : ControllerBase

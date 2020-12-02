@@ -97,7 +97,7 @@ export class GestionSolicitudesComponent implements OnInit {
 
 
     this.formGroup = this.formBuilder.group({
-      fecha: [this.model, [Validators.required, this.validafecha]],
+      fecha: [this.solicitud.fecha, [Validators.required, this.validafecha]],
       hora: [this.time, [Validators.required, Validators.maxLength(20)]],
       asignatura: ["", [Validators.required]],
       monitor: ["", [Validators.required]],
@@ -183,7 +183,7 @@ export class GestionSolicitudesComponent implements OnInit {
     const fecha = control.value;
     
     var fechactual = new Date(Date.now());
-    var fecha2 = new Date(fecha.year,fecha.month - 1,fecha.day );
+    var fecha2 = new Date(fecha);
     
     var day_as_milliseconds = 86400000;
     var diff_in_millisenconds = fecha2.getTime() - fechactual.getTime();

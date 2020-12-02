@@ -1,200 +1,234 @@
 <div class="container-solicitud">
-    <div class="wrap-solicitud container">
-        <div class="container">
-            
-    
-            <div class="col-md-10 offset-md-3">
-                <header>
-                    <h3 style="padding: 50px;">Solicitud de insumos</h3>
-                </header>
-                <div *ngIf="usuario.tipo == 'Administrador'; else docente">
-                    <div class="form-group row col-md-6">
-                        <label>Identificacion</label>
-                        <div class="input-group mb-3">
-                            <input type="text" name="identificacion" [(ngModel)]="IdPersona" class="form-control" />
-                            <div class="input-group-append">
-                                <button mat-raised-button class="btn btn-success mr-2" (click)="buscarpersona()"  
-                                 >Buscar</button>
+    <div class="wrap-solicitud">
+        <div class="container form-group">
+
+
+            <div class="col-lg-12 col-md-10">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Registro Solicitud</h4>
+                        <p class="card-category">New employees on 15th September, 2016</p>
+                    </div>
+                    <div class="card-body col-md-10">
+                        <div *ngIf="usuario.tipo == 'Administrador'; else docente">
+                            <div class="form-group row col-md-6">
+                                <label>Identificacion</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="identificacion" [(ngModel)]="IdPersona"
+                                        class="form-control" />
+                                    <div class="input-group-append">
+                                        <button mat-raised-button class="btn btn-success mr-2"
+                                            (click)="buscarpersona()">Buscar</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-    
-            <form autocomplete="off" [formGroup]="formGroup">
-    
-                <div class="col-md-10 offset-md-2 row">
-                    
-    
-                        <div class="col-md-10 offset-md-1">
+
+            <div class="">
+                <form autocomplete="off" [formGroup]="formGroup">
+
+                    <div class="">
+
+                        <div class="row">
                             <ng-template #docente>
-                                <div class="form-group col-md-6">
-                                    <label>Identificacion</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" value="{{usuario.idPersona}}" name="identificacion"
-                                            class="form-control" disabled />
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <label>Identificacion</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" value="{{usuario.idPersona}}" name="identificacion"
+                                                class="form-control" disabled />
+                                        </div>
                                     </div>
-                                </div>
-    
-                                <div class="form-group col-md-6">
-                                    <label>Nombre</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" value="{{usuario.nombre}}" name="nombre" class="form-control"
-                                            disabled />
+
+                                    <div class="form-group col-md-3">
+                                        <label>Nombre</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" value="{{usuario.nombre}}" name="nombre"
+                                                class="form-control" disabled />
+                                        </div>
                                     </div>
-                                </div>
-    
-                                <div class="form-group col-md-6">
-                                    <label>Apellido</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" value="{{usuario.apellidos}}" name="apellido"
-                                            class="form-control" disabled />
+
+                                    <div class="form-group col-md-3">
+                                        <label>Apellido</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" value="{{usuario.apellidos}}" name="apellido"
+                                                class="form-control" disabled />
+                                        </div>
                                     </div>
                                 </div>
                             </ng-template>
+
+
+
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header card-header-warning">
+                                        <h4 class="card-title">Registro Solicitud</h4>
+                                        <p class="card-category">New employees on 15th September, 2016</p>
+                                    </div>
+                                    <div class="card-body col-md-12">
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label>Fecha de Solicitud</label>
+                                                <input type="date"
+                                                    [ngClass]="{'is-invalid': control.fecha.errors && control.fecha.touched}"
+                                                    formControlName="fecha">
+                                                <div *ngIf="control.fecha.errors" class="invalid-feedback">
+                                                    <div *ngIf="control.fecha.errors.required">Fecha incorrecta</div>
+                                                    <div *ngIf="control.fecha.errors.validadFecha">
+                                                        {{control.fecha.errors.messageFecha}}
+                                                    </div>
+                                                </div>
+    
+                                            </div>
+    
+    
+                                            <div class="form-group col">
+                                                <label>Hora</label>
+                                                <ngb-timepicker
+                                                    [ngClass]="{'is-invalid': control.hora.errors && control.hora.touched}"
+                                                    formControlName="hora" name="hora"></ngb-timepicker>
+                                                <div *ngIf="control.hora.errors" class="invalid-feedback">
+                                                    <div *ngIf="control.hora.errors.required">Se requiere la hora</div>
+                                                    <div *ngIf="control.hora.errors.maxlength">Caracteres mayores a 20
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
     
     
     
+                                        <div class="form-group row col-md-6 dropdown">
+                                            <label>Asignatura</label>
+                                            <select class="form-control"
+                                                [ngClass]="{'is-invalid': control.asignatura.errors && control.asignatura.touched}"
+                                                formControlName="asignatura" name="asignatura" id="asignatura">
+                                                <option selected>Seleccionar</option>
+                                                <option *ngFor="let asignatura of asignaturas; index as i">
+                                                    {{asignatura.nombre}};{{asignatura.codigo}}</option>
+                                            </select>
+                                            <div *ngIf="control.asignatura.errors" class="invalid-feedback">
+                                                <div *ngIf="control.asignatura.errors.required">Se requiere una
+                                                    asignatura</div>
+                                            </div>
+                                        </div>
     
-                            <div class="form-group row col-md-4 ">
-                                <label>Fecha de Solicitud</label>
-                                <input>
-                                <ngb-datepicker #d [ngClass]="{'is-invalid': control.fecha.errors && control.fecha.touched}"
-                                    formControlName="fecha" [startDate]="model"></ngb-datepicker>
     
-                                <div *ngIf="control.fecha.errors" class="invalid-feedback">
-                                    <div *ngIf="control.fecha.errors.required">Fecha incorrecta</div>
-                                    <div *ngIf="control.fecha.errors.validadFecha">{{control.fecha.errors.messageFecha}}
+    
+                                        <div class="form-group row col-md-6">
+                                            <label>Monitor</label>
+                                            <select class="form-control "
+                                                [ngClass]="{'is-invalid': control.monitor.errors && control.monitor.touched}"
+                                                formControlName="monitor">
+                                                <option value="" disabled selected>--Seleccionar--</option>
+                                                <option *ngFor="let monit of monitores">
+                                                    {{monit.nombre}};{{monit.identificacion}}
+                                                </option>
+                                            </select>
+                                            <div *ngIf="control.monitor.errors" class="invalid-feedback">
+                                                <div *ngIf="control.monitor.errors.required">Se requiere el monitor
+                                                </div>
+                                            </div>
+                                        </div>
+    
                                     </div>
                                 </div>
-    
-                                <pre>Month: {{ control.fecha.value.month }}.{{ control.fecha.value.year }}</pre>
-    
                             </div>
-    
-    
-                            <div class="form-group row col-md-10">
-                                <label>Hora</label>
-    
-                                <ngb-timepicker [ngClass]="{'is-invalid': control.hora.errors && control.hora.touched}"
-                                formControlName="hora" name="hora" ></ngb-timepicker>
-                                <div *ngIf="control.hora.errors" class="invalid-feedback">
-                                    <div *ngIf="control.hora.errors.required">Se requiere la hora</div>
-                                    <div *ngIf="control.hora.errors.maxlength">Caracteres mayores a 20</div>
-                                </div>
-                            </div>
-    
-    
-    
-                            <div class="form-group row col-md-6 dropdown">
-                                <label>Asignatura</label>
-                                <select class="form-control"
-                                    [ngClass]="{'is-invalid': control.asignatura.errors && control.asignatura.touched}"
-                                    formControlName="asignatura" name="asignatura" id="asignatura">
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let asignatura of asignaturas; index as i">
-                                        {{asignatura.nombre}};{{asignatura.codigo}}</option>
-                                </select>
-                                <div *ngIf="control.asignatura.errors" class="invalid-feedback">
-                                    <div *ngIf="control.asignatura.errors.required">Se requiere una asignatura</div>
-                                </div>
-                            </div>
-    
-                            
-    
-                            <div class="form-group row col-md-6">
-                                <label>Monitor</label>
-                                <select class="form-control "
-                                    [ngClass]="{'is-invalid': control.monitor.errors && control.monitor.touched}"
-                                    formControlName="monitor">
-                                    <option value="" disabled selected>--Seleccionar--</option>
-                                    <option *ngFor="let monit of monitores"> {{monit.nombre}};{{monit.identificacion}}
-                                    </option>
-                                </select>
-                                <div *ngIf="control.monitor.errors" class="invalid-feedback">
-                                    <div *ngIf="control.monitor.errors.required">Se requiere el monitor</div>
-                                </div>
-                            </div>
-    
-                        </div>
-                    
-    
-    
-    
-                    
-                        <div class="col-md-10">
-                            <div class="col-md-8 offset-md-1">
-                                <h2>Insumos</h2>
-    
-                                <div class="form-group row col-md-10">
-                                    <select class="mdb-select form-control md-form"
-                                        [ngClass]="{'is-invalid': control.detalle.errors && control.detalle.touched}"
-                                        formControlName="detalle">
-                                        <label>Insumos</label>
-                                        <option value="" disabled selected>--Seleccionar--</option>
-                                        <option *ngFor="let insumo of insumos; index as i">
-                                            {{insumo.descripcion}};{{insumo.item}}</option>
-                                    </select>
-                                    <div *ngIf="control.detalle.errors" class="invalid-feedback">
-                                        <div *ngIf="control.detalle.errors.required">Se requiere el insumo</div>
+
+
+
+
+
+                            <div class="col-md-6">
+                                <div class="card row">
+                                    <div class="card-header card-header-warning">
+                                        <h4 class="card-title">Registro Insumos</h4>
+                                        <p class="card-category">New employees on 15th September, 2016</p>
                                     </div>
-                                </div>
+                                    <div class="card-body col-md-10">
+                                        <div class="">
+                                            <h2>Insumos</h2>
     
-                                <div class="form-group row col-md-10">
-                                    <label>Cantidad</label>
+                                            <div class="form-group">
+                                                <select class="mdb-select form-control md-form"
+                                                    [ngClass]="{'is-invalid': control.detalle.errors && control.detalle.touched}"
+                                                    formControlName="detalle">
+                                                    <label>Insumos</label>
+                                                    <option value="" disabled selected>--Seleccionar--</option>
+                                                    <option *ngFor="let insumo of insumos; index as i">
+                                                        {{insumo.descripcion}};{{insumo.item}}</option>
+                                                </select>
+                                                <div *ngIf="control.detalle.errors" class="invalid-feedback">
+                                                    <div *ngIf="control.detalle.errors.required">Se requiere el insumo</div>
+                                                </div>
+                                            </div>
     
-                                    <div class="input-group mb-3">
-                                        <input type="number"
-                                            [ngClass]="{'is-invalid': control.cantidad.errors && control.cantidad.touched}"
-                                            formControlName="cantidad" name="cantidad" class="form-control" />
+                                            <div class="form-group">
+                                                <label>Cantidad</label>
     
-                                        <div class="input-group-append">
-                                            <button class="btn btn-success mr-1" (click)="agregardetalle()">Agregar</button>
+                                                <div class="input-group mb-3">
+                                                    <input type="number"
+                                                        [ngClass]="{'is-invalid': control.cantidad.errors && control.cantidad.touched}"
+                                                        formControlName="cantidad" name="cantidad" class="form-control" />
+    
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-success mr-1"
+                                                            (click)="agregardetalle()">Agregar</button>
+                                                    </div>
+                                                </div>
+    
+                                                <div *ngIf="control.cantidad.errors" class="invalid-feedback">
+                                                    <div *ngIf="control.cantidad.errors.required">Se requiere la cantidad
+                                                    </div>
+                                                    <div *ngIf="control.cantidad.errors.validCantidad">
+                                                        {{control.cantidad.errors.messageCantidad}}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-    
-                                    <div *ngIf="control.cantidad.errors" class="invalid-feedback">
-                                        <div *ngIf="control.cantidad.errors.required">Se requiere la cantidad</div>
-                                        <div *ngIf="control.cantidad.errors.validCantidad">
-                                            {{control.cantidad.errors.messageCantidad}}</div>
-                                    </div>
                                 </div>
                             </div>
+
+
+
                         </div>
-                </div>
-    
-    
-                <div class="row">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Items</th>
-                                <th scope="col">Descripción</th>
-                                <th scope="col">Marca</th>
-                                <th scope="col">Cantidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let detalle of detalles; index as i">
-                                <th scope="row">{{i+1}}</th>
-                                <td>{{detalle.insumo.item}}</td>
-                                <td>{{detalle.insumo.descripcion}}</td>
-                                <td>{{detalle.insumo.marca}}</td>
-                                <td>{{detalle.cantidad}}</td>
-                            </tr>
-    
-                        </tbody>
-                    </table>
-                </div>
-    
-                <div class="text-center">
-                    <button class="btn btn-success mr-1" (click)="onSubmit()"
-                      [disabled]="formGroup.invalid" >Register</button>
-                    <button class="btn btn-danger" type="reset"
-                        >Cancel</button>
-                </div>
-            </form>
+                    </div>
+
+
+                    <div class="row">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Items</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let detalle of detalles; index as i">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>{{detalle.insumo.item}}</td>
+                                    <td>{{detalle.insumo.descripcion}}</td>
+                                    <td>{{detalle.insumo.marca}}</td>
+                                    <td>{{detalle.cantidad}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-success mr-1" (click)="onSubmit()"
+                            [disabled]="formGroup.invalid">Register</button>
+                        <button class="btn btn-danger" type="reset">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

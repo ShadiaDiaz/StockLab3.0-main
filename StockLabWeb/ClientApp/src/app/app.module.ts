@@ -79,7 +79,7 @@ import { PeriodoRegistroComponent } from './stocklab/periodo-registro/periodo-re
     ]),
     AppRoutingModule
   ],
-  providers: [LoginService, AsignaturaService],
+  providers: [LoginService, AsignaturaService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
   exports: [NavMenuComponent]
