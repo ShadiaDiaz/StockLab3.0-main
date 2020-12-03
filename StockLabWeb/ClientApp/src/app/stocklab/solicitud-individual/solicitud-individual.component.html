@@ -11,53 +11,53 @@
                         <table class="table table-striped table-bordered table-sm" >
                             <tbody>
                                 <tr>
-                                    <td width="30">ID</td>
-                                    <td width="30">{{Solicitud.persona.identificacion}}</td>
+                                    <td >ID</td>
+                                    <td >{{Solicitud.persona.identificacion}}</td>
                                 </tr>
     
                                 <tr>
-                                    <td  width="30" >Docente</td>
-                                    <td  width="30" >{{Solicitud.persona.nombre +" "+ Solicitud.persona.apellidos}}</td>
+                                    <td   >Docente</td>
+                                    <td   >{{Solicitud.persona.nombre +" "+ Solicitud.persona.apellidos}}</td>
                                 </tr>
     
                                 <tr>
-                                    <td  width="30" >Estado</td>
+                                    <td   >Estado</td>
                                     <div *ngIf="Solicitud.estado == 'Activo' || Solicitud.estado == 'leido';else esta">
-                                        <td  width="30" >Pendiente</td>
+                                        <td   >Pendiente</td>
                                     </div>
                                     <ng-template #esta>
                                         <div>
-                                            <td  width="30"  >{{Solicitud.estado}}</td>
+                                            <td    >{{Solicitud.estado}}</td>
                                         </div>
                                     </ng-template>
                                 </tr>
     
                                 <tr>
-                                    <td  width="30" >Periodo Academico</td>
-                                    <td  width="30" >{{Solicitud.periodoAcademico.periodo + "-" + Solicitud.periodoAcademico.corte}}</td>
+                                    <td   >Periodo Academico</td>
+                                    <td   >{{Solicitud.periodoAcademico.periodo + "-" + Solicitud.periodoAcademico.corte}}</td>
                                 </tr>
     
                                 <tr>
-                                    <td  width="30" >Asignatura</td>
-                                    <td  width="30" >{{Solicitud.asignatura.nombre}}</td>
+                                    <td   >Asignatura</td>
+                                    <td   >{{Solicitud.asignatura.nombre}}</td>
                                 </tr>
     
                                 <tr>
-                                    <td  width="30" >Monitor</td>
-                                    <td  width="30">{{Solicitud.monitor}}</td>
+                                    <td   >Monitor</td>
+                                    <td  >{{Solicitud.monitor}}</td>
                                 </tr>
                                     
                                 <tr>
-                                    <td  width="30">Cantidad Insumos</td>
-                                    <td  width="30">{{Solicitud.cantidadinsumos}}</td>
+                                    <td  >Cantidad Insumos</td>
+                                    <td  >{{Solicitud.cantidadinsumos}}</td>
                                 </tr>
                                 <tr>
-                                    <td  width="30" >Fecha y hora Solicitud</td>
-                                    <td  width="30" >{{Solicitud.fechaSolicitud}}</td>
+                                    <td   >Fecha y hora Solicitud</td>
+                                    <td   >{{Solicitud.fechaSolicitud}}</td>
                                 </tr>
                                 <tr>
-                                    <td  width="30" >Fecha y Hora entrega</td>
-                                    <td  width="30" >{{Solicitud.fecha}}</td>
+                                    <td   >Fecha y Hora entrega</td>
+                                    <td   >{{Solicitud.fecha}}</td>
                                 </tr>
                             </tbody>
                         </table>

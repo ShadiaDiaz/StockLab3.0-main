@@ -1,0 +1,14 @@
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Release\netstandard2.0\Logica.deps.json
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Release\netstandard2.0\Logica.dll
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Release\netstandard2.0\Logica.pdb
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Release\netstandard2.0\Datos.dll
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Release\netstandard2.0\Entity.dll
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Release\netstandard2.0\Entity.pdb
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Release\netstandard2.0\Datos.pdb
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.csprojAssemblyReference.cache
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.AssemblyInfoInputs.cache
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.AssemblyInfo.cs
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.csproj.CoreCompileInputs.cache
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.csproj.CopyComplete
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.dll
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.pdb

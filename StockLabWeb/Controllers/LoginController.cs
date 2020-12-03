@@ -30,7 +30,7 @@ namespace StockLabWeb.Controllers
             var admin = _context.Usuarios.Find("admin");
             if (admin == null)
             {
-                _context.Usuarios.Add(new Entity.Usuario() { User = "admin", Tipo = "Administrador", Password = "admin", Estado = "Activo"});
+                _context.Usuarios.Add(new Entity.Usuario() { User = "admin", Tipo = "Administrador", Password = "adminABC", Estado = "Activo"});
                 var i = _context.SaveChanges();
             }
             _servicioJwt = new ServiciosJwt(appSettings);

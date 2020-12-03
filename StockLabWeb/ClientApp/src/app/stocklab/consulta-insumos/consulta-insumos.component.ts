@@ -13,7 +13,7 @@ export class ConsultaInsumosComponent implements OnInit {
 insumos: Insumo[];
 searchText: string;
 
-name = 'Angular';
+  name = 'Angular';
   page = 1;
   pageSize =5;
   constructor(private insumoService: InsumoService, private modalService: NgbModal ) { }
