@@ -27,8 +27,8 @@ namespace StockLabWeb.Models
         public SolicitudViewModel(Solicitud solicitud)
         {
             Numero = solicitud.Numero;
-            Fecha = solicitud.Fecha.Year +"-"+solicitud.Fecha.Month+"-"+solicitud.Fecha.Day;
-            FechaSolicitud = solicitud.SolicitudFecha.Year +"-"+(solicitud.SolicitudFecha.Month + 1)+"-"+solicitud.SolicitudFecha.Day;
+            Fecha = solicitud.Fecha.ToShortDateString() + " " + solicitud.Fecha.ToShortTimeString();
+            FechaSolicitud = solicitud.SolicitudFecha.ToShortDateString() + " " + solicitud.SolicitudFecha.ToShortTimeString();
             Estado = solicitud.Estado;
             Hora = solicitud.Hora;
             Monitor = solicitud.Monitor;

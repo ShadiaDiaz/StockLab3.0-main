@@ -28,3 +28,8 @@
     justify-content: space-between;
     padding: 177px 130px 33px 95px;
   }
+
+  .tables, .ths, .tds {
+    border: 1px solid black;
+  }
+  

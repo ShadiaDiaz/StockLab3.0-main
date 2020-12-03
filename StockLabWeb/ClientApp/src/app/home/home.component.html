@@ -13,13 +13,15 @@
                                 <p class="card-category">Insumos con stock bajo</p>
                             </div>
                             <div class="card-body">
-                                <div *ngFor="let insumo of Insumos;index as i">
-                                    <div
-                                        *ngIf="(insumo.cantidad < (insumo.stockMinimo+50) && insumo.cantidad > insumo.stockMinimo) || insumo.cantidad < insumo.stockMinimo">
-                                        <p><b>Nombre:</b> {{insumo.descripcion}} <b>Stock:</b> {{insumo.cantidad}}</p>
+                                <div *ngIf="usuario.tipo != 'Docente'">
+                                    <div *ngFor="let insumo of Insumos;index as i">
+                                        <div
+                                            *ngIf="(insumo.cantidad < (insumo.stockMinimo+50) && insumo.cantidad > insumo.stockMinimo) || insumo.cantidad < insumo.stockMinimo">
+                                            <p><b>Nombre:</b> {{insumo.descripcion}} <b>Stock:</b> {{insumo.cantidad}}</p>
+                                        </div>
                                     </div>
+                                    <a [routerLink]="['/ConsultaInsumos']">Ver Insumos</a>
                                 </div>
-                                <a [routerLink]="['/ConsultaInsumos']">Ver Insumos</a>
                             </div>
                         </div>
                     </div>
@@ -32,13 +34,15 @@
                                 <p class="card-category">Solicitudes Pendientes</p>
                             </div>
                             <div class="card-body">
-                                <div *ngFor="let solicitud of solicitudes;index as i">
-                                    <div
-                                        *ngIf="solicitud.estado != 'leido' && solicitud.estado != 'Aprobado' && solicitud.estado != 'Rechazado' && usuario.tipo != 'Docente'">
-                                            <p> <b> Docente:</b> {{solicitud.persona.nombre}} <b>Cantidad:</b> {{solicitud.cantidadinsumos}} <b>Estado:</b> {{solicitud.estado}}</p>
+                                <div *ngIf="usuario.tipo != 'Docente'">
+                                    <div *ngFor="let solicitud of solicitudes;index as i">
+                                        <div
+                                            *ngIf="solicitud.estado != 'leido' && solicitud.estado != 'Aprobado' && solicitud.estado != 'Rechazado' && usuario.tipo != 'Docente'">
+                                                <p> <b> Docente:</b> {{solicitud.persona.nombre}} <b>Cantidad:</b> {{solicitud.cantidadinsumos}} <b>Estado:</b> {{solicitud.estado}}</p>
+                                        </div>
                                     </div>
+                                    <a [routerLink]="['/ConsultaSolicitudes']">Ver Solicitudes</a>
                                 </div>
-                                <a [routerLink]="['/ConsultaSolicitudes']">Ver Solicitudes</a>
                             </div>
                         </div>
                     </div>

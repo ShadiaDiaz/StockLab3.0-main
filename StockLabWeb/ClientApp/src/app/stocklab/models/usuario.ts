@@ -9,7 +9,7 @@ export class Usuario {
     idPersona: string;
 
     constructor(){
-        this.tipo = "Administrador"
+        this.tipo = "";
     }
     
 }

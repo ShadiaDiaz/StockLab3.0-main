@@ -102,7 +102,8 @@ export class GestionSolicitudesComponent implements OnInit {
       asignatura: ["", [Validators.required]],
       monitor: ["", [Validators.required]],
       detalle: ["", [Validators.required]],
-      cantidad: [this.detalle.cantidad, [Validators.required, this.validCantidad]]
+      cantidad: [this.detalle.cantidad, [Validators.required, this.validCantidad]],
+      cedula: [""]
     });
   }
 
@@ -122,7 +123,6 @@ export class GestionSolicitudesComponent implements OnInit {
     var lista = JSON.parse(sessionStorage.getItem('login'));
     if (lista != null) {
       this.usuario = lista;
-      
     }
   }
 
@@ -225,7 +225,7 @@ export class GestionSolicitudesComponent implements OnInit {
 
 
   buscarpersona() {
-    this.personaService.get(this.IdPersona).subscribe(result => {
+    this.personaService.get(this.formGroup.value.cedula).subscribe(result => {
       if (result != null) {
         this.persona = result;
         const messageBox = this.modalService.open(ModalComponent)
@@ -262,7 +262,7 @@ export class GestionSolicitudesComponent implements OnInit {
     var hora = this.formGroup.value.hora;
     this.solicitud.hora = this.formGroup.value.hora.hour+":"+this.formGroup.value.hora.minute + ":" + this.formGroup.value.hora.second;
     
-    this.solicitud.fecha = this.formGroup.value.fecha.year +"-"+ this.formGroup.value.fecha.month +"-"+ this.formGroup.value.fecha.day+" "+
+    this.solicitud.fecha = this.formGroup.value.fecha+" "+
     hora.hour +":"+hora.minute+":00";
 
     this.stringMon = [];
