@@ -23,6 +23,7 @@ namespace StockLabWeb.Controllers
         [HttpPost]
         public ActionResult<PersonaViewModel> Post(PersonaInputModel personaInput)
         {
+            personaInput.Usuario.User= personaInput.Correo;
             Persona persona = MapearPersona(personaInput);
             var response = _service.GuardarPersona(persona);
             if (response.Error)
