@@ -23,6 +23,7 @@ namespace Logica
                 solicitud.Numero = (total + 1).ToString();
                 int suma = solicitud.Detalles.Sum(c => c.Cantidad);
                 solicitud.CantidadInsumos = suma;
+                
                 solicitud.IdPeriodo = _context.PeriodosAcademicos.ToList().Max(d => d.Codigo);
                 var insumos = _context.Insumos.ToList();
                 foreach (var item in solicitud.Detalles)

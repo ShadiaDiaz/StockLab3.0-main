@@ -1719,6 +1719,19 @@
         "runtime": {
           "bin/placeholder/Entity.dll": {}
         }
+      },
+      "Infraestructura/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Entity": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Infraestructura.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infraestructura.dll": {}
+        }
       }
     }
   },
@@ -6228,12 +6241,18 @@
       "type": "project",
       "path": "../Entity/Entity.csproj",
       "msbuildProject": "../Entity/Entity.csproj"
+    },
+    "Infraestructura/1.0.0": {
+      "type": "project",
+      "path": "../Infraestructura/Infraestructura.csproj",
+      "msbuildProject": "../Infraestructura/Infraestructura.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Datos >= 1.0.0",
       "Entity >= 1.0.0",
+      "Infraestructura >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -6274,6 +6293,9 @@
             },
             "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj": {
               "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj"
+            },
+            "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\Infraestructura.csproj": {
+              "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\Infraestructura.csproj"
             }
           }
         }

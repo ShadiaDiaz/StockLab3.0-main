@@ -4,12 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Infraestructura;
 
 namespace Logica
 {
     public class PersonaService
     {
         private readonly StockLabContext _context;
+        private Email Email;
 
         public PersonaService(StockLabContext context)
         {
@@ -20,6 +22,7 @@ namespace Logica
         {
             try
             {
+                Email = new Email();
                 var personaresponse = _context.Personas.Find(persona.Identificacion);
                 if(personaresponse == null)
                 {
@@ -28,6 +31,7 @@ namespace Logica
                     persona.Usuario = usuario;
                     _context.Personas.Add(persona);
                     _context.SaveChanges();
+                    Email.EnviarEmail(usuario.User, "Registro Exitoso " + DateTime.Now.ToLongTimeString(),usuario.Nombre,usuario.Password);
                     return new GuardarPersonaResponse(persona);
                 }
                 else

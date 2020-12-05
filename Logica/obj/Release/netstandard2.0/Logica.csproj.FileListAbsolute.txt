@@ -12,3 +12,5 @@ C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.csproj.CopyComplete
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.dll
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Release\netstandard2.0\Logica.pdb
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Release\netstandard2.0\Infraestructura.dll
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Release\netstandard2.0\Infraestructura.pdb

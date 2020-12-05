@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockLabWeb", "StockLabWeb\StockLabWeb.csproj", "{2173C858-F9ED-4A0F-BF2F-A33501653D8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infraestructura", "Infraestructura\Infraestructura.csproj", "{9F943EE3-6339-4C19-B171-7438AAB43416}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{2173C858-F9ED-4A0F-BF2F-A33501653D8C}.Release|x64.Build.0 = Release|Any CPU
 		{2173C858-F9ED-4A0F-BF2F-A33501653D8C}.Release|x86.ActiveCfg = Release|Any CPU
 		{2173C858-F9ED-4A0F-BF2F-A33501653D8C}.Release|x86.Build.0 = Release|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Debug|x64.Build.0 = Debug|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Debug|x86.Build.0 = Debug|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Release|x64.ActiveCfg = Release|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Release|x64.Build.0 = Release|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Release|x86.ActiveCfg = Release|Any CPU
+		{9F943EE3-6339-4C19-B171-7438AAB43416}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
