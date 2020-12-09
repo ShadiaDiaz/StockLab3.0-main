@@ -11,6 +11,7 @@
         "dependencies": {
           "Datos": "1.0.0",
           "Entity": "1.0.0",
+          "Infraestructura": "1.0.0",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
@@ -1258,6 +1259,14 @@
         "runtime": {
           "Entity.dll": {}
         }
+      },
+      "Infraestructura/1.0.0": {
+        "dependencies": {
+          "Entity": "1.0.0"
+        },
+        "runtime": {
+          "Infraestructura.dll": {}
+        }
       }
     }
   },
@@ -2057,6 +2066,11 @@
       "sha512": ""
     },
     "Entity/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infraestructura/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

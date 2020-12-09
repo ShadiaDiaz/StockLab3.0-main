@@ -9,7 +9,7 @@ import { Usuario } from '../models/usuario';
   styleUrls: ['./consulta-solicitudes.component.css']
 })
 export class ConsultaSolicitudesComponent implements OnInit {
-
+  searchText: string;
   solicitudes: Solicitud[];
   usuario: Usuario;
   page = 1;
