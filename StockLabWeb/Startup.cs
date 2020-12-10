@@ -12,6 +12,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using StockLabWeb.Hubs;
 using System;
 
 namespace StockLabWeb
@@ -29,7 +30,7 @@ namespace StockLabWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddSignalR();
             #region    configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSetting");
             services.Configure<AppSetting>(appSettingsSection);
@@ -157,6 +158,7 @@ namespace StockLabWeb
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                    endpoints.MapHub<SignalHub>("/signalHub");
             });
 
             app.UseSwagger();

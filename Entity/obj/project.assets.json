@@ -285,11 +285,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj",
+      "projectUniqueName": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj",
       "projectName": "Entity",
-      "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj",
+      "projectPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj",
       "packagesPath": "C:\\Users\\norma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\obj\\",
+      "outputPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

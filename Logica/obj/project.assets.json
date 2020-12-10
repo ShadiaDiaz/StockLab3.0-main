@@ -6263,11 +6263,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Logica\\Logica.csproj",
+      "projectUniqueName": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Logica\\Logica.csproj",
       "projectName": "Logica",
-      "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Logica\\Logica.csproj",
+      "projectPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Logica\\Logica.csproj",
       "packagesPath": "C:\\Users\\norma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Logica\\obj\\",
+      "outputPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Logica\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -6288,14 +6288,14 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "projectReferences": {
-            "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Datos\\Datos.csproj": {
-              "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Datos\\Datos.csproj"
+            "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Datos\\Datos.csproj": {
+              "projectPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Datos\\Datos.csproj"
             },
-            "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj": {
-              "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj"
+            "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj": {
+              "projectPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj"
             },
-            "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\Infraestructura.csproj": {
-              "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\Infraestructura.csproj"
+            "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Infraestructura\\Infraestructura.csproj": {
+              "projectPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Infraestructura\\Infraestructura.csproj"
             }
           }
         }

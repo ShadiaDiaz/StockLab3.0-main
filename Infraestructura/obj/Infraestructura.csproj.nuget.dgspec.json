@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\Infraestructura.csproj": {}
+    "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Infraestructura\\Infraestructura.csproj": {}
   },
   "projects": {
-    "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj": {
+    "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj",
+        "projectUniqueName": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj",
+        "projectPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj",
         "packagesPath": "C:\\Users\\norma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\obj\\",
+        "outputPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\Infraestructura.csproj": {
+    "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Infraestructura\\Infraestructura.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\Infraestructura.csproj",
+        "projectUniqueName": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Infraestructura\\Infraestructura.csproj",
         "projectName": "Infraestructura",
-        "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\Infraestructura.csproj",
+        "projectPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Infraestructura\\Infraestructura.csproj",
         "packagesPath": "C:\\Users\\norma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\obj\\",
+        "outputPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Infraestructura\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -97,8 +97,8 @@
           "netstandard2.0": {
             "targetAlias": "netstandard2.0",
             "projectReferences": {
-              "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj": {
-                "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj"
+              "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj"
               }
             }
           }
