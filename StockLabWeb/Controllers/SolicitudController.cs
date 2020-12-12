@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StockLabWeb.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using StockLabWeb.Hubs;
+using System.Threading.Tasks;
 
 namespace StockLabWeb.Controllers
 {
@@ -18,13 +21,15 @@ namespace StockLabWeb.Controllers
     {
 
         private readonly SolicitudService _service;
-        public SolicitudController(StockLabContext context)
+        private readonly IHubContext<SignalHub> _hubContext;
+        public SolicitudController(StockLabContext context, IHubContext<SignalHub> hubContext)
         {
             _service = new SolicitudService(context);
+            _hubContext = hubContext;
         }
         // POST: api/Solicitud
         [HttpPost]
-        public ActionResult<SolicitudViewModel> Post(SolicitudInputModel solicitudInputModel)
+        public async Task<ActionResult<SolicitudViewModel>> Post(SolicitudInputModel solicitudInputModel)
         {
             Solicitud solicitud = MapearSolicitud(solicitudInputModel);
             var response = _service.GuardarSolicitud(solicitud);
@@ -44,7 +49,9 @@ namespace StockLabWeb.Controllers
 
                 return BadRequest(detallesproblemas);
             }
-            return Ok(response.Solicitud);
+            var solicitudview = new SolicitudViewModel (response.Solicitud);
+            await _hubContext.Clients.All.SendAsync("solicitudRegistrada", solicitudview);
+            return Ok (solicitudview);
         }
 
         //api/Solicitud
@@ -90,7 +97,7 @@ namespace StockLabWeb.Controllers
 
         //api/Solicitud/5
         [HttpPut("{numero}")]
-        public ActionResult<string> Put(string numero)
+        public async Task<ActionResult<string>> Put(string numero)
         {
             string[] solicitu = numero.Split(';');
             var response = _service.ActualizarEstado(solicitu[0], solicitu[1]);
@@ -110,7 +117,9 @@ namespace StockLabWeb.Controllers
                 }
                 return BadRequest(detallesproblemas);
             }
-            return Ok(response.Solicitud);
+            var solicitudview = new SolicitudViewModel (response.Solicitud);
+            await _hubContext.Clients.All.SendAsync("solicitudRegistrada", solicitudview);
+            return Ok (solicitudview);
         }
 
 

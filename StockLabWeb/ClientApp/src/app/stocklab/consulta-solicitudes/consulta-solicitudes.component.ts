@@ -21,8 +21,14 @@ export class ConsultaSolicitudesComponent implements OnInit {
     this.usuario = new Usuario;
     this.llenarUsuario();
     this.get();
+    this.actualizarListaSignal();
   }
 
+  private actualizarListaSignal(){
+    this.service.signalRecived.subscribe((solicitud: Solicitud) => {
+      this.solicitudes.push(solicitud);
+    });
+  }
 
   llenarUsuario() {
     var lista = JSON.parse(sessionStorage.getItem('login'));

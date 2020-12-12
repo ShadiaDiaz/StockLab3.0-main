@@ -31,6 +31,16 @@ export class SolicitudIndividualComponent implements OnInit {
     });
 
     
+    this.actualizarListaSignal();
+    
+  }
+
+  private actualizarListaSignal(){
+    this.solicitudService.signalRecived.subscribe((solicitud: Solicitud) => {
+        if(solicitud.numero == this.Solicitud.numero){
+          this.Solicitud = solicitud;
+        }
+    });
   }
 
   llenarUsuario() {

@@ -130,3 +130,15 @@ C:\Users\norma\Documents\GitHub\StockLab3.0-main\Datos\obj\Debug\netstandard2.0\
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Datos\obj\Debug\netstandard2.0\Datos.csproj.CopyComplete
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Datos\obj\Debug\netstandard2.0\Datos.dll
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Datos\obj\Debug\netstandard2.0\Datos.pdb
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\bin\Debug\netstandard2.0\Datos.deps.json
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\bin\Debug\netstandard2.0\Datos.dll
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\bin\Debug\netstandard2.0\Datos.pdb
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\bin\Debug\netstandard2.0\Entity.dll
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\bin\Debug\netstandard2.0\Entity.pdb
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Datos.csprojAssemblyReference.cache
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Datos.AssemblyInfoInputs.cache
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Datos.AssemblyInfo.cs
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Datos.csproj.CoreCompileInputs.cache
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Datos.csproj.CopyComplete
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Datos.dll
+C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Datos.pdb

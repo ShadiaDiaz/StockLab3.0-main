@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { HandleHttpErrorService } from '../@base/handle-http-error.service';
 import { Solicitud } from '../stocklab/models/solicitud';
 import { Usuario } from '../stocklab/models/usuario';
+import * as singnalR from '@aspnet/signalr';
 
 const httpOptionsPut = {
   headers: new HttpHeaders({
@@ -22,12 +23,38 @@ const httpOptions = {
 })
 export class SolicitudService {
   baseUrl: string;
-
+  private hubConnection: singnalR.HubConnection;
+  signalRecived = new EventEmitter<Solicitud>();
   constructor(
     private http: HttpClient,
     @Inject('BASE_URL') baseUrl: string,
     private handleErrorService: HandleHttpErrorService
-  ) { this.baseUrl = baseUrl; }
+  ) { this.baseUrl = baseUrl; this.buildConnection();  this.startConnection();}
+
+  private buildConnection = () => {
+    this.hubConnection = new singnalR.HubConnectionBuilder()
+    .withUrl(this.baseUrl + "signalHub")
+    .build();
+  }
+  private startConnection = () => {
+    this.hubConnection
+    .start()
+    .then(() => {
+      console.log("Iniciando signal");
+      this.registerSignalEvents();
+    })
+    .catch(err => {
+      console.log("Error en el signal" + err);
+      setTimeout(function() {
+        this.startConnection();
+      }, 3000);
+    });
+  }
+  private registerSignalEvents(){
+    this.hubConnection.on("solicitudRegistrada", (data: Solicitud) => {
+      this.signalRecived.emit(data);
+    });
+  }
 
   post(solicitud: Solicitud): Observable<Solicitud> {
 

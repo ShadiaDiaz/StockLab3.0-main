@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StockLabWeb.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
+using StockLabWeb.Hubs;
 
 namespace StockLabWeb.Controllers
 {
@@ -16,15 +19,16 @@ namespace StockLabWeb.Controllers
     public class AprobarSolicitudController : ControllerBase
     {
         private readonly SolicitudService _service;
-
-        public AprobarSolicitudController(StockLabContext context)
+        private readonly IHubContext<SignalHub> _hubContext;
+        public AprobarSolicitudController(StockLabContext context, IHubContext<SignalHub> hubContext)
         {
             _service = new SolicitudService(context);
+            _hubContext = hubContext;
         }
 
         //api/Solicitud/5
         [HttpPut("{numero}")]
-        public ActionResult<string> Put(string numero)
+        public async Task<ActionResult<string>> Put(string numero)
         {
             var response = _service.AprobarSolicitud(numero);
 
@@ -47,7 +51,9 @@ namespace StockLabWeb.Controllers
                 }
                 return BadRequest(detallesproblemas);
             }
-            return Ok(response.Solicitud);
+            var solicitudview = new SolicitudViewModel (response.Solicitud);
+            await _hubContext.Clients.All.SendAsync("solicitudRegistrada", solicitudview);
+            return Ok (solicitudview);
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O0yxhq2baDZuRqxNiRT0iT0sW3/4efi/EGgJks3JVf8Gvkbbi6Oo6toOKK6UbHdPEj1F9k/QGl8jUgW7Zf/jDQ==",
+  "dgSpecHash": "o0OJLYW5XY7Rr/IT2buUwk9/SpTWUvVi4x96fIeEP3sqPKNOFBiyA4/GEdjNFVETMygdsmbos6O/Uo3Jv0dMew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj",
+  "projectFilePath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Entity\\Entity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\norma\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\norma\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

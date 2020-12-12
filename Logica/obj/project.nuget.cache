@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZrOMxCWkkGsjFWbXwTpfbOO2sojX5V+aaRVq0SILg04u54I3Tx98rXI4PgI4KAjNJ7z2eulbD5xeyID4pzFuTQ==",
+  "dgSpecHash": "ZNqqJ5GBcHBukyOSOUD7wYxi8DpxGf4l+e5WHV16osyg8eEc8klD3OiOjCn3MW8VuhDgTchKo5Y8XrQnB0t4tA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Logica\\Logica.csproj",
+  "projectFilePath": "C:\\Users\\norma\\Desktop\\StockLab3.0-main-main\\Logica\\Logica.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\norma\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\norma\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
