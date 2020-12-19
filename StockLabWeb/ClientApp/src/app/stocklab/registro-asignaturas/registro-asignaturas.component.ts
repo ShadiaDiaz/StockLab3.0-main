@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { AsignaturaService } from 'src/app/services/asignatura.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from 'src/app/@base/modal/modal.component';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -17,7 +19,11 @@ export class RegistroAsignaturasComponent implements OnInit {
   asignatura: Asignatura;
 
   constructor(private formBuilder: FormBuilder, private asignaturaService: AsignaturaService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal, private router: Router,private loginService: LoginService) { 
+      if(this.loginService.currentUserValue.tipo != 'Administrador'){
+        this.router.navigate(['/']);
+      }
+    }
 
   ngOnInit(): void {
     this.buildForm();

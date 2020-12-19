@@ -29,7 +29,9 @@
                                 <th scope="col">Marca</th>
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Stock Minimo</th>
-                                <th scope="col">Agregar Cantidad</th>
+                                <div *ngIf="usuario.tipo!= 'Monitor'">
+                                    <th scope="col">Agregar Cantidad</th>
+                                </div>
             
                             </tr>
                         </thead>
@@ -46,7 +48,9 @@
                                 </td>
                                 <td *ngIf="insumo.cantidad <= 100" class="EstadoBajo">{{insumo.cantidad}}</td>
                                 <td>{{insumo.stockMinimo}}</td>
-                                <td><button (click)="AgregarCantidad(insumo);">Agregar</button></td>
+                                <div *ngIf="usuario.tipo != 'Monitor'">
+                                    <td><button (click)="AgregarCantidad(insumo);">Agregar</button></td>
+                                </div>
                             </tr>
                         </tbody>
                     </table>

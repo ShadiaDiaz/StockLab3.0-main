@@ -1,0 +1,11 @@
+K
+BC:\Users\norma\Desktop\StockLab3.0-main-main\Entity\Asignaturas.csutf-8F
+=C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\Class1.csutf-8M
+DC:\Users\norma\Desktop\StockLab3.0-main-main\Entity\DetalleInsumo.csutf-8F
+=C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\Insumo.csutf-8P
+GC:\Users\norma\Desktop\StockLab3.0-main-main\Entity\PeriodoAcademico.csutf-8G
+>C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\Persona.csutf-8I
+@C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\Solicitud.csutf-8G
+>C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\Usuario.csutf-8‡
+|C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\obj\Debug\netstandard2.0\.NETStandard,Version=v2.0.AssemblyAttributes.csutf-8n
+cC:\Users\norma\Desktop\StockLab3.0-main-main\Entity\obj\Debug\netstandard2.0\Entity.AssemblyInfo.csutf-8

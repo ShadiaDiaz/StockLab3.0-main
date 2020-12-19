@@ -20,10 +20,13 @@ export class HomeComponent {
   solicitudes: Solicitud[];
   detalles: DetalleInsumo[];
   asignaturas: Asignatura[];
+
   canvas: any;
   canvas2: any;
+
   ctx: any;
   ctx2: any;
+
   numberdetalle: number[];
   numberasignatura: number[];
   labelasignaturas: string[];
@@ -107,9 +110,6 @@ export class HomeComponent {
 
 
   graficaAsignaturas() {
-
-
-
     this.canvas2 = document.getElementById('myChart2');
     this.ctx2 = this.canvas2.getContext('2d');
 

@@ -102,8 +102,9 @@
                                             [ngClass]="{'is-invalid': control.asignatura.errors && control.asignatura.touched}"
                                             formControlName="asignatura" name="asignatura" id="asignatura">
                                             <option selected>Seleccionar</option>
-                                            <option *ngFor="let asignatura of asignaturas; index as i">
-                                                {{asignatura.nombre}};{{asignatura.codigo}}</option>
+                                            <option [value]="asignatura.codigo" *ngFor="let asignatura of asignaturas; index as i">
+                                                {{asignatura.nombre}}</option>
+                                            
                                         </select>
                                         <div *ngIf="control.asignatura.errors" class="invalid-feedback">
                                             <div *ngIf="control.asignatura.errors.required">Se requiere una
@@ -119,8 +120,8 @@
                                             [ngClass]="{'is-invalid': control.monitor.errors && control.monitor.touched}"
                                             formControlName="monitor">
                                             <option value="" disabled selected>--Seleccionar--</option>
-                                            <option *ngFor="let monit of monitores">
-                                                {{monit.nombre}};{{monit.identificacion}}
+                                            <option [value]="monit.identificacion" *ngFor="let monit of monitores">
+                                                {{monit.nombre}}
                                             </option>
                                         </select>
                                         <div *ngIf="control.monitor.errors" class="invalid-feedback">
@@ -153,8 +154,8 @@
                                                     formControlName="detalle">
 
                                                     <option value="" disabled selected>--Seleccionar--</option>
-                                                    <option *ngFor="let insumo of insumos; index as i">
-                                                        {{insumo.descripcion}};{{insumo.item}}</option>
+                                                    <option [value]="insumo.item" *ngFor="let insumo of insumos; index as i">
+                                                        {{insumo.descripcion}}</option>
                                                 </select>
                                                 <div *ngIf="control.detalle.errors" class="invalid-feedback">
                                                     <div *ngIf="control.detalle.errors.required">Se requiere el insumo

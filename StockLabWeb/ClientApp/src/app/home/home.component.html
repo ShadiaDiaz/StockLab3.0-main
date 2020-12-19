@@ -7,20 +7,22 @@
 
 
                     <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header card-header-danger">
-                                <h4 class="card-title">Alerta de Insumos</h4>
-                                <p class="card-category">Insumos con stock bajo</p>
-                            </div>
-                            <div class="card-body">
-                                <div *ngIf="usuario.tipo != 'Docente'">
-                                    <div *ngFor="let insumo of Insumos;index as i">
-                                        <div
-                                            *ngIf="(insumo.cantidad < (insumo.stockMinimo+50) && insumo.cantidad > insumo.stockMinimo) || insumo.cantidad < insumo.stockMinimo">
-                                            <p><b>Nombre:</b> {{insumo.descripcion}} <b>Stock:</b> {{insumo.cantidad}}</p>
+                        <div *ngIf="usuario.tipo != 'Docente'">
+                            <div class="card">
+                                <div class="card-header card-header-danger">
+                                    <h4 class="card-title">Alerta de Insumos</h4>
+                                    <p class="card-category">Insumos con stock bajo</p>
+                                </div>
+                                <div class="card-body">
+                                    <div *ngIf="usuario.tipo != 'Docente'">
+                                        <div *ngFor="let insumo of Insumos;index as i">
+                                            <div
+                                                *ngIf="(insumo.cantidad < (insumo.stockMinimo+50) && insumo.cantidad > insumo.stockMinimo) || insumo.cantidad < insumo.stockMinimo">
+                                                <p><b>Nombre:</b> {{insumo.descripcion}} <b>Stock:</b> {{insumo.cantidad}}</p>
+                                            </div>
                                         </div>
+                                        <a [routerLink]="['/ConsultaInsumos']">Ver Insumos</a>
                                     </div>
-                                    <a [routerLink]="['/ConsultaInsumos']">Ver Insumos</a>
                                 </div>
                             </div>
                         </div>
