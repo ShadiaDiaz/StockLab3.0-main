@@ -5,10 +5,11 @@ import { Persona } from "./persona";
 
 export class Solicitud {
     numero: string;
+    //entrega de la solicitud (cambiar)
     fecha: string;
+    //fecha de la solicitud (cambiar)
     fechaSolicitud: string;
     estado: string;
-    hora: string;
     monitor: string;
     idpersona: string;
     asignatura: Asignatura;

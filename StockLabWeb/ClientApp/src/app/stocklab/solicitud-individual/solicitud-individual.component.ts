@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SolicitudService } from 'src/app/services/solicitud.service';
 import { DetalleInsumo } from '../models/detalle-insumo';
 import { Solicitud } from '../models/solicitud';
 import { Usuario } from '../models/usuario';
 import { ModalComponent } from 'src/app/@base/modal/modal.component';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class SolicitudIndividualComponent implements OnInit {
   Solicitud: Solicitud;
   usuario: Usuario;
   constructor(private routeActive: ActivatedRoute, private solicitudService: SolicitudService
-    ,private modalService: NgbModal) { }
+    ,private modalService: NgbModal, private router: Router, private loginService: LoginService) { 
+    }
 
   ngOnInit(): void {
     this.Solicitud = new Solicitud();
@@ -28,6 +30,13 @@ export class SolicitudIndividualComponent implements OnInit {
 
     this.solicitudService.get(id).subscribe(result => {
       this.Solicitud = result;
+      if(result != null){
+        if(this.loginService.currentUserValue.tipo == 'Docente'){
+          if(result.persona.identificacion != this.loginService.currentUserValue.idPersona){
+            this.router.navigate(['/']);
+          }
+        }
+      }
     });
 
     

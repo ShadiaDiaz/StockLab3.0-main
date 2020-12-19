@@ -11,4 +11,11 @@ export class DetalleInsumo {
     constructor(){
         this.insumo = new Insumo;
     }
+
+    agregarDetalle(fecha:Date, insum: Insumo, codigo: string){
+        this.fecha = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear();
+        this.insumo = insum;
+        this.codigoinsumo = insum.item;
+        this.numeroDetalle = codigo;
+    }
 }

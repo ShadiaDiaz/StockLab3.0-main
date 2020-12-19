@@ -10,7 +10,6 @@ namespace StockLabWeb.Models
         public string Fecha { get; set; }
         public string FechaSolicitud { get; set; }
         public string Estado { get; set; }
-        public string Hora { get; set; }
         public string Monitor { get; set; }
         public string IdPersona { get; set; }
         public string CodigoAsignatura { get; set; }
@@ -30,7 +29,6 @@ namespace StockLabWeb.Models
             Fecha = solicitud.Fecha.ToShortDateString() + " " + solicitud.Fecha.ToShortTimeString();
             FechaSolicitud = solicitud.SolicitudFecha.ToShortDateString() + " " + solicitud.SolicitudFecha.ToShortTimeString();
             Estado = solicitud.Estado;
-            Hora = solicitud.Hora;
             Monitor = solicitud.Monitor;
             IdPersona = solicitud.IdPersona;
             Asignatura = solicitud.Asignatura;

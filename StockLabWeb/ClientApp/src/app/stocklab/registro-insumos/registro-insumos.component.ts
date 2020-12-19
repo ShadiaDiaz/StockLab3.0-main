@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from 'src/app/@base/modal/modal.component';
 import { InsumoService } from 'src/app/services/insumo.service';
+import { LoginService } from 'src/app/services/login.service';
 import { Insumo } from '../models/insumo';
 
 @Component({
@@ -16,7 +18,11 @@ export class RegistroInsumosComponent implements OnInit {
   insumo: Insumo;
 
   constructor(private formBuilder: FormBuilder, private insumoService: InsumoService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal, private serviceLogin: LoginService, private router: Router) {
+        if(serviceLogin.currentUserValue.tipo == 'Docente'){
+          this.router.navigate(['/']);
+        }
+     }
 
   ngOnInit(): void {
     this.buildForm();

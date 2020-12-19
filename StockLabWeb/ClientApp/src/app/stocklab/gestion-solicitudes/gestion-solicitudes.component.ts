@@ -15,6 +15,8 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Usuario } from '../models/usuario';
 import { Time } from '@angular/common';
 import { NgbTimeAdapter, NgbTimeStructAdapter } from '@ng-bootstrap/ng-bootstrap/timepicker/ngb-time-adapter';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-gestion-solicitudes',
@@ -25,19 +27,20 @@ export class GestionSolicitudesComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private personaService: PersonaService,
     private modalService: NgbModal, private asignaturaService: AsignaturaService,
-    private insumoService: InsumoService, private solicitudService: SolicitudService) { }
+    private insumoService: InsumoService, private solicitudService: SolicitudService,
+    private router:Router, private loginService: LoginService) {
+      if(this.loginService.currentUserValue.tipo == 'Monitor' || this.loginService.currentUserValue.tipo == 'Coordinador'){
+        this.router.navigate(['/']);
+      }
+     }
   solicitud: Solicitud;
   formGroup: FormGroup;
   persona: Persona;
   asignatura: Asignatura;
   asignaturas: Asignatura[];
-  stringAsignaturas: string;
-  stringasi: string[];
 
   monitor: Persona;
   monitores: Persona[];
-  stringMonitores: string;
-  stringMon: string[];
 
   detalle: DetalleInsumo;
   detalles: DetalleInsumo[];
@@ -48,8 +51,6 @@ export class GestionSolicitudesComponent implements OnInit {
 
   insumo: Insumo;
   insumos: Insumo[];
-  stringInsumo: string;
-  arrayinsumo: string[];
 
   time: NgbTimeStruct;
 
@@ -62,6 +63,7 @@ export class GestionSolicitudesComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = new Usuario;
     this.usuario.tipo = '';
+    this.asignaturas = [];
     this.llenarasignaturas();
     this.llenarinsumos();
     this.llenarUsuario();
@@ -86,11 +88,9 @@ export class GestionSolicitudesComponent implements OnInit {
     this.persona.identificacion = '';
     this.persona.nombre = '';
     this.persona.apellidos = '';
-    this.solicitud.hora = '';
     this.detalle.cantidad = 0;
     this.solicitud.detalles = [];
     this.solicitud.fecha = new Date(Date.now()).toDateString();
-    this.solicitud.hora = this.time+ "";
     this.time = {hour: 0, minute: 0, second: 0};
 
     
@@ -110,13 +110,13 @@ export class GestionSolicitudesComponent implements OnInit {
   llenarasignaturas() {
     this.asignaturaService.get().subscribe(result => {
       this.asignaturas = result;
-    })
+    });
   }
 
   llenarinsumos() {
     this.insumoService.get().subscribe(result => {
       this.insumos = result;
-    })
+    });
   }
 
   llenarUsuario() {
@@ -130,30 +130,30 @@ export class GestionSolicitudesComponent implements OnInit {
     this.personaService.getMonitores().subscribe(result => {
       this.monitores = result;
     });
+    console.log('a');
   }
 
   agregardetalle() {
+    this.detalle = new DetalleInsumo;
     if (this.formGroup.value.detalle == '' || this.formGroup.value.cantidad == '') {
       const messageBox = this.modalService.open(ModalComponent)
       messageBox.componentInstance.title = "Resultado Operación";
       messageBox.componentInstance.cuerpo = 'Error al añadir detalle';
     }
     else {
+      
       var fecha = new Date();
       this.detalle.cantidad = this.formGroup.value.cantidad;
-      this.stringInsumo = this.formGroup.value.detalle;
-      this.arrayinsumo = this.stringInsumo.split(';');
-      this.insumo = this.insumos.find(I => I.item == this.arrayinsumo[1]);
+      var codinsumo = this.formGroup.value.detalle;
+      this.insumo = this.insumos.find(I => I.item == codinsumo);
       if (this.detalle.cantidad > this.insumo.cantidad) {
         const messageBox = this.modalService.open(ModalComponent)
         messageBox.componentInstance.title = "Resultado Operación";
         messageBox.componentInstance.cuerpo = 'Error: la cantidad es mayor a la disponible ';
       }
       else {
-        this.detalle.codigoinsumo = this.insumo.item;
-        this.detalle.insumo = this.insumo;
-        this.detalle.fecha = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear();
-        this.detalle.numeroDetalle = (this.detalles.length + 1).toString();
+        var codigoDetalle = (this.detalles.length + 1).toString();
+        this.detalle.agregarDetalle(fecha,this.insumo,codigoDetalle);
         var detallerespuesta = this.detalles.find(d => d.insumo.item == this.insumo.item);
         if (detallerespuesta != null) {
           var numero = this.detalles.findIndex(d => d.insumo.item == this.insumo.item)
@@ -163,8 +163,6 @@ export class GestionSolicitudesComponent implements OnInit {
         else {
           this.detalles.push(this.detalle);
           this.solicitud.detalles = this.detalles;
-          this.detalle = new DetalleInsumo;
-          //this.option = true;
         }
         const messageBox = this.modalService.open(ModalComponent)
         messageBox.componentInstance.title = "Resultado Operación";
@@ -172,6 +170,8 @@ export class GestionSolicitudesComponent implements OnInit {
       }
     }
   }
+
+
 
   private validCantidad(control: AbstractControl) {
     const cantidad = control.value;
@@ -212,7 +212,7 @@ export class GestionSolicitudesComponent implements OnInit {
       return;
     }
     
-    if (this.persona.identificacion == "" && this.usuario.tipo != "Docente") {
+    if (this.persona.identificacion == "" && this.usuario.tipo == "Administrador") {
       const messageBox = this.modalService.open(ModalComponent)
       messageBox.componentInstance.title = "Resultado Operación";
       messageBox.componentInstance.cuerpo = 'Error: No ha agregado una persona a la solicitud';
@@ -250,25 +250,19 @@ export class GestionSolicitudesComponent implements OnInit {
   }
 
   mapear() {
-    this.stringasi = [];
-    this.stringAsignaturas = this.formGroup.value.asignatura;
-    this.stringasi = this.stringAsignaturas.split(';');
-    this.asignatura = this.asignaturas.find(a => a.codigo == this.stringasi[1]);
+    var codigoAsignatura = this.formGroup.value.asignatura;
+    this.asignatura = this.asignaturas.find(a => a.codigo == codigoAsignatura);
     this.solicitud = this.formGroup.value;
+
     this.solicitud.estado = "Activo";
     this.solicitud.detalles = this.detalles;
     this.solicitud.asignatura = this.asignatura;
     
     var hora = this.formGroup.value.hora;
-    this.solicitud.hora = this.formGroup.value.hora.hour+":"+this.formGroup.value.hora.minute + ":" + this.formGroup.value.hora.second;
-    
     this.solicitud.fecha = this.formGroup.value.fecha+" "+
     hora.hour +":"+hora.minute+":00";
-
-    this.stringMon = [];
-    this.stringMonitores = this.formGroup.value.monitor;
-    this.stringMon = this.stringMonitores.split(';');
-    this.monitor = this.monitores.find(a => a.identificacion == this.stringMon[1]);
+    var codigoMonitor = this.formGroup.value.monitor;
+    this.monitor = this.monitores.find(a => a.identificacion == codigoMonitor);
     this.solicitud.monitor = this.monitor.nombre;
 
     if (this.usuario.tipo == "Administrador") {

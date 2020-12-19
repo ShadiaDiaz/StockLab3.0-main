@@ -1,190 +1,184 @@
-
-    <div class="wrapper ">
-        <div class="sidebar" data-color="green">
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-            <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                    CT
-                </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                   Stock Lab
-                </a>
-            </div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                   <!-- Separator with title -->
-        <li>
-            <small style="color: white;"><b>MENU</b></small>
-        </li>
+<div class="wrapper ">
+  <div class="sidebar" data-color="green">
+    <!--
+  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+-->
+    <div class="logo">
+      <a [routerLink]="['/']" class="simple-text logo-mini">
+        Lab
+      </a>
+      <a [routerLink]="['/']" class="simple-text logo-normal">
+        Stock Lab
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <!-- Separator with title -->
         <div>
-           
-            <li>
-                <a [routerLink]="['/Home']" class="now-ui-icons">
-                    <img src="../../assets/images/casa.png">
-                    <span class="menu-collapsed">Inicio</span>
-                </a>
-            </li>
+
+          <li>
+            <a [routerLink]="['/Home']" class="now-ui-icons">
+              <img src="../../assets/images/casa.png">
+              <span class="menu-collapsed"
+                style="padding: 30px; font-family: 'Times New Roman', Times, serif; font-size: 13px;">Inicio</span>
+            </a>
+          </li>
         </div>
-        
+
 
         <!-- /END Separator -->
         <!-- Menu with submenu -->
-        <li class="text-muted d-flex align-items-center">
-            <small style="color: white;"><b>Monitor</b></small>
-        </li>
-        <li>
-            <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
-            class="now-ui-icons">
-            <div class="d-flex w-100 justify-content-start align-items-center">
+
+        <div *ngIf="usuario.tipo=='Administrador' || usuario.tipo == 'Coordinador' || usuario.tipo == 'Monitor'">
+          <li>
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="now-ui-icons">
+              <div class="d-flex w-100 justify-content-start align-items-center">
                 <img src="../../assets/images/add-file.png">
                 <span class="fa fa-dashboard fa-fw mr-3"></span>
-                <span class="menu-collapsed">Registros</span>
+                <span class="menu-collapsed"
+                  style="font-family: 'Times New Roman', Times, serif; font-size: 13px;">Registros</span>
                 <span class="submenu-icon ml-auto"></span>
-            </div>
-        </a>
-        </li>
-
-        <li>
-            <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
-            class="now-ui-icons">
-            <div class="d-flex w-100 justify-content-start align-items-center">
-                <img src="../../assets/images/buscar.png">
-                <span class="fa fa-dashboard fa-fw mr-3"></span>
-                <span class="menu-collapsed">Consultas</span>
-                <span class="submenu-icon ml-auto"></span>
-            </div>
-        </a>
-        </li>
-        <!-- Submenu content -->
-        <div id='submenu1' class="collapse sidebar-submenu">
+              </div>
+            </a>
+          </li>
+  
+          <!-- Submenu content -->
+          <div id='submenu1' class="collapse sidebar-submenu">
             <li>
-                <div *ngIf="usuario.tipo == 'Coordinador' || usuario.tipo == 'Administrador'">
-                    <a class="now-ui-icons text-white">
-                        <span class="menu-collapsed" [routerLink]="['/RegistroInsumos']">Registro Insumos</span>
-                    </a>
-                </div>
+              <div *ngIf="usuario.tipo == 'Coordinador' || usuario.tipo == 'Administrador' || usuario.tipo == 'Monitor'">
+                <a [routerLink]="['/RegistroInsumos']" class="now-ui-icons text-white">
+                  <span class="menu-collapsed" style="padding: 15px;">Registro Insumos</span>
+                </a>
+              </div>
             </li>
             <li>
-                <div *ngIf="usuario.tipo == 'Administrador'">
-                    <a [routerLink]="['/RegistroDocentes']" class="now-ui-icons text-white">
-                        <span class="menu-collapsed">Registro Docentes</span>
-                    </a>
-                </div>
+              <div *ngIf="usuario.tipo == 'Administrador'">
+                <a [routerLink]="['/RegistroDocentes']" class="now-ui-icons text-white">
+                  <span class="menu-collapsed" style="padding: 15px;">Registro Docentes</span>
+                </a>
+              </div>
             </li>
             <li>
-                <div *ngIf="usuario.tipo == 'Administrador'">
-                    <a [routerLink]="['/RegistroAsignaturas']"
-                      class="now-ui-icons text-white">
-                     <span class="menu-collapsed">Registro Asignaturas</span>
-                     </a>
-                </div>
+              <div *ngIf="usuario.tipo == 'Administrador'">
+                <a [routerLink]="['/RegistroAsignaturas']" class="now-ui-icons text-white">
+                  <span class="menu-collapsed" style="padding: 15px;">Registro Asignaturas</span>
+                </a>
+              </div>
             </li>
             <li>
-                <div *ngIf="usuario.tipo == 'Administrador'">
-                    <a [routerLink]="['/periodoRegistro']"
-                      class="now-ui-icons text-white">
-                      <span class="menu-collapsed">Registro Periodo Academico</span>
-                   </a>
-                </div>
+              <div *ngIf="usuario.tipo == 'Administrador'">
+                <a [routerLink]="['/periodoRegistro']" class="now-ui-icons text-white">
+                  <span class="menu-collapsed" style="padding: 15px;">Registro Periodo Academico</span>
+                </a>
+              </div>
             </li>
+          </div>
         </div>
 
+        <li>
+          <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="now-ui-icons">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <img src="../../assets/images/buscar.png">
+              <span class="fa fa-dashboard fa-fw mr-3"></span>
+              <span class="menu-collapsed"
+                style="font-family: 'Times New Roman', Times, serif; font-size: 13px;">Consultas</span>
+              <span class="submenu-icon ml-auto"></span>
+            </div>
+          </a>
+        </li>
+
+
         <div id='submenu2' class="collapse sidebar-submenu">
-            <li>
-                <div *ngIf="usuario.tipo != 'Docente'">
-                    <a class="now-ui-icons text-white">
-                        <span class="menu-collapsed" [routerLink]="['/ConsultaInsumos']">Consultar Insumos</span>
-                    </a>
-                </div>
-            </li>
-            
-            <li>
-                <div *ngIf="usuario.tipo == 'Administrador'">
-                    <a [routerLink]="['/ConsultaAsignaturas']"
-                    class="now-ui-icons text-white">
-                    <span class="menu-collapsed">Consultar Asignaturas</span>
-                </a>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <a [routerLink]="['/ConsultaSolicitudes']"
-                    class="now-ui-icons text-white">
-                    <span class="menu-collapsed">Consultar Solicitudes</span>
-                </a>
-                </div>
-            </li>
+          <li>
+            <div *ngIf="usuario.tipo != 'Docente'">
+              <a class="now-ui-icons text-white" [routerLink]="['/ConsultaInsumos']">
+                <span class="menu-collapsed" style="padding: 15px;">Consultar Insumos</span>
+              </a>
+            </div>
+          </li>
+
+          <li>
+            <div *ngIf="usuario.tipo == 'Administrador'">
+              <a [routerLink]="['/ConsultaAsignaturas']" class="now-ui-icons text-white">
+                <span class="menu-collapsed" style="padding: 15px;">Consultar Asignaturas</span>
+              </a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <a [routerLink]="['/ConsultaSolicitudes']" class="now-ui-icons text-white">
+                <span class="menu-collapsed" style="padding: 15px;">Consultar Solicitudes</span>
+              </a>
+            </div>
+          </li>
         </div>
         <!-- Separator with title -->
 
-        <li class="">
-            <small style="color: white;"><b>Docente</b></small>
-        </li>
-        
-        <li>
-            <a href="#submenu3" data-toggle="collapse" aria-expanded="false"
-            class="now-ui-icons">
-            <div class="d-flex w-100 justify-content-start align-items-center">
+
+
+        <div *ngIf = "usuario.tipo == 'Docente' || usuario.tipo == 'Administrador'">
+          <li>
+            <a href="#submenu3" data-toggle="collapse" aria-expanded="false" class="now-ui-icons">
+              <div class="d-flex w-100 justify-content-start align-items-center">
                 <img src="../../assets/images/solicitud.png">
                 <span class="fa fa-dashboard fa-fw mr-3"></span>
-                <span class="menu-collapsed">Solicitudes</span>
+                <span class="menu-collapsed"
+                  style="font-family: 'Times New Roman', Times, serif; font-size: 13px;">Solicitudes</span>
                 <span class="submenu-icon ml-auto"></span>
-            </div>
-        </a>
-        </li>
-
-        <!-- Submenu content -->
-
-        <div id='submenu3' class="collapse sidebar-submenu">
-
-           <li>
-            <div *ngIf="usuario.tipo == 'Docente' || usuario.tipo == 'Administrador'">
+              </div>
+            </a>
+          </li>
+  
+          <!-- Submenu content -->
+  
+          <div id='submenu3' class="collapse sidebar-submenu">
+  
+            <li>
+              <div *ngIf="usuario.tipo == 'Docente' || usuario.tipo == 'Administrador'">
                 <a [routerLink]="['/GestionSolicitudes']" class="now-ui-icons text-white">
-                    <span class="menu-collapsed">Solicitar Pedido</span>
+                  <span class="menu-collapsed" style="padding: 15px;">Solicitar Pedido</span>
                 </a>
-            </div>
-           </li>
-
+              </div>
+            </li>
+  
+          </div>
         </div>
 
 
         <!-- /END Separator -->
         <!-- Separator with title -->
 
-        <li class="">
-            <small style="color: white;"><b>Reportes</b></small>
-        </li>
-        <li>
-            <a href="#submenu4" data-toggle="collapse" aria-expanded="false"
-            class="now-ui-icons">
-            <div class="d-flex w-100 justify-content-start align-items-center">
+        <div *ngIf = "usuario.tipo!= 'Docente'">
+          <li>
+            <a href="#submenu4" data-toggle="collapse" aria-expanded="false" class="now-ui-icons">
+              <div class="d-flex w-100 justify-content-start align-items-center">
                 <img src="../../assets/images/analitica.png">
                 <span class="fa fa-dashboard fa-fw mr-3"></span>
-                <span class="menu-collapsed">Reportes</span>
+                <span class="menu-collapsed"
+                  style="font-family: 'Times New Roman', Times, serif; font-size: 13px;">Reportes</span>
                 <span class="submenu-icon ml-auto"></span>
-            </div>
-        </a>
-        </li>
-         <!-- Submenu content -->
-
-         <div id='submenu4' class="collapse sidebar-submenu">
-
+              </div>
+            </a>
+          </li>
+          <!-- Submenu content -->
+  
+          <div id='submenu4' class="collapse sidebar-submenu">
+  
             <li>
-                <div>
-                    <a [routerLink]="['/ReportesLaboratorios']" class="now-ui-icons text-white">
-                        <span class="menu-collapsed">Reporte Inventarios</span>
-                    </a>
-                </div>
+              <div>
+                <a [routerLink]="['/ReportesLaboratorios']" class="now-ui-icons text-white">
+                  <span class="menu-collapsed">Reporte Inventarios</span>
+                </a>
+              </div>
             </li>
-
+  
+          </div>
         </div>
 
 
         <!-- /END Separator -->
 
         <!-- Logo -->
-                </ul>
-            </div>
-        </div>
+      </ul>
+    </div>
+  </div>

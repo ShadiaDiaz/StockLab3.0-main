@@ -19,10 +19,6 @@ namespace Entity
         [Column(TypeName = "varchar(10)")]
         [StringLength(10, ErrorMessage = "Estado muy largo")]
         public string Estado { get; set; }
-        [Column(TypeName = "varchar(20)")]
-        [Required(ErrorMessage = "Se requiere la hora")]
-        [StringLength(20, ErrorMessage = "Hora demasiado larga")]
-        public string Hora { get; set; }
         [Column(TypeName = "varchar(13)")]
         [Required(ErrorMessage = "Se requiere el id del monitor")]
         [StringLength(15, ErrorMessage = "El id del monitor es muy largo")]

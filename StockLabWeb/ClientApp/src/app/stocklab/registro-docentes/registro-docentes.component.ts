@@ -7,6 +7,8 @@ import { Usuario } from '../models/usuario';
 import { PersonaService } from 'src/app/services/persona.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from 'src/app/@base/modal/modal.component';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-registro-docentes',
   templateUrl: './registro-docentes.component.html',
@@ -19,7 +21,11 @@ export class RegistroDocentesComponent implements OnInit {
   usuario: Usuario;
 
   constructor(private formBuilder: FormBuilder,
-    private personService: PersonaService, private modalService: NgbModal) { }
+    private personService: PersonaService, private modalService: NgbModal, private router: Router, private loginService: LoginService) {
+        if(this.loginService.currentUserValue.tipo != 'Administrador'){
+          this.router.navigate(['/']);
+        }
+     }
 
   ngOnInit(): void {
     this.buildForm();

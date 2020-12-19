@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>Datos</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>793ebe30-8e66-4bc8-8089-39a7af2b9393</ProjectGuid>
+  <FullPath>C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\Datos.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\Users\norma\Desktop\StockLab3.0-main-main\.sonarqube\out\2\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\bin\Debug\netstandard2.0\Datos.dll.RoslynCA.json|C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\bin\Debug\netstandard2.0\Datos.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">C:\Users\norma\Desktop\StockLab3.0-main-main\.sonarqube\out\2</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>netstandard2.0</TargetFramework>
+</ProjectInfo>

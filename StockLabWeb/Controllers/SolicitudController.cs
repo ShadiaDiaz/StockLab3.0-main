@@ -137,7 +137,6 @@ namespace StockLabWeb.Controllers
                 IdPersona = solicitudInput.IdPersona,
                 Detalles = solicitudInput.Detalles,
                 SolicitudFecha = DateTime.Now,
-                Hora = solicitudInput.Hora,
                 Monitor = solicitudInput.Monitor
             };
             return solicitud;
