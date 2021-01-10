@@ -37,6 +37,7 @@ import { ActualizarCantidadInsumoModalComponent } from './@base/modal/actualizar
 import { PeriodoRegistroComponent } from './stocklab/periodo-registro/periodo-registro.component';
 import { FitroEstadoSolicitudPipe } from './pipe/fitro-estado-solicitud.pipe';
 import { ChatComponent } from './chat/chat.component';
+import { ChatClienteComponent } from './chat-cliente/chat-cliente.component';
 
 
 
@@ -69,6 +70,7 @@ import { ChatComponent } from './chat/chat.component';
     PeriodoRegistroComponent,
     FitroEstadoSolicitudPipe,
     ChatComponent,
+    ChatClienteComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

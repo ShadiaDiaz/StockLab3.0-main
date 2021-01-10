@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   persona: Persona;
   constructor(private router: Router, private chatService: ChatService, private personaService: PersonaService, private modalService: NgbModal, private loginService:LoginService) {
     if(loginService.currentUserValue.tipo != 'Administrador'){
-      this.router.navigate(['/']);
+      this.router.navigate(['/chatUsuarios']);
     }
    }
 
