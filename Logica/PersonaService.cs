@@ -80,6 +80,19 @@ namespace Logica
             }
         }
 
+        public ConsultarPersonasReponse ConsultarPersonas()
+        {
+            try
+            {
+                var response = _context.Personas.ToList();
+                return new ConsultarPersonasReponse(response);
+            }
+            catch(Exception e)
+            {
+                return new ConsultarPersonasReponse("Error Aplicacion: "+ e.Message);
+            }
+        }
+
         public class ConsultarPersonasReponse
         {
             public ConsultarPersonasReponse(List<Persona> personas)

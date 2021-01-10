@@ -40,6 +40,27 @@ namespace Datos.Migrations
                     b.ToTable("Asignaturas");
                 });
 
+            modelBuilder.Entity("Entity.Chat", b =>
+                {
+                    b.Property<string>("Codigo")
+                        .HasColumnType("varchar(5)");
+
+                    b.Property<string>("Admi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdPersona")
+                        .HasColumnType("varchar(13)");
+
+                    b.Property<string>("Mensaje")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Codigo");
+
+                    b.HasIndex("IdPersona");
+
+                    b.ToTable("Chats");
+                });
+
             modelBuilder.Entity("Entity.DetalleInsumo", b =>
                 {
                     b.Property<string>("NumeroDetalle")
@@ -175,11 +196,6 @@ namespace Datos.Migrations
                     b.Property<string>("FechaEntrega")
                         .HasColumnType("varchar(20)");
 
-                    b.Property<string>("Hora")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)")
-                        .HasMaxLength(20);
-
                     b.Property<string>("IdPeriodo")
                         .HasColumnType("varchar(5)");
 
@@ -233,6 +249,13 @@ namespace Datos.Migrations
                     b.HasKey("User");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("Entity.Chat", b =>
+                {
+                    b.HasOne("Entity.Persona", null)
+                        .WithMany()
+                        .HasForeignKey("IdPersona");
                 });
 
             modelBuilder.Entity("Entity.DetalleInsumo", b =>

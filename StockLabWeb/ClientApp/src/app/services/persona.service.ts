@@ -38,4 +38,11 @@ export class PersonaService {
       catchError(this.handleErrorService.handleError<Persona[]>('Consultar Monitores', null))
     );
   }
+
+  getPersonas(): Observable<Persona[]> {
+    return this.http.get<Persona[]>(this.baseUrl + 'api/PersonaConsulta').pipe(
+      tap(_ => this.handleErrorService.log('Datos')),
+      catchError(this.handleErrorService.handleError<Persona[]>('Consultar Personas', null))
+    );
+  }
 }

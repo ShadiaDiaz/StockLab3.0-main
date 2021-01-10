@@ -89,6 +89,26 @@ namespace Datos.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Chats",
+                columns: table => new
+                {
+                    Codigo = table.Column<string>(type: "varchar(5)", nullable: false),
+                    Mensaje = table.Column<string>(nullable: true),
+                    IdPersona = table.Column<string>(type: "varchar(13)", nullable: true),
+                    Admi = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Chats", x => x.Codigo);
+                    table.ForeignKey(
+                        name: "FK_Chats_Personas_IdPersona",
+                        column: x => x.IdPersona,
+                        principalTable: "Personas",
+                        principalColumn: "Identificacion",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Solicitudes",
                 columns: table => new
                 {
@@ -96,7 +116,6 @@ namespace Datos.Migrations
                     Fecha = table.Column<DateTime>(type: "datetime", nullable: false),
                     FechaEntrega = table.Column<string>(type: "varchar(20)", nullable: true),
                     Estado = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
-                    Hora = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
                     Monitor = table.Column<string>(type: "varchar(13)", maxLength: 15, nullable: false),
                     CantidadInsumos = table.Column<int>(type: "int", nullable: false),
                     CodigoAsignatura = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
@@ -155,6 +174,11 @@ namespace Datos.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Chats_IdPersona",
+                table: "Chats",
+                column: "IdPersona");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DetalleInsumo_CodigoInsumo",
                 table: "DetalleInsumo",
                 column: "CodigoInsumo");
@@ -187,6 +211,9 @@ namespace Datos.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Chats");
+
             migrationBuilder.DropTable(
                 name: "DetalleInsumo");
 

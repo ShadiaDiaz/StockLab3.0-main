@@ -18,6 +18,7 @@ import { PeriodoRegistroComponent } from './stocklab/periodo-registro/periodo-re
 
 import { combineLatest } from 'rxjs';
 import { AuthGuard } from './services/guard/auth.guard'; 
+import { ChatComponent } from './chat/chat.component';
 
 const routes : Routes = [
   { path: 'ConsultaInsumos', component: ConsultaInsumosComponent, canActivate: [AuthGuard] },
@@ -31,7 +32,8 @@ const routes : Routes = [
   { path: 'SolicitudIndividual/:numero', component: SolicitudIndividualComponent, canActivate: [AuthGuard] },
   { path: 'ConsultaSolicitudes', component: ConsultaSolicitudesComponent, canActivate: [AuthGuard]},
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard]},
-  { path: 'periodoRegistro', component: PeriodoRegistroComponent, canActivate: [AuthGuard]}
+  { path: 'periodoRegistro', component: PeriodoRegistroComponent, canActivate: [AuthGuard]},
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]}
 
 
   

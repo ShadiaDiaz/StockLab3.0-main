@@ -36,6 +36,7 @@ import { ConsultaSolicitudesComponent } from './stocklab/consulta-solicitudes/co
 import { ActualizarCantidadInsumoModalComponent } from './@base/modal/actualizar-cantidad-insumo-modal/actualizar-cantidad-insumo-modal.component';
 import { PeriodoRegistroComponent } from './stocklab/periodo-registro/periodo-registro.component';
 import { FitroEstadoSolicitudPipe } from './pipe/fitro-estado-solicitud.pipe';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -67,6 +68,7 @@ import { FitroEstadoSolicitudPipe } from './pipe/fitro-estado-solicitud.pipe';
     ActualizarCantidadInsumoModalComponent,
     PeriodoRegistroComponent,
     FitroEstadoSolicitudPipe,
+    ChatComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

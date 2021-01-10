@@ -16,6 +16,7 @@ namespace Datos
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Solicitud> Solicitudes { get; set; }
         public DbSet<PeriodoAcademico> PeriodosAcademicos { get; set; }
+        public DbSet<Chat> Chats { get; set; }
         
         
         
@@ -39,6 +40,10 @@ namespace Datos
             modelBuilder.Entity<Solicitud>()
             .HasOne<PeriodoAcademico>().WithMany()
             .HasForeignKey(p => p.IdPeriodo);
+
+            modelBuilder.Entity<Chat>()
+            .HasOne<Persona>().WithMany()
+            .HasForeignKey(p => p.IdPersona);
         }
     }
 }
