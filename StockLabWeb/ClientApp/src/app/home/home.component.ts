@@ -242,5 +242,9 @@ export class HomeComponent {
     });
   }
 
+  pdfPrueba(){
+    this.SolicitudService.pdf("semestre2");
+  }
+
 }
 

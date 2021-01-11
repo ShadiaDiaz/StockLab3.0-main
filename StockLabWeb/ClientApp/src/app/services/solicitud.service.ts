@@ -6,12 +6,15 @@ import { HandleHttpErrorService } from '../@base/handle-http-error.service';
 import { Solicitud } from '../stocklab/models/solicitud';
 import { Usuario } from '../stocklab/models/usuario';
 import * as singnalR from '@aspnet/signalr';
+import { saveAs } from 'file-saver';
 
 const httpOptionsPut = {
   headers: new HttpHeaders({
     "Content-Type": "application/json"
   }), responseType: "text",
 };
+
+
 
 
 const httpOptions = {
@@ -77,6 +80,14 @@ export class SolicitudService {
       catchError(this.handleErrorService.handleError<Solicitud>('Consulta Solicitud', null))
     );
   }
+
+  pdf(semestre: string) {
+    this.http.post(this.baseUrl + 'api/Pdf',semestre,  { responseType: 'arraybuffer' }).subscribe(function(data) {
+            var archivo= new Blob([data], { type: 'application/pdf' });
+            saveAs(archivo, 'NombreArchivo.pdf');
+      });
+  }
+
 
   put(solicitud: Solicitud): Observable<Solicitud>
   {

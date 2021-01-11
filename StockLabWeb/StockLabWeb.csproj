@@ -13,6 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="jsreport.AspNetCore" Version="2.1.0" />
+    <PackageReference Include="jsreport.Binary" Version="2.9.0" />
+    <PackageReference Include="jsreport.Local" Version="2.3.0" />
+    <PackageReference Include="jsreport.Types" Version="2.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
