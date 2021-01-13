@@ -54,6 +54,7 @@ export class HomeComponent {
     this.graficaAsignaturas();
     this.llenarAsignaturasGrafica();
     this.getInsumos();
+    console.log('a');
   }
 
 
@@ -240,6 +241,10 @@ export class HomeComponent {
     this.SolicitudService.put(solicitud).subscribe(result => {
       solicitud = result;
     });
+  }
+
+  pdfPrueba(){
+    this.SolicitudService.pdf("semestre2");
   }
 
 }

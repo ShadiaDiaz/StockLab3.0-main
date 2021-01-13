@@ -9,6 +9,7 @@ import { ModalComponent } from 'src/app/@base/modal/modal.component';
 import { LoginService } from 'src/app/services/login.service';
 
 
+
 @Component({
   selector: 'app-solicitud-individual',
   templateUrl: './solicitud-individual.component.html',
@@ -82,6 +83,10 @@ export class SolicitudIndividualComponent implements OnInit {
         this.Solicitud = result;
       }
     });
+  }
+
+  pdfSolicitud(){
+    this.solicitudService.pdf(this.Solicitud.numero);
   }
 
   
