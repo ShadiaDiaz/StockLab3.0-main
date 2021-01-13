@@ -81,10 +81,11 @@ export class SolicitudService {
     );
   }
 
-  pdf(semestre: string) {
-    this.http.post(this.baseUrl + 'api/Pdf',semestre,  { responseType: 'arraybuffer' }).subscribe(function(data) {
-            var archivo= new Blob([data], { type: 'application/pdf' });
-            saveAs(archivo, 'NombreArchivo.pdf');
+  pdf(numero: string) {
+    console.log('a');
+    this.http.get(this.baseUrl + 'api/Pdf/'+numero,  { responseType: 'arraybuffer'} ).subscribe(function(data) {
+            var archivo = new Blob([data], { type: 'application/pdf' });
+            saveAs(archivo, 'Solicitud.pdf');
       });
   }
 

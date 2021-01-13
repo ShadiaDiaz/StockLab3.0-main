@@ -54,6 +54,7 @@ export class HomeComponent {
     this.graficaAsignaturas();
     this.llenarAsignaturasGrafica();
     this.getInsumos();
+    console.log('a');
   }
 
 
