@@ -9,6 +9,5 @@ export class Chat {
 
     constructor(){
         this.mensaje = "";
-        
     }
 }

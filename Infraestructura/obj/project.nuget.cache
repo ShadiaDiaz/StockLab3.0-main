@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "smEn4nJ7WZTyYrDaSoU5nnq0va7Yyznxv+lKPfR3Hjr0JtJ+3zItwpvc69Yc5ZGgoRjQNy+Tm9f2+gdWA4/Dkw==",
+  "dgSpecHash": "sMa2CmZ0upU53A/re1zMGYWTsRyy0AwfFzdfOcPhQWwHOWbSO+nh+98Rt7MVw3SGdmQoWIvY7dW2dYtmCiVpwA==",
   "success": true,
   "projectFilePath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Infraestructura\\Infraestructura.csproj",
   "expectedPackageFiles": [
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\norma\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\norma\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\norma\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512"
   ],
   "logs": []

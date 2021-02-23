@@ -19,11 +19,11 @@ export class ChatComponent implements OnInit {
   mensajePersona: Chat[];
   mensaje: string;
   persona: Persona;
-  constructor(private router: Router, private chatService: ChatService, private personaService: PersonaService, private modalService: NgbModal, private loginService:LoginService) {
-    if(loginService.currentUserValue.tipo != 'Administrador'){
+  constructor(private router: Router, private chatService: ChatService, private personaService: PersonaService, private modalService: NgbModal, private loginService: LoginService) {
+    if (loginService.currentUserValue.tipo != 'Administrador') {
       this.router.navigate(['/chatUsuarios']);
     }
-   }
+  }
 
   ngOnInit(): void {
     this.mensajes = [];
@@ -35,13 +35,13 @@ export class ChatComponent implements OnInit {
     this.actualizarListaSignal();
   }
 
-  private actualizarListaSignal(){
+  private actualizarListaSignal() {
     this.chatService.signalRecived.subscribe((chat: Chat) => {
       this.mensajes.push(chat);
-      if(this.persona != undefined){
-        if(this.persona.identificacion == chat.idPersona){
+      if (this.persona != undefined) {
+        if (this.persona.identificacion == chat.idPersona) {
           this.getMensajes(chat.idPersona);
-          
+
           var index = this.personas.findIndex(p => p.identificacion == chat.idPersona);
           this.personas[index].mensaje = chat;
         }
@@ -49,39 +49,43 @@ export class ChatComponent implements OnInit {
     });
   }
 
-  get()
-  {
+  get() {
     this.personaService.getPersonas().subscribe(result => {
       this.personas = result;
     });
-    this.chatService.get().subscribe(resultt =>{
-      this.mensajes = resultt;
-      for (let index = 0; index < this.personas.length; index++) {
-        var result = resultt.filter(m => m.idPersona == this.personas[index].identificacion);
+    this.chatService.get().subscribe(resultt => {
+      if (resultt != null) {
+        this.mensajes = resultt;
+        for (let index = 0; index < this.personas.length; index++) {
+          var result = resultt.filter(m => m.idPersona == this.personas[index].identificacion);
 
-        this.personas[index].mensaje = result[result.length-1];
-        console.log(this.personas[index].mensaje);
+          if (result.length>0) {
+            this.personas[index].mensaje = result[result.length - 1];
+          }
+          else {
+            this.personas[index].mensaje = new Chat();
+          }
+        }
       }
     });
-    
+
   }
 
-  sendMensaje()
-  {
+  sendMensaje() {
     var mensaje = this.mensaje.trim();
-    if(mensaje == ""){
-        const messageBox = this.modalService.open(ModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
-        messageBox.componentInstance.cuerpo = 'No se puede enviar un mensaje Vacio. !!! :-)';
+    if (mensaje == "") {
+      const messageBox = this.modalService.open(ModalComponent)
+      messageBox.componentInstance.title = "Resultado Operación";
+      messageBox.componentInstance.cuerpo = 'No se puede enviar un mensaje Vacio. !!! :-)';
     }
-    else{
-      if(this.persona != undefined){
+    else {
+      if (this.persona != undefined) {
         var chat = new Chat();
         chat.admin = "si";
         chat.idPersona = this.persona.identificacion;
         chat.mensaje = mensaje;
         this.chatService.post(chat).subscribe(result => {
-          if(result != null){
+          if (result != null) {
             const messageBox = this.modalService.open(ModalComponent)
             messageBox.componentInstance.title = "Resultado Operación";
             messageBox.componentInstance.cuerpo = 'Mensaje Enviado. !!! :-)';
@@ -89,24 +93,31 @@ export class ChatComponent implements OnInit {
           }
         });
       }
-      else{
-            const messageBox = this.modalService.open(ModalComponent)
-            messageBox.componentInstance.title = "Resultado Operación";
-            messageBox.componentInstance.cuerpo = 'Seleccionar el chat. !!! :-)';
+      else {
+        const messageBox = this.modalService.open(ModalComponent)
+        messageBox.componentInstance.title = "Resultado Operación";
+        messageBox.componentInstance.cuerpo = 'Seleccionar el chat. !!! :-)';
       }
     }
   }
 
-  getMensajes(codigo: string)
-  {
+  getMensajes(codigo: string) {
     this.mensajePersona = [];
-    this.persona = new Persona();
+    this.personaService.get(codigo).subscribe(result =>{
+      if(result != null){
+        this.persona = result;
+      }
+      else{
+        this.persona = new Persona();
+      }
+    });
+    
+    
     this.mensajes.forEach(element => {
-      if(element.idPersona == codigo)
-      {
+      if (element.idPersona == codigo) {
         this.mensajePersona.push(element);
         this.persona = element.persona;
-      } 
+      }
     });
   }
 
