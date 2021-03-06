@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/70d1b161-99a4-4f20-a0e4-16b6851970e0/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/StockLabWeb",
+    "appService.deploySubpath": "StockLabWeb\\publish"
+}

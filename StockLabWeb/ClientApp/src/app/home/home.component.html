@@ -1,0 +1,92 @@
+<div class="container-home">
+    <div class="wrap-home">
+        <div class="main-content">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    
+                    <div class="col-md-6">
+                        <div *ngIf="usuario.tipo != 'Docente'">
+                            <div class="card">
+                                <div class="card-header card-header-danger">
+                                    <h4 class="card-title">Alerta de Insumos</h4>
+                                    <p class="card-category">Insumos con stock bajo</p>
+                                </div>
+                                <div class="card-body">
+                                    <div *ngIf="usuario.tipo != 'Docente'">
+                                        <div *ngFor="let insumo of Insumos;index as i">
+                                            <div
+                                                *ngIf="(insumo.cantidad < (insumo.stockMinimo+50) && insumo.cantidad > insumo.stockMinimo) || insumo.cantidad < insumo.stockMinimo">
+                                                <p><b>Nombre:</b> {{insumo.descripcion}} <b>Stock:</b> {{insumo.cantidad}}</p>
+                                            </div>
+                                        </div>
+                                        <a [routerLink]="['/ConsultaInsumos']">Ver Insumos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-warning">
+                                <h4 class="card-title">Nuevas Solicitudes</h4>
+                                <p class="card-category">Solicitudes Pendientes</p>
+                            </div>
+                            <div class="card-body">
+                                <div *ngIf="usuario.tipo != 'Docente'">
+                                    <div *ngFor="let solicitud of solicitudes;index as i">
+                                        <div
+                                            *ngIf="solicitud.estado != 'leido' && solicitud.estado != 'Aprobado' && solicitud.estado != 'Rechazado' && usuario.tipo != 'Docente'">
+                                                <p> <b> Docente:</b> {{solicitud.persona.nombre}} <b>Cantidad:</b> {{solicitud.cantidadinsumos}} <b>Estado:</b> {{solicitud.estado}}</p>
+                                        </div>
+                                    </div>
+                                    <a [routerLink]="['/ConsultaSolicitudes']">Ver Solicitudes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-8">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h5 class="card-category">Insumos Pedidos</h5>
+                                <h4 class="card-title">Insumos mas pedidos</h4>
+
+                            </div>
+                            <div class="card-body">
+                                <canvas id="myChart" width="450" height="250"></canvas>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-8">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h5 class="card-category">Asignaturas</h5>
+                                <h4 class="card-title">Asignaturas Solicitadas</h4>
+
+                            </div>
+                            <div class="card-body">
+                                <canvas id="myChart2" width="300" height="150"></canvas>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

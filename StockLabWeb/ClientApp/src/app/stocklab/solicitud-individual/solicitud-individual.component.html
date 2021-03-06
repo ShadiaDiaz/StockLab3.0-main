@@ -1,0 +1,101 @@
+<div class="container-SolicitudIndividual">
+    <div class="wrap-SolicitudIndividual">
+        <div class="container">
+            <div>
+                <form>
+                    <header style="text-align: center;">
+                        <h1>Consulta de solicitud</h1>
+                    </header>
+    
+                    <div class="card">
+                        <table class="table table-striped table-bordered table-sm" >
+                            <tbody>
+                                <tr>
+                                    <td >ID</td>
+                                    <td >{{Solicitud.persona.identificacion}}</td>
+                                </tr>
+    
+                                <tr>
+                                    <td   >Docente</td>
+                                    <td   >{{Solicitud.persona.nombre +" "+ Solicitud.persona.apellidos}}</td>
+                                </tr>
+    
+                                <tr>
+                                    <td   >Estado</td>
+                                    <div *ngIf="Solicitud.estado == 'Activo' || Solicitud.estado == 'leido';else esta">
+                                        <td   >Pendiente</td>
+                                    </div>
+                                    <ng-template #esta>
+                                        <div>
+                                            <td    >{{Solicitud.estado}}</td>
+                                        </div>
+                                    </ng-template>
+                                </tr>
+    
+                                <tr>
+                                    <td   >Periodo Academico</td>
+                                    <td   >{{Solicitud.periodoAcademico.periodo + "-" + Solicitud.periodoAcademico.corte}}</td>
+                                </tr>
+    
+                                <tr>
+                                    <td   >Asignatura</td>
+                                    <td   >{{Solicitud.asignatura.nombre}}</td>
+                                </tr>
+    
+                                <tr>
+                                    <td   >Monitor</td>
+                                    <td  >{{Solicitud.monitor}}</td>
+                                </tr>
+                                    
+                                <tr>
+                                    <td  >Cantidad Insumos</td>
+                                    <td  >{{Solicitud.cantidadinsumos}}</td>
+                                </tr>
+                                <tr>
+                                    <td   >Fecha y hora Solicitud</td>
+                                    <td   >{{Solicitud.fechaSolicitud}}</td>
+                                </tr>
+                                <tr>
+                                    <td   >Fecha y Hora entrega</td>
+                                    <td   >{{Solicitud.fecha}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Items</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let detalle of Solicitud.detalles; index as i">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{detalle.insumo.item}}</td>
+                                <td>{{detalle.insumo.descripcion}}</td>
+                                <td>{{detalle.insumo.marca}}</td>
+                                <td>{{detalle.cantidad}}</td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                    <div *ngIf="usuario.tipo != 'Docente' && (Solicitud.estado=='leido' || Solicitud.estado=='Activo')"
+                        class="text-center">
+                        <button class="btn btn-success mr-1" (click)="AprobarSolicitud()">Aprobar</button>
+                        <button class="btn btn-danger" (click)="rechazarSolicitud()"
+                            >Rechazar</button>
+                    </div>
+                    <div>
+                        <img src="../../assets/images/pdf.png">
+                        <button (click)="pdfSolicitud()">Prueba</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

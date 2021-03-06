@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "NEETjWzvYQaNxR1JqVogmR6+LrUWQjvota620+6bu9D0P9bc2yk5aTlRJhXA4xdCkrq1P02hyqBAJDwIokRL1A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\norma\\Documents\\GitHub\\StockLab3.0-main\\Entity\\Entity.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\norma\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\norma\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\norma\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

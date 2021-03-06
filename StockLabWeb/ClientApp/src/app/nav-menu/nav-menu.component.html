@@ -1,0 +1,55 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+                <button type="button" class="navbar-toggler">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </button>
+            </div>
+            <a class="navbar-brand" [routerLink]="['/']">StockLab</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/perfil']">
+                        <i class="now-ui-icons users_single-02"></i>
+                        <p>
+                            <span class="d-lg-none d-md-block">Account</span>
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a (click)="Logout()" class="nav-link" [routerLink]="['/InicioSesion']">
+                        <i class="now-ui-icons">
+                            <img src="../../assets/images/salida.png">
+                        </i>
+                        <p>
+                            <span class="d-lg-none d-md-block">Logout</span>
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a [routerLink]="['/chat']">
+                        <i class="now-ui-icons">
+                            <img src="../../assets/images/charla.png">
+                        </i>
+                        <p>
+                            Chat
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

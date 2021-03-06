@@ -1,0 +1,84 @@
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+		<div class="col-md-4 bg-white ">
+            <div class=" row border-bottom padding-sm" style="height: 40px;">
+            	Member
+            </div>
+            
+            <!-- =============================================================== -->
+            <!-- member list -->
+            <ul class="friend-list">
+                <div *ngFor="let chat of personas">
+					<li class="active bounceInDown">
+						<a (click)="getMensajes(chat.identificacion)" class="clearfix">
+							<img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+							<div class="friend-name">	
+								<strong>{{chat.nombre}} {{chat.apellidos}}</strong>
+							</div>
+							<div class="last-message text-muted">{{chat.mensaje.mensaje}}</div>
+						</a>
+					</li>
+				</div>
+                                 
+            </ul>
+		</div>
+        
+        <!--=========================================================-->
+        <!-- selected chat -->
+    	<div class="col-md-8 bg-white ">
+            <div class="chat-message">
+                <ul class="chat">
+					<div *ngFor="let mensaje of mensajePersona">
+						<div *ngIf="mensajePersona.length>0">
+							<div *ngIf="mensaje.admin=='no'">
+								<li class="left clearfix">
+									<span class="chat-img pull-left">
+										<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
+									</span>
+									<div class="chat-body clearfix">
+										<div class="header">
+											<strong class="primary-font">{{mensaje.persona.nombre}} {{mensaje.persona.apellidos}}</strong>
+										</div>
+										<p>
+											{{mensaje.mensaje}}
+										</p>
+									</div>
+								</li>
+							</div>
+	
+							<div *ngIf="mensaje.admin=='si'">
+								<li class="right clearfix">
+									<span class="chat-img pull-right">
+										<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
+									</span>
+									<div class="chat-body clearfix">
+										<div class="header">
+											<strong class="primary-font">Tú</strong>
+											
+										</div>
+										<p>
+											{{mensaje.mensaje}} 
+										</p>
+									</div>
+								</li>
+							</div>
+						</div>
+
+					</div>
+
+					
+                    
+                                   
+                </ul>
+            </div>
+            <div class="chat-box bg-white">
+            	<div class="input-group">
+            		<input class="form-control border no-shadow no-rounded" [(ngModel)]="mensaje" placeholder="Type your message here">
+            		<span class="input-group-btn">
+            			<button (click)="sendMensaje()" class="btn btn-success no-rounded" type="button">Send</button>
+            		</span>
+            	</div><!-- /input-group -->	
+            </div>            
+		</div>        
+	</div>
+</div>

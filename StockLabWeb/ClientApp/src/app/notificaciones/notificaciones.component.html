@@ -1,0 +1,15 @@
+<div class="container-notificaciones">
+    <h1>Solicitudes Pendientes</h1>
+    <div class="card-deck">
+        <div *ngFor="let solicitud of solicitudes;index as i">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Solicitud</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"># {{solicitud.numero}}</h6>
+                    <p class="card-text">Fecha: {{solicitud.fechaSolicitud}}</p>
+                    <a routerLink='/SolicitudIndividual/{{solicitud.numero}}' class="card-link">Ver Solicitud</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

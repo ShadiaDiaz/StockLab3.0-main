@@ -1,0 +1,154 @@
+<div class="container-registroDocente">
+    <div class="wrap-registroDocente">
+        <div class="container form-group">
+            <div class="row">
+                <div class="col-lg-14 col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-warning">
+                            <h4 class="card-title">Registro Usuario</h4>
+                            <p class="card-category">StockLab</p>
+                        </div>
+
+                        <div class="card-body col-md-10">
+                            <div class="offset-md-1">
+                                <form autocomplete="off" [formGroup]="formGroup" class="form-horizontal">
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label>Identificacion</label>
+                                            <input type="text"
+                                                [ngClass]="{'is-invalid': control.identificacion.errors && control.identificacion.touched}"
+                                                formControlName="identificacion" placeholder="ej: 1592551457"
+                                                name="Identificacion" class="form-control" />
+                                            <div *ngIf="control.identificacion.errors" class="invalid-feedback">
+                                                <div *ngIf="control.identificacion.errors.required">Se requiere la
+                                                    identificacion</div>
+                                                <div *ngIf="control.identificacion.errors.maxlength">Caracteres mayores a 13
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col">
+                                            <label>Nombre</label>
+                                            <input type="text"
+                                                [ngClass]="{'is-invalid': control.nombre.errors && control.nombre.touched}"
+                                                formControlName="nombre" placeholder="ej: Shadia" name="nombre"
+                                                class="form-control" />
+                                            <div *ngIf="control.nombre.errors" class="invalid-feedback">
+                                                <div *ngIf="control.nombre.errors.required">Se requiere el nombre</div>
+                                                <div *ngIf="control.nombre.errors.maxlength">Caracteres mayores a 25</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label>Apellidos</label>
+                                            <input type="text"
+                                                [ngClass]="{'is-invalid': control.apellidos.errors && control.apellidos.touched}"
+                                                formControlName="apellidos" placeholder="ej: Duarte" name="apellidos"
+                                                class="form-control" />
+                                            <div *ngIf="control.apellidos.errors" class="invalid-feedback">
+                                                <div *ngIf="control.apellidos.errors.required">Se requiere el apellido</div>
+                                                <div *ngIf="control.apellidos.errors.maxlength">Caracteres mayores a 25
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col">
+                                            <label>Edad</label>
+                                            <input type="number"
+                                                [ngClass]="{'is-invalid': control.edad.errors && control.edad.touched}"
+                                                formControlName="edad" placeholder="ej: 25" name="edad"
+                                                class="form-control" />
+                                            <div *ngIf="control.edad.errors" class="invalid-feedback">
+                                                <div *ngIf="control.edad.errors.required">Se requiere la edad</div>
+                                                <div *ngIf="control.edad.errors.validEdad">
+                                                    {{control.edad.errors.messageEdad}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label>sexo</label>
+                                            <select class="form-control"
+                                                [ngClass]="{'is-invalid': control.sexo.errors && control.sexo.touched}"
+                                                formControlName="sexo" name="sexo" id="sexo">
+                                                <option selected> Seleccionar</option>
+                                                <option>Femenino</option>
+                                                <option>Masculino</option>
+                                            </select>
+                                            ​<div *ngIf="control.sexo.errors" class="invalid-feedback">
+                                                <div *ngIf="control.sexo.errors.required">Se requiere el sexo</div>
+                                                <div *ngIf="control.sexo.errors.maxlength">Caracteres mayores a 11</div>
+                                                <div *ngIf="control.sexo.errors.validSexo">
+                                                    {{control.sexo.errors.messageSexo}}</div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col">
+                                            <label>Correo</label>
+    
+                                            <input type="text"
+                                                [ngClass]="{'is-invalid': control.correo.errors && control.correo.touched}"
+                                                formControlName="correo" name="Correo"
+                                                placeholder="ej: labortorio@unicesar.edu.co" class="form-control" />
+    
+                                            ​<div *ngIf="control.correo.errors" class="invalid-feedback">
+                                                <div *ngIf="control.correo.errors.required">Se requiere un correo valido
+                                                </div>
+                                                <div *ngIf="control.correo.errors?.pattern">Correo invalido</div>
+                                                <div *ngIf="control.correo.errors.maxlength">Caracteres mayores a 30</div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label>Contraseña</label>
+                                            <input type="text"
+                                                [ngClass]="{'is-invalid': control.password.errors && control.password.touched}"
+                                                formControlName="password" name="password" class="form-control" />
+                                            <div *ngIf="control.password.errors" class="invalid-feedback">
+                                                <div *ngIf="control.password.errors.required">Se requiere una contraseña
+                                                    valida</div>
+                                                <div *ngIf="control.password.errors?.pattern">Contraseña invalida</div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col">
+                                            <label>Tipo Usuario</label>
+                                            <select class="form-control"
+                                                [ngClass]="{'is-invalid': control.tipo.errors && control.tipo.touched}"
+                                                formControlName="tipo" name="tipo" id="tipo">
+                                                <option selected>Seleccionar</option>
+                                                <option>Docente</option>
+                                                <option>Monitor</option>
+                                                <option>Coordinador</option>
+                                            </select>
+                                            <div *ngIf="control.tipo.errors" class="invalid-feedback">
+                                                <div *ngIf="control.tipo.errors.required">Seleccione un tipo de usuario
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="padding-bottom: 50px;">
+
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-success mr-1" (click)="onSubmit()"
+                                            [disabled]="formGroup.invalid">Register</button>
+                                        <button class="btn btn-danger" type="reset">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

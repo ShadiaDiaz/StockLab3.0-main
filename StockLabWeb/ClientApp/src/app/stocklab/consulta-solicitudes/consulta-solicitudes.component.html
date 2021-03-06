@@ -1,0 +1,70 @@
+<div class="container-ConsultarSolicitud">
+    <div class="wrap-ConsultarSolicitud">
+        <div class="col-lg-14 col-md-12">
+
+            <form>
+                <div class="form-group  row col-md-4">
+                    <label>Filtrar por Estado</label>
+                    <select name="searchText" class="form-control ml-2" [(ngModel)]="searchText">
+                        <option value="Activo" selected>Pendiente</option>
+                        <option value="Aprobado">Aprobado</option>
+                        <option value="Rechazado">Rechazado</option>
+                    </select>
+                </div>
+            </form>
+
+            <div class="card">
+                <div class="card-header card-header-warning">
+                    <h4 class="card-title">Consultar Solicitudes</h4>
+                    <p class="card-category">StockLab</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-warning">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Docente</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Ver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let solicitud of solicitudes |fitroEstadoSolicitud: searchText |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;index as i">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{solicitud.numero}}</td>
+                                <td>{{solicitud.persona.nombre}}</td>
+                                <div *ngIf="solicitud.estado == 'Aprobado' || solicitud.estado == 'Rechazado';else pend">
+                                    <td>{{solicitud.estado}}</td>
+                                </div>
+                                <ng-template #pend>
+                                    <div>
+                                        <td>Pendiente</td>
+                                    </div>
+                                </ng-template>
+                                <td>{{solicitud.fechaSolicitud}}</td>
+                                <td>
+                                    <div class="form-group row">
+                                            <img src="../../assets/images/testigo.png">
+                                            <a routerLink='/SolicitudIndividual/{{solicitud.numero}}'
+                                            class="card-link">Ver</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                    <div class="d-flex justify-content-between p-2">
+                        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="solicitudes.length"></ngb-pagination>
+                        <select style="width: auto" [(ngModel)]="pageSize">
+                            <option selected value="5">5 items for page</option>
+                            <option value="10">10 items for page</option>
+                            <option value="20">20 items for page</option>
+                            <option value="50">50 items for page</option></select>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

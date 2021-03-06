@@ -1,0 +1,63 @@
+<div>
+    <div class="modal-header">
+        <div>
+            <div class="container form-group">
+
+                <div class="row">
+                    <div class="col-md-8 offset-md-3">
+                        <h2>Actualizar Stocks</h2>
+
+
+                        <form>
+                            <div class="form-group">​
+
+                                <label>Descripcion</label>​
+
+                                <input type="text" value="{{insumo.descripcion}}" disabled name="Descripcion"  />​
+                            </div>
+
+
+                            <div class="form-group">​
+                                <label>Marca</label>​
+                                <input type="text" value="{{insumo.marca}}"  name="marca" disabled />​
+                            </div>
+
+
+
+                        </form>
+                        <form autocomplete="off" [formGroup]="formGroup">
+                            <div class="form-group">​
+
+                                <label>Cantidad De Insumo</label>​
+                                <input type="number"
+                                    [ngClass]="{'is-invalid': control.cantidad.errors && control.cantidad.touched}"
+                                    formControlName="cantidad" name="cantidad" />
+
+                                ​<div *ngIf="control.cantidad.errors" class="invalid-feedback">
+                                    <div *ngIf="control.cantidad.errors.required">Se requiere la cantidad</div>
+                                    <div *ngIf="control.cantidad.errors.validCantidad">
+                                        {{control.cantidad.errors.messageCantidad}}</div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button class="btn btn-success mr-1" [disabled]="formGroup.invalid" (click)="onSubmit()"
+                                    >Actualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button type="button" class="close btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</div>
