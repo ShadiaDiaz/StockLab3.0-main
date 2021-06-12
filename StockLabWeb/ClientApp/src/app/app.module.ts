@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -11,7 +12,6 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { PersonaSolicitudInsumosComponent } from './stocklab/persona-solicitud-insumos/persona-solicitud-insumos.component';
 import { GestionSolicitudesComponent } from './stocklab/gestion-solicitudes/gestion-solicitudes.component';
 import { RegistroInsumosComponent } from './stocklab/registro-insumos/registro-insumos.component';
 import { ConsultaInsumosComponent } from './stocklab/consulta-insumos/consulta-insumos.component';
@@ -39,6 +39,11 @@ import { FitroEstadoSolicitudPipe } from './pipe/fitro-estado-solicitud.pipe';
 import { ChatComponent } from './chat/chat.component';
 import { ChatClienteComponent } from './chat-cliente/chat-cliente.component';
 
+import {ChartModule} from 'primeng/chart';
+import {SidebarModule} from 'primeng/sidebar';
+import {ButtonModule} from 'primeng/button';
+import {SlideMenuModule} from 'primeng/slidemenu';
+
 
 
 @NgModule({
@@ -48,7 +53,6 @@ import { ChatClienteComponent } from './chat-cliente/chat-cliente.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    PersonaSolicitudInsumosComponent,
     GestionSolicitudesComponent,
     RegistroInsumosComponent,
     ConsultaInsumosComponent,
@@ -71,6 +75,7 @@ import { ChatClienteComponent } from './chat-cliente/chat-cliente.component';
     FitroEstadoSolicitudPipe,
     ChatComponent,
     ChatClienteComponent,
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -83,7 +88,12 @@ import { ChatClienteComponent } from './chat-cliente/chat-cliente.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ]),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ChartModule,
+    SidebarModule,
+    ButtonModule,
+    SlideMenuModule
   ],
   providers: [LoginService, AsignaturaService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

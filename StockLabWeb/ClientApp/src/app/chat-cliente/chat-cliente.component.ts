@@ -14,11 +14,11 @@ import { Chat } from '../stocklab/models/chat';
 export class ChatClienteComponent implements OnInit {
   mensajes: Chat[];
   mensaje: string;
-  constructor(private modalService: NgbModal,private loginService: LoginService, private router: Router, private chatService: ChatService) 
-  {
-    if(this.loginService.currentUserValue.tipo=="Administrador"){
+  // tslint:disable-next-line:max-line-length
+  constructor(private modalService: NgbModal, private loginService: LoginService, private router: Router, private chatService: ChatService) {
+    /* if(this.loginService.currentUserValue.tipo=="Administrador"){
       this.router.navigate(['/']);
-    }
+    } */
   }
 
   ngOnInit(): void {
@@ -27,45 +27,44 @@ export class ChatClienteComponent implements OnInit {
     this.actualizarListaSignal();
   }
 
-  private actualizarListaSignal(){
-    var usuario = this.loginService.currentUserValue;
+  private actualizarListaSignal() {
+    const usuario = this.loginService.currentUserValue;
     this.chatService.signalRecived.subscribe((chat: Chat) => {
-      if(chat.idPersona == usuario.idPersona){
+      if (chat.idPersona === usuario.idPersona) {
         this.mensajes.push(chat);
       }
     });
   }
 
-  get(){
-    var usuario = this.loginService.currentUserValue;
+  get() {
+    const usuario = this.loginService.currentUserValue;
     this.chatService.get().subscribe(result => {
-      result.forEach(element =>{
-        if(element.idPersona == usuario.idPersona){
+      result.forEach(element => {
+        if (element.idPersona === usuario.idPersona) {
           this.mensajes.push(element);
         }
       });
     });
   }
 
-  sendMensaje(){
-    var usuario = this.loginService.currentUserValue;
-    var mensaje = this.mensaje.trim();
-    if(mensaje == ""){
-        const messageBox = this.modalService.open(ModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
+  sendMensaje() {
+    const usuario = this.loginService.currentUserValue;
+    const mensaje = this.mensaje.trim();
+    if (mensaje === '') {
+        const messageBox = this.modalService.open(ModalComponent);
+        messageBox.componentInstance.title = 'Resultado Operación';
         messageBox.componentInstance.cuerpo = 'No se puede enviar un mensaje Vacio. !!! :-)';
-    }
-    else{
-        var chat = new Chat();
-        chat.admin = "no";
+    } else {
+        const chat = new Chat();
+        chat.admin = 'no';
         chat.idPersona = usuario.idPersona;
         chat.mensaje = mensaje;
         this.chatService.post(chat).subscribe(result => {
-          if(result != null){
-            const messageBox = this.modalService.open(ModalComponent)
-            messageBox.componentInstance.title = "Resultado Operación";
+          if (result != null) {
+            const messageBox = this.modalService.open(ModalComponent);
+            messageBox.componentInstance.title = 'Resultado Operación';
             messageBox.componentInstance.cuerpo = 'Mensaje Enviado. !!! :-)';
-            this.mensaje = "";
+            this.mensaje = '';
           }
         });
     }

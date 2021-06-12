@@ -13,7 +13,7 @@ export class ConsultaSolicitudesComponent implements OnInit {
   solicitudes: Solicitud[];
   usuario: Usuario;
   page = 1;
-  pageSize =5;
+  pageSize = 5;
   constructor(private service: SolicitudService) { }
 
   ngOnInit(): void {
@@ -24,35 +24,30 @@ export class ConsultaSolicitudesComponent implements OnInit {
     this.actualizarListaSignal();
   }
 
-  private actualizarListaSignal(){
+  private actualizarListaSignal() {
     this.service.signalRecived.subscribe((solicitud: Solicitud) => {
       this.solicitudes.push(solicitud);
     });
   }
 
   llenarUsuario() {
-    var lista = JSON.parse(sessionStorage.getItem('login'));
+    const lista = JSON.parse(sessionStorage.getItem('login'));
     if (lista != null) {
       this.usuario = lista;
     }
   }
 
-  get()
-  {
+  get() {
     this.solicitudes = [];
     this.service.gets().subscribe(result => {
-      if(this.usuario.tipo!="Docente")
-      {
+      if (this.usuario.idRole !== 1) {
         this.solicitudes = result;
         console.log(result);
-      }
-      else
-      {
+      } else {
         for (let index = 0; index < result.length; index++) {
-          if(result[index].persona.identificacion == this.usuario.idPersona)
-          {
+          if (result[index].persona.identificacion === this.usuario.idPersona) {
             this.solicitudes.push(result[index]);
-          } 
+          }
         }
       }
     });

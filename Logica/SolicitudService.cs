@@ -19,11 +19,8 @@ namespace Logica
         {
             try
             {
-                int total = _context.Solicitudes.ToList().Count;
-                solicitud.Numero = (total + 1).ToString();
-                int suma = solicitud.Detalles.Sum(c => c.Cantidad);
-                solicitud.CantidadInsumos = suma;
-                
+                solicitud.Numero = (_context.Solicitudes.ToList().Count + 1).ToString();
+                solicitud.CantidadInsumos = solicitud.Detalles.Sum(c => c.Cantidad);              
                 solicitud.IdPeriodo = _context.PeriodosAcademicos.ToList().Max(d => d.Codigo);
                 var insumos = _context.Insumos.ToList();
                 foreach (var item in solicitud.Detalles)
@@ -31,12 +28,9 @@ namespace Logica
                     item.NumeroDetalle += solicitud.Numero;
                     foreach (var item2 in insumos)
                     {
-                        if (item.CodigoInsumo == item2.Item)
+                        if ((item.CodigoInsumo == item2.Item) && (item.Cantidad > item2.Cantidad))
                         {
-                            if (item.Cantidad > item2.Cantidad)
-                            {
-                                return new GuardarSolicitudResponse("Cantidad Insuficiente");
-                            }
+                            return new GuardarSolicitudResponse("Cantidad Insuficiente");
                         }
                     }
                 }
@@ -77,23 +71,20 @@ namespace Logica
         {
             try
             {
-                var solicitudesresponse = _context.Solicitudes.Include(d => d.Detalles).ToList();
-                var solicitudresponse = solicitudesresponse.Find(s => s.Numero == numero);
-                if (solicitudresponse != null)
-                {
-                    solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
-                    solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
-                    solicitudresponse.PeriodoAcademico = _context.PeriodosAcademicos.Find(solicitudresponse.IdPeriodo);
-                    foreach (var item in solicitudresponse.Detalles)
-                    {
-                        item.Insumo = _context.Insumos.Find(item.CodigoInsumo);
-                    }
-                    return new BuscarSolicitudResponse(solicitudresponse);
-                }
-                else
+                var solicitudresponse = _context.Solicitudes.Include(d => d.Detalles).ToList()
+                .Find(s => s.Numero == numero);
+                if (solicitudresponse == null)
                 {
                     return new BuscarSolicitudResponse($"No existe");
                 }
+                solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
+                solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
+                solicitudresponse.PeriodoAcademico = _context.PeriodosAcademicos.Find(solicitudresponse.IdPeriodo);
+                foreach (var item in solicitudresponse.Detalles)
+                {
+                    item.Insumo = _context.Insumos.Find(item.CodigoInsumo);
+                }
+                return new BuscarSolicitudResponse(solicitudresponse);
             }
             catch (Exception e)
             {
@@ -105,32 +96,27 @@ namespace Logica
         {
             try
             {
-                var solicitudesresponse = _context.Solicitudes.Include(d => d.Detalles).ToList();
-                var solicitudresponse = solicitudesresponse.Find(s => s.Numero == numero);
-                if (solicitudresponse != null)
+                var solicitudresponse = _context.Solicitudes.Include(d => d.Detalles).ToList()
+                .Find(s => s.Numero == numero);
+                if (solicitudresponse == null)
                 {
-                    solicitudresponse.Estado = estado;
-                    solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
-                    solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
-                    solicitudresponse.PeriodoAcademico = _context.PeriodosAcademicos.Find(solicitudresponse.IdPeriodo);
-
-                    foreach (var item in solicitudresponse.Detalles)
-                    {
-                        item.Insumo = _context.Insumos.Find(item.CodigoInsumo);
-                    }
-
-                    _context.Solicitudes.Update(solicitudresponse);
-                    _context.SaveChanges();
-                    return new ActualizarSolicitudResponse(solicitudresponse);
+                    return new ActualizarSolicitudResponse("La solicitud No existe", "No existe", System.Net.HttpStatusCode.NotFound);
                 }
-                else
+                solicitudresponse.Estado = estado;
+                solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
+                solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
+                solicitudresponse.PeriodoAcademico = _context.PeriodosAcademicos.Find(solicitudresponse.IdPeriodo);
+                foreach (var item in solicitudresponse.Detalles)
                 {
-                    return new ActualizarSolicitudResponse("La solicitud No existe", "No existe");
+                    item.Insumo = _context.Insumos.Find(item.CodigoInsumo);
                 }
+                _context.Solicitudes.Update(solicitudresponse);
+                _context.SaveChanges();
+                return new ActualizarSolicitudResponse(solicitudresponse, System.Net.HttpStatusCode.OK);
             }
             catch (Exception e)
             {
-                return new ActualizarSolicitudResponse($"Error: {e.Message}", "Error Aplicacion");
+                return new ActualizarSolicitudResponse($"Error: {e.Message}", "Error Aplicacion", System.Net.HttpStatusCode.ServiceUnavailable);
             }
         }
 
@@ -143,62 +129,59 @@ namespace Logica
                 var insumos = _context.Insumos.ToList();
                 if (solicitudresponse != null)
                 {
-                    solicitudresponse.Estado = "Aprobado";
-                    solicitudresponse.FechaEntrega = DateTime.Now.ToShortDateString();
-                    solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
-                    solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
-                    solicitudresponse.PeriodoAcademico = _context.PeriodosAcademicos.Find(solicitudresponse.IdPeriodo);
-                    foreach (var item in solicitudresponse.Detalles)
+                    return new ActualizarSolicitudResponse("No exsite la solicitud", "No existe", System.Net.HttpStatusCode.NotFound);
+                }
+                solicitudresponse.Estado = "Aprobado";
+                solicitudresponse.FechaEntrega = DateTime.Now.ToShortDateString();
+                solicitudresponse.Asignatura = _context.Asignaturas.Find(solicitudresponse.CodigoAsignatura);
+                solicitudresponse.Persona = _context.Personas.Find(solicitudresponse.IdPersona);
+                solicitudresponse.PeriodoAcademico = _context.PeriodosAcademicos.Find(solicitudresponse.IdPeriodo);
+                foreach (var item in solicitudresponse.Detalles)
+                {
+                    foreach (var item2 in insumos)
                     {
-                        foreach (var item2 in insumos)
+                        if ((item.CodigoInsumo == item2.Item) && (item.Cantidad > item2.Cantidad))
                         {
-                            if (item.CodigoInsumo == item2.Item)
-                            {
-                                if (item.Cantidad > item2.Cantidad)
-                                {
-                                    return new ActualizarSolicitudResponse("Los insumos son insuficientes", "Insuficiente");
-                                }
-                                else
-                                {
-                                    item.Insumo = item2;
-                                    var responseInsumo = _context.Insumos.Find(item2.Item);
-                                    responseInsumo.Cantidad -= item.Cantidad;
-                                    _context.Insumos.Update(responseInsumo);
-                                }
-                            }
+                            return new ActualizarSolicitudResponse("Los insumos son insuficientes", "Insuficiente", System.Net.HttpStatusCode.NotAcceptable);
+                        }
+                        else if((item.CodigoInsumo == item2.Item) && (item.Cantidad < item2.Cantidad))
+                        {
+                            item.Insumo = item2;
+                            var responseInsumo = _context.Insumos.Find(item2.Item);
+                            responseInsumo.Cantidad -= item.Cantidad;
+                            _context.Insumos.Update(responseInsumo);
                         }
                     }
-                    _context.Solicitudes.Update(solicitudresponse);
-                    _context.SaveChanges();
-                    return new ActualizarSolicitudResponse(solicitudresponse);
                 }
-                else
-                {
-                    return new ActualizarSolicitudResponse("No exsite la solicitud", "No existe");
-                }
+                _context.Solicitudes.Update(solicitudresponse);
+                _context.SaveChanges();
+                return new ActualizarSolicitudResponse(solicitudresponse, System.Net.HttpStatusCode.OK);
             }
             catch (Exception e)
             {
-                return new ActualizarSolicitudResponse($"Error: {e.Message}", "Error Aplicacion");
+                return new ActualizarSolicitudResponse($"Error: {e.Message}", "Error Aplicacion", System.Net.HttpStatusCode.ServiceUnavailable);
             }
         }
 
         public class ActualizarSolicitudResponse
         {
-            public ActualizarSolicitudResponse(Solicitud solicitud)
+            public ActualizarSolicitudResponse(Solicitud solicitud, System.Net.HttpStatusCode status)
             {
                 Solicitud = solicitud;
                 Error = false;
+                Code = status;
             }
-            public ActualizarSolicitudResponse(string mensaje, string estado)
+            public ActualizarSolicitudResponse(string mensaje, string estado, System.Net.HttpStatusCode status)
             {
                 Error = true;
                 Mensaje = mensaje;
                 Estado = estado;
+                Code = status;
             }
             public string Estado { get; set; }
             public bool Error { get; set; }
             public string Mensaje { get; set; }
+            public System.Net.HttpStatusCode Code { get; set; }
             public Solicitud Solicitud { get; set; }
         }
 

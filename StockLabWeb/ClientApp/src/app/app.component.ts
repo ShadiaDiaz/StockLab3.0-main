@@ -1,24 +1,65 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Usuario } from './stocklab/models/usuario';
 import { LoginService } from './services/login.service';
+import { PrimeNGConfig } from 'primeng/api';
+import { MenuItem } from 'primeng/api';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   usuario: Usuario;
-  logg: boolean = false;
+  logg = false;
   title = 'app';
-  constructor(private loginservice: LoginService){
+  visibleSidebar1 = false;
+  items: MenuItem[] = [];
+  itemsMenu: MenuItem[] = [];
+  subItems: MenuItem[] = [];
+  item: MenuItem;
+  constructor(private loginservice: LoginService, private primengConfig: PrimeNGConfig) {
     loginservice.currentUser.subscribe(x => this.usuario = x);
 
-    if(this.usuario){
-      this.logg = true;
+    this.logg = !!this.usuario;
+  }
+
+  ngOnInit() {
+    this.primengConfig.ripple = true;
+    this.llenarMenu();
+  }
+
+  llenarMenu() {
+
+    if (this.usuario) {
+      this.loginservice.getMenu(this.usuario.idRole).subscribe( value => {
+        // tslint:disable-next-line:triple-equals
+        if (value != undefined) {
+          this.item = {label: 'Dashboard', icon: 'pi pi-home', routerLink: ['/'] };
+          this.items.push(this.item);
+          for (let i = 0; i < value.length; i++) {
+            this.subItems = [];
+            for (let j = 0; j < value[i].programas.length; j++) {
+              this.item = {
+                label: value[i].programas[j].nombre,
+                routerLink: value[i].programas[j].ruta
+              };
+              this.subItems.push(this.item);
+            }
+            this.item = {
+              label: value[i].nombre,
+              items: this.subItems
+            };
+            this.items.push(this.item);
+          }
+        }
+      });
+      this.itemsMenu = this.items;
     }
-    else{
-      this.logg = false;
-    }
+  }
+
+  procesaPropagar(event: any) {
+    this.visibleSidebar1 = event;
   }
 }
 

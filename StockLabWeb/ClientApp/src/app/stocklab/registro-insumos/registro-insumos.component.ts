@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from 'src/app/@base/modal/modal.component';
 import { InsumoService } from 'src/app/services/insumo.service';
-import { LoginService } from 'src/app/services/login.service';
 import { Insumo } from '../models/insumo';
 
 @Component({
@@ -14,15 +12,25 @@ import { Insumo } from '../models/insumo';
 })
 export class RegistroInsumosComponent implements OnInit {
 
+  constructor(private formBuilder: FormBuilder, private insumoService: InsumoService,
+    private modalService: NgbModal) {
+
+     }
+
+  get control() {
+    return this.formGroup.controls;
+  }
+
   formGroup: FormGroup;
   insumo: Insumo;
 
-  constructor(private formBuilder: FormBuilder, private insumoService: InsumoService,
-    private modalService: NgbModal, private serviceLogin: LoginService, private router: Router) {
-        if(serviceLogin.currentUserValue.tipo == 'Docente'){
-          this.router.navigate(['/']);
-        }
-     }
+  private static ValidaCantidad(control: AbstractControl) {
+    const cantidad = control.value;
+    if (cantidad <= 0) {
+      return { validCantidad: true, messageCantidad: 'Cantidad menor o igual a 0' };
+    }
+    return null;
+  }
 
   ngOnInit(): void {
     this.buildForm();
@@ -38,21 +46,9 @@ export class RegistroInsumosComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       descripcion: [this.insumo.descripcion, [Validators.required, Validators.maxLength(30)]],
       marca: [this.insumo.marca, [Validators.required, Validators.maxLength(20)]],
-      cantidad: [this.insumo.cantidad, [Validators.required, this.ValidaCantidad]],
-      stockminimo: [this.insumo.stockMinimo, [Validators.required, this.ValidaCantidad]]
+      cantidad: [this.insumo.cantidad, [Validators.required, RegistroInsumosComponent.ValidaCantidad]],
+      stockminimo: [this.insumo.stockMinimo, [Validators.required, RegistroInsumosComponent.ValidaCantidad]]
     });
-  }
-
-  private ValidaCantidad(control: AbstractControl) {
-    const cantidad = control.value;
-    if (cantidad <= 0) {
-      return { validCantidad: true, messageCantidad: 'Cantidad menor o igual a 0' };
-    }
-    return null;
-  }
-
-  get control() {
-    return this.formGroup.controls;
   }
   onSubmit() {
     if (this.formGroup.invalid) {
@@ -66,8 +62,8 @@ export class RegistroInsumosComponent implements OnInit {
     this.insumo = this.formGroup.value;
     this.insumoService.post(this.insumo).subscribe(result => {
       if (result != null) {
-        const messageBox = this.modalService.open(ModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
+        const messageBox = this.modalService.open(ModalComponent);
+        messageBox.componentInstance.title = 'Resultado Operación';
         messageBox.componentInstance.cuerpo = 'Insumo creado!!! :-)';
         this.insumo = result;
       }

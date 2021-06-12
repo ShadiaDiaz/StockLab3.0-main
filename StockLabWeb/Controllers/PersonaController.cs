@@ -94,7 +94,8 @@ namespace StockLabWeb.Controllers
                 Correo = personaInput.Correo,
                 Edad = personaInput.Edad,
                 Sexo = personaInput.Sexo,
-                Usuario = personaInput.Usuario
+                Usuario = personaInput.Usuario,
+
             };
             return persona;
         }

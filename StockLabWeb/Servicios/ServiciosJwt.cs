@@ -39,15 +39,15 @@ namespace StockLabWeb.Servicios
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSetting.Secret);
-
+            var claims = new List<Claim>();
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[] 
                 {
                     new Claim(ClaimTypes.Name, usuario.User.ToString()),
-                    new Claim(ClaimTypes.Role, "Rol1"),
-                    new Claim(ClaimTypes.Role, "Rol2"),
+                    new Claim(ClaimTypes.Role, usuario.Role.Nombre),
                 }),
+                
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };

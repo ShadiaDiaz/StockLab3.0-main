@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { first } from 'rxjs/operators';
-import { LoginService } from './../services/login.service';
-import { Usuario } from './../stocklab/models/usuario';
+import { LoginService } from '../services/login.service';
+import { Usuario } from '../stocklab/models/usuario';
 import { ModalComponent } from 'src/app/@base/modal/modal.component';
 
 @Component({
@@ -20,13 +20,13 @@ export class InicioSesionComponent implements OnInit {
   constructor(private loginService: LoginService, private route: ActivatedRoute,
     private router: Router, private modalService: NgbModal) {
     if (this.loginService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/']).then(r => {});
     }
   }
 
   ngOnInit(): void {
     this.usuario = new Usuario;
-    this.usuario.tipo = '';
+    this.usuario.idRole = 0;
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -40,11 +40,10 @@ export class InicioSesionComponent implements OnInit {
         window.location.reload();
       },
       error => {
-          const messageBox = this.modalService.open(ModalComponent)
-          messageBox.componentInstance.title = "Resultado Operación";
+          const messageBox = this.modalService.open(ModalComponent);
+          messageBox.componentInstance.title = 'Resultado Operación';
           messageBox.componentInstance.cuerpo = 'Usuario o Contraseña incorrecta !!! :-)';
         console.log(error.error);
       });
-      
   }
 }

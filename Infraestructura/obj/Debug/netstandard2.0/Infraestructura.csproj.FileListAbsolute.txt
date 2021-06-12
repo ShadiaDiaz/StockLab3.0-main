@@ -3,7 +3,6 @@ C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\bin\Debug\netst
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\bin\Debug\netstandard2.0\Infraestructura.pdb
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\bin\Debug\netstandard2.0\Entity.dll
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\bin\Debug\netstandard2.0\Entity.pdb
-C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.csprojAssemblyReference.cache
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.AssemblyInfoInputs.cache
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.AssemblyInfo.cs
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.csproj.CoreCompileInputs.cache
@@ -22,3 +21,4 @@ C:\Users\norma\Desktop\StockLab3.0-main-main\Infraestructura\obj\Debug\netstanda
 C:\Users\norma\Desktop\StockLab3.0-main-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.csproj.CopyComplete
 C:\Users\norma\Desktop\StockLab3.0-main-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.dll
 C:\Users\norma\Desktop\StockLab3.0-main-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.pdb
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.csproj.AssemblyReference.cache

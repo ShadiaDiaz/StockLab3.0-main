@@ -2,13 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-                <button type="button" class="navbar-toggler">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                </button>
-            </div>
+            <p-button type="button" (click)="propagar()" icon="pi pi-arrow-right"></p-button>
             <a class="navbar-brand" [routerLink]="['/']">StockLab</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +25,7 @@
                 <li class="nav-item">
                     <a (click)="Logout()" class="nav-link" [routerLink]="['/InicioSesion']">
                         <i class="now-ui-icons">
-                            <img src="../../assets/images/salida.png">
+                            <img src="../../assets/images/salida.png" alt="">
                         </i>
                         <p>
                             <span class="d-lg-none d-md-block">Logout</span>

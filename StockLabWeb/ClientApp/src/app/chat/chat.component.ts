@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../@base/modal/modal.component';
 import { ChatService } from '../services/chat.service';
-import { LoginService } from '../services/login.service';
 import { PersonaService } from '../services/persona.service';
 import { Chat } from '../stocklab/models/chat';
 import { Persona } from '../stocklab/models/persona';
@@ -19,10 +18,11 @@ export class ChatComponent implements OnInit {
   mensajePersona: Chat[];
   mensaje: string;
   persona: Persona;
-  constructor(private router: Router, private chatService: ChatService, private personaService: PersonaService, private modalService: NgbModal, private loginService: LoginService) {
-    if (loginService.currentUserValue.tipo != 'Administrador') {
+  // tslint:disable-next-line:max-line-length
+  constructor(private router: Router, private chatService: ChatService, private personaService: PersonaService, private modalService: NgbModal) {
+/*     if (loginService.currentUserValue.tipo != 'Administrador') {
       this.router.navigate(['/chatUsuarios']);
-    }
+    } */
   }
 
   ngOnInit(): void {
@@ -31,18 +31,18 @@ export class ChatComponent implements OnInit {
     this.mensajePersona = [];
     console.log('a');
     this.get();
-    this.mensaje = "";
+    this.mensaje = '';
     this.actualizarListaSignal();
   }
 
   private actualizarListaSignal() {
     this.chatService.signalRecived.subscribe((chat: Chat) => {
       this.mensajes.push(chat);
-      if (this.persona != undefined) {
-        if (this.persona.identificacion == chat.idPersona) {
+      if (this.persona !== undefined) {
+        if (this.persona.identificacion === chat.idPersona) {
           this.getMensajes(chat.idPersona);
 
-          var index = this.personas.findIndex(p => p.identificacion == chat.idPersona);
+          const index = this.personas.findIndex(p => p.identificacion === chat.idPersona);
           this.personas[index].mensaje = chat;
         }
       }
@@ -57,12 +57,11 @@ export class ChatComponent implements OnInit {
       if (resultt != null) {
         this.mensajes = resultt;
         for (let index = 0; index < this.personas.length; index++) {
-          var result = resultt.filter(m => m.idPersona == this.personas[index].identificacion);
+          const result = resultt.filter(m => m.idPersona === this.personas[index].identificacion);
 
-          if (result.length>0) {
+          if (result.length > 0) {
             this.personas[index].mensaje = result[result.length - 1];
-          }
-          else {
+          } else {
             this.personas[index].mensaje = new Chat();
           }
         }
@@ -72,30 +71,28 @@ export class ChatComponent implements OnInit {
   }
 
   sendMensaje() {
-    var mensaje = this.mensaje.trim();
-    if (mensaje == "") {
-      const messageBox = this.modalService.open(ModalComponent)
-      messageBox.componentInstance.title = "Resultado Operación";
+    const mensaje = this.mensaje.trim();
+    if (mensaje === '') {
+      const messageBox = this.modalService.open(ModalComponent);
+      messageBox.componentInstance.title = 'Resultado Operación';
       messageBox.componentInstance.cuerpo = 'No se puede enviar un mensaje Vacio. !!! :-)';
-    }
-    else {
-      if (this.persona != undefined) {
-        var chat = new Chat();
-        chat.admin = "si";
+    } else {
+      if (this.persona !== undefined) {
+        const chat = new Chat();
+        chat.admin = 'si';
         chat.idPersona = this.persona.identificacion;
         chat.mensaje = mensaje;
         this.chatService.post(chat).subscribe(result => {
           if (result != null) {
-            const messageBox = this.modalService.open(ModalComponent)
-            messageBox.componentInstance.title = "Resultado Operación";
+            const messageBox = this.modalService.open(ModalComponent);
+            messageBox.componentInstance.title = 'Resultado Operación';
             messageBox.componentInstance.cuerpo = 'Mensaje Enviado. !!! :-)';
-            this.mensaje = "";
+            this.mensaje = '';
           }
         });
-      }
-      else {
-        const messageBox = this.modalService.open(ModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
+      } else {
+        const messageBox = this.modalService.open(ModalComponent);
+        messageBox.componentInstance.title = 'Resultado Operación';
         messageBox.componentInstance.cuerpo = 'Seleccionar el chat. !!! :-)';
       }
     }
@@ -103,22 +100,18 @@ export class ChatComponent implements OnInit {
 
   getMensajes(codigo: string) {
     this.mensajePersona = [];
-    this.personaService.get(codigo).subscribe(result =>{
-      if(result != null){
+    this.personaService.get(codigo).subscribe(result => {
+      if (result != null) {
         this.persona = result;
-      }
-      else{
+      } else {
         this.persona = new Persona();
       }
     });
-    
-    
     this.mensajes.forEach(element => {
-      if (element.idPersona == codigo) {
+      if (element.idPersona === codigo) {
         this.mensajePersona.push(element);
         this.persona = element.persona;
       }
     });
   }
-
 }

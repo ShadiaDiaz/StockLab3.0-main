@@ -23,5 +23,8 @@ namespace Entity
         public string Estado { get; set; }
         [Column(TypeName = "varchar(13)")]
         public string IdPersona { get; set; }
+        [NotMapped]
+        public Role Role { get; set; }
+        public int IdRole { get; set; }
     }
 }

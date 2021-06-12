@@ -145,7 +145,6 @@ C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Debug\netstandard2.0
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Debug\netstandard2.0\Entity.dll
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Debug\netstandard2.0\Entity.pdb
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\bin\Debug\netstandard2.0\Datos.pdb
-C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Debug\netstandard2.0\Logica.csprojAssemblyReference.cache
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Debug\netstandard2.0\Logica.AssemblyInfoInputs.cache
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Debug\netstandard2.0\Logica.AssemblyInfo.cs
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Debug\netstandard2.0\Logica.csproj.CoreCompileInputs.cache
@@ -170,3 +169,4 @@ C:\Users\norma\Desktop\StockLab3.0-main-main\Logica\obj\Debug\netstandard2.0\Log
 C:\Users\norma\Desktop\StockLab3.0-main-main\Logica\obj\Debug\netstandard2.0\Logica.csproj.CopyComplete
 C:\Users\norma\Desktop\StockLab3.0-main-main\Logica\obj\Debug\netstandard2.0\Logica.dll
 C:\Users\norma\Desktop\StockLab3.0-main-main\Logica\obj\Debug\netstandard2.0\Logica.pdb
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Debug\netstandard2.0\Logica.csproj.AssemblyReference.cache

@@ -20,16 +20,13 @@ namespace Logica
             try
             {
                 var findasignatura = _context.Asignaturas.Find(asignatura.Codigo);
-                if(findasignatura == null)
-                {
-                    _context.Asignaturas.Add(asignatura);
-                    _context.SaveChanges();
-                    return new GuardarAsignaturaResponse(asignatura);
-                }
-                else
+                if(findasignatura != null)
                 {
                     return new GuardarAsignaturaResponse("El codigo de la asignatura ya se encuentra registrado","Duplicado");
                 }
+                _context.Asignaturas.Add(asignatura);
+                _context.SaveChanges();
+                return new GuardarAsignaturaResponse(asignatura);
             }
             catch(Exception e)
             {

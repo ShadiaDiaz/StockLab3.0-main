@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ConsultaInsumosComponent } from './stocklab/consulta-insumos/consulta-insumos.component';
 import { GestionSolicitudesComponent } from './stocklab/gestion-solicitudes/gestion-solicitudes.component';
 import { RegistroInsumosComponent } from './stocklab/registro-insumos/registro-insumos.component';
-import { PersonaSolicitudInsumosComponent } from './stocklab/persona-solicitud-insumos/persona-solicitud-insumos.component';
+
 import { HomeComponent } from './home/home.component';
 import {RegistroDocentesComponent } from './stocklab/registro-docentes/registro-docentes.component';
 import {RegistroAsignaturasComponent } from './stocklab/registro-asignaturas/registro-asignaturas.component';
@@ -12,16 +12,13 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import {ConsultaAsignaturasComponent} from './stocklab/consulta-asignaturas/consulta-asignaturas.component';
 import { SolicitudIndividualComponent } from './stocklab/solicitud-individual/solicitud-individual.component';
 import {ConsultaSolicitudesComponent} from './stocklab/consulta-solicitudes/consulta-solicitudes.component';
-import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { PeriodoRegistroComponent } from './stocklab/periodo-registro/periodo-registro.component';
-
-import { combineLatest } from 'rxjs';
-import { AuthGuard } from './services/guard/auth.guard'; 
+import { AuthGuard } from './services/guard/auth.guard';
 import { ChatComponent } from './chat/chat.component';
 import { ChatClienteComponent } from './chat-cliente/chat-cliente.component';
 
-const routes : Routes = [
+const routes: Routes = [
   { path: 'ConsultaInsumos', component: ConsultaInsumosComponent, canActivate: [AuthGuard] },
   { path: 'GestionSolicitudes', component: GestionSolicitudesComponent, canActivate: [AuthGuard] },
   { path: 'RegistroInsumos', component: RegistroInsumosComponent, canActivate: [AuthGuard] },
@@ -35,10 +32,8 @@ const routes : Routes = [
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard]},
   { path: 'periodoRegistro', component: PeriodoRegistroComponent, canActivate: [AuthGuard]},
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
-  { path: 'chatUsuarios', component: ChatClienteComponent, canActivate: [AuthGuard]},
-
-]
-
+  { path: 'chatUsuarios', component: ChatClienteComponent, canActivate: [AuthGuard]}
+];
 @NgModule({
   declarations: [],
   imports: [

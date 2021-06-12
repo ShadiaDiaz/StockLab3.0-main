@@ -12,6 +12,7 @@ namespace StockLabWeb.Models
         public string Apellidos { get; set; }
         public string Estado { get; set; }
         public string IdPersona { get; set; }
+        public int IdRole { get; set; }
         
         
     }
@@ -32,6 +33,7 @@ namespace StockLabWeb.Models
             Nombre = usuario.Nombre;
             Apellidos = usuario.Apellidos;
             IdPersona = usuario.IdPersona;
+            IdRole = usuario.Role.Codigo;
         }
     }
 }

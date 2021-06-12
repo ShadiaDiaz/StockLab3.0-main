@@ -91,7 +91,6 @@ C:\Users\xshad\Downloads\StockLab3.0-main\Entity\obj\Debug\netstandard2.0\Entity
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\bin\Debug\netstandard2.0\Entity.deps.json
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\bin\Debug\netstandard2.0\Entity.dll
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\bin\Debug\netstandard2.0\Entity.pdb
-C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\obj\Debug\netstandard2.0\Entity.csprojAssemblyReference.cache
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\obj\Debug\netstandard2.0\Entity.AssemblyInfoInputs.cache
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\obj\Debug\netstandard2.0\Entity.AssemblyInfo.cs
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\obj\Debug\netstandard2.0\Entity.csproj.CoreCompileInputs.cache
@@ -106,3 +105,4 @@ C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\obj\Debug\netstandard2.0\Ent
 C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\obj\Debug\netstandard2.0\Entity.csproj.CoreCompileInputs.cache
 C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\obj\Debug\netstandard2.0\Entity.dll
 C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\obj\Debug\netstandard2.0\Entity.pdb
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\obj\Debug\netstandard2.0\Entity.csproj.AssemblyReference.cache

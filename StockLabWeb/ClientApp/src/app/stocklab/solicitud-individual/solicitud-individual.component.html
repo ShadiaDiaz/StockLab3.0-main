@@ -84,7 +84,7 @@
     
                         </tbody>
                     </table>
-                    <div *ngIf="usuario.tipo != 'Docente' && (Solicitud.estado=='leido' || Solicitud.estado=='Activo')"
+                    <div *ngIf="usuario.idRole != 1 && (Solicitud.estado=='leido' || Solicitud.estado=='Activo')"
                         class="text-center">
                         <button class="btn btn-success mr-1" (click)="AprobarSolicitud()">Aprobar</button>
                         <button class="btn btn-danger" (click)="rechazarSolicitud()"

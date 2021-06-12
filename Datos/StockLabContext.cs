@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,33 +18,139 @@ namespace Datos
         public DbSet<Solicitud> Solicitudes { get; set; }
         public DbSet<PeriodoAcademico> PeriodosAcademicos { get; set; }
         public DbSet<Chat> Chats { get; set; }
-        
-        
-        
-        
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<RolPrograma> RolProgramas { get; set; }
+        public DbSet<ModuloMenu> Modulos { get; set; }
+        public DbSet<ProgramasModulo> Programas { get; set; }
 
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            ConfiguracionesContext(modelBuilder);
+
+
+            var Roles = InsertarDatosIniciales(out var periodos, out var Modulos, out var programasModulos, out var rolProgramasList);
+
+
+            modelBuilder.Entity<ModuloMenu>()
+                .HasData(Modulos);
+
+            modelBuilder.Entity<ProgramasModulo>()
+                .HasData(programasModulos);
+            
+            
+            
+            modelBuilder.Entity<Role>()
+            .HasData(Roles);
+            
+            modelBuilder.Entity<PeriodoAcademico>()
+            .HasData(periodos);
+
+            modelBuilder.Entity<RolPrograma>()
+                .HasData(rolProgramasList);
+        }
+
+        private static List<Role> InsertarDatosIniciales(out List<PeriodoAcademico> periodos, out List<ModuloMenu> Modulos, out List<ProgramasModulo> programasModulos,
+            out List<RolPrograma> rolProgramasList)
+        {
+            List<Role> Roles = new List<Role>();
+            Roles.Add(new Role("Docente", 1));
+            Roles.Add(new Role("Monitor", 2));
+            Roles.Add(new Role("Coordinador", 3));
+            Roles.Add(new Role("Administrador", 4));
+
+
+            periodos = new List<PeriodoAcademico>();
+            periodos.Add(new PeriodoAcademico() {Codigo = "1", Periodo = "2021-1", Corte = 1});
+
+            Modulos = new List<ModuloMenu>();
+            Modulos.Add(new ModuloMenu() {Id = 1, Nombre = "Periodo Academico"});
+            Modulos.Add(new ModuloMenu() {Id = 2, Nombre = "Insumos"});
+            Modulos.Add(new ModuloMenu() {Id = 3, Nombre = "Usuarios"});
+            Modulos.Add(new ModuloMenu() {Id = 4, Nombre = "Asignaturas"});
+            Modulos.Add(new ModuloMenu() {Id = 5, Nombre = "Solicitudes"});
+            Modulos.Add(new ModuloMenu() {Id = 6, Nombre = "Reportes"});
+
+            programasModulos = new List<ProgramasModulo>();
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 1, Nombre = "Registro Periodo", Ruta = "/periodoRegistro", IdModulo = 1});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 2, Nombre = "Registro Insumos", Ruta = "/RegistroInsumos", IdModulo = 2});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 3, Nombre = "Consultar Insumos", Ruta = "/ConsultaInsumos", IdModulo = 2});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 4, Nombre = "Registrar Usuario", Ruta = "/RegistroDocentes", IdModulo = 3});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 5, Nombre = "Registro Asignaturas", Ruta = "/RegistroAsignaturas", IdModulo = 4});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 6, Nombre = "Consultar Asignaturas", Ruta = "/ConsultaAsignaturas", IdModulo = 4});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 7, Nombre = "Solicitar Pedido", Ruta = "/GestionSolicitudes", IdModulo = 5});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 8, Nombre = "Consultar Solicitudes", Ruta = "/ConsultaSolicitudes", IdModulo = 5});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 9, Nombre = "Reporte Inventarios", Ruta = "/ReportesLaboratorios", IdModulo = 6});
+
+            rolProgramasList = new List<RolPrograma>();
+            rolProgramasList.Add(new RolPrograma() {Id = 1, IdPrograma = 1, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {Id = 2, IdPrograma = 4, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {Id = 3, IdPrograma = 5, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {Id = 4, IdPrograma = 6, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {Id = 5, IdPrograma = 7, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {Id = 6, IdPrograma = 8, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {Id = 7, IdPrograma = 9, IdRole = 4});
+
+            rolProgramasList.Add(new RolPrograma() {Id = 8, IdPrograma = 2, IdRole = 2});
+            rolProgramasList.Add(new RolPrograma() {Id = 9, IdPrograma = 3, IdRole = 2});
+            rolProgramasList.Add(new RolPrograma() {Id = 10, IdPrograma = 8, IdRole = 2});
+
+            rolProgramasList.Add(new RolPrograma() {Id = 11, IdPrograma = 2, IdRole = 3});
+            rolProgramasList.Add(new RolPrograma() {Id = 12, IdPrograma = 3, IdRole = 3});
+            rolProgramasList.Add(new RolPrograma() {Id = 13, IdPrograma = 8, IdRole = 3});
+
+            rolProgramasList.Add(new RolPrograma() {Id = 14, IdPrograma = 7, IdRole = 1});
+            rolProgramasList.Add(new RolPrograma() {Id = 15, IdPrograma = 8, IdRole = 1});
+            return Roles;
+        }
+
+        private static void ConfiguracionesContext(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<DetalleInsumo>()
-            .HasOne<Insumo>().WithMany()
-            .HasForeignKey(p => p.CodigoInsumo);
+                .HasOne<Insumo>().WithMany()
+                .HasForeignKey(p => p.CodigoInsumo);
 
             modelBuilder.Entity<Solicitud>()
-            .HasOne<Asignaturas>().WithMany()
-            .HasForeignKey(p => p.CodigoAsignatura);
+                .HasOne<Asignaturas>().WithMany()
+                .HasForeignKey(p => p.CodigoAsignatura);
 
             modelBuilder.Entity<Solicitud>()
-            .HasOne<Persona>().WithMany()
-            .HasForeignKey(p => p.IdPersona);
+                .HasOne<Persona>().WithMany()
+                .HasForeignKey(p => p.IdPersona);
 
 
             modelBuilder.Entity<Solicitud>()
-            .HasOne<PeriodoAcademico>().WithMany()
-            .HasForeignKey(p => p.IdPeriodo);
+                .HasOne<PeriodoAcademico>().WithMany()
+                .HasForeignKey(p => p.IdPeriodo);
 
             modelBuilder.Entity<Chat>()
-            .HasOne<Persona>().WithMany()
-            .HasForeignKey(p => p.IdPersona);
+                .HasOne<Persona>().WithMany()
+                .HasForeignKey(p => p.IdPersona);
+
+            modelBuilder.Entity<Usuario>()
+                .HasOne<Role>().WithMany()
+                .HasForeignKey(p => p.IdRole);
+
+            modelBuilder.Entity<ProgramasModulo>()
+                .HasOne<ModuloMenu>().WithMany()
+                .HasForeignKey(p => p.IdModulo);
+
+            modelBuilder.Entity<RolPrograma>()
+                .HasOne<ProgramasModulo>().WithMany()
+                .HasForeignKey(r => r.IdPrograma);
+
+            modelBuilder.Entity<Role>()
+                .HasOne<Role>().WithMany()
+                .HasForeignKey(r => r.Codigo);
         }
     }
 }

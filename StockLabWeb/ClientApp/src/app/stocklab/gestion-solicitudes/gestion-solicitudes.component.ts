@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { NgbDate, NgbModal, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from 'src/app/@base/modal/modal.component';
 import { AsignaturaService } from 'src/app/services/asignatura.service';
 import { InsumoService } from 'src/app/services/insumo.service';
@@ -14,9 +14,6 @@ import { Solicitud } from '../models/solicitud';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Usuario } from '../models/usuario';
 import { Time } from '@angular/common';
-import { NgbTimeAdapter, NgbTimeStructAdapter } from '@ng-bootstrap/ng-bootstrap/timepicker/ngb-time-adapter';
-import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-gestion-solicitudes',
@@ -27,12 +24,13 @@ export class GestionSolicitudesComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private personaService: PersonaService,
     private modalService: NgbModal, private asignaturaService: AsignaturaService,
-    private insumoService: InsumoService, private solicitudService: SolicitudService,
-    private router:Router, private loginService: LoginService) {
-      if(this.loginService.currentUserValue.tipo == 'Monitor' || this.loginService.currentUserValue.tipo == 'Coordinador'){
-        this.router.navigate(['/']);
-      }
+    private insumoService: InsumoService, private solicitudService: SolicitudService) {
+
      }
+
+  get control() {
+    return this.formGroup.controls;
+  }
   solicitud: Solicitud;
   formGroup: FormGroup;
   persona: Persona;
@@ -46,7 +44,6 @@ export class GestionSolicitudesComponent implements OnInit {
   detalles: DetalleInsumo[];
   usuario: Usuario;
   fecha: Date;
-  fecha2: string;
   time2: Time;
 
   insumo: Insumo;
@@ -60,9 +57,33 @@ export class GestionSolicitudesComponent implements OnInit {
 
   model: NgbDateStruct;
 
+
+
+  private static validCantidad(control: AbstractControl) {
+    const cantidad = control.value;
+    if (cantidad <= 0) {
+      return { validCantidad: true, messageCantidad: 'La cantidad no puede ser menor o igual a 0' };
+    }
+  }
+  private static validafecha(control: AbstractControl) {
+    const fecha = control.value;
+
+    const fechactual = new Date(Date.now());
+    const fecha2 = new Date(fecha);
+    const diff_in_millisenconds = fecha2.getTime() - fechactual.getTime();
+    const dias = (Math.round(diff_in_millisenconds / (1000 * 60 * 60 * 24))) + 1;
+    if (fecha2 < fechactual) {
+      return { validadFecha: true, messageFecha: 'Fecha No Valida' };
+    }
+    if (dias < 8) {
+      return { validadFecha: true, messageFecha: 'Dias menores a 8' };
+    }
+    return null;
+  }
+
   ngOnInit(): void {
     this.usuario = new Usuario;
-    this.usuario.tipo = '';
+    this.usuario.idRole = 0;
     this.asignaturas = [];
     this.llenarasignaturas();
     this.llenarinsumos();
@@ -78,13 +99,11 @@ export class GestionSolicitudesComponent implements OnInit {
     this.buildForm();
   }
 
-  private buildForm(...args: []) {
+  private buildForm() {
     this.solicitud = new Solicitud();
     this.persona = new Persona();
     this.detalle = new DetalleInsumo();
     this.fecha = new Date(Date.now());
-    
-    
     this.persona.identificacion = '';
     this.persona.nombre = '';
     this.persona.apellidos = '';
@@ -92,18 +111,14 @@ export class GestionSolicitudesComponent implements OnInit {
     this.solicitud.detalles = [];
     this.solicitud.fecha = new Date(Date.now()).toDateString();
     this.time = {hour: 0, minute: 0, second: 0};
-
-    
-
-
     this.formGroup = this.formBuilder.group({
-      fecha: [this.solicitud.fecha, [Validators.required, this.validafecha]],
+      fecha: [this.solicitud.fecha, [Validators.required, GestionSolicitudesComponent.validafecha]],
       hora: [this.time, [Validators.required, Validators.maxLength(20)]],
-      asignatura: ["", [Validators.required]],
-      monitor: ["", [Validators.required]],
-      detalle: ["", [Validators.required]],
-      cantidad: [this.detalle.cantidad, [Validators.required, this.validCantidad]],
-      cedula: [""]
+      asignatura: ['', [Validators.required]],
+      monitor: ['', [Validators.required]],
+      detalle: ['', [Validators.required]],
+      cantidad: [this.detalle.cantidad, [Validators.required, GestionSolicitudesComponent.validCantidad]],
+      cedula: ['']
     });
   }
 
@@ -120,7 +135,7 @@ export class GestionSolicitudesComponent implements OnInit {
   }
 
   llenarUsuario() {
-    var lista = JSON.parse(sessionStorage.getItem('login'));
+    const lista = JSON.parse(sessionStorage.getItem('login'));
     if (lista != null) {
       this.usuario = lista;
     }
@@ -130,91 +145,56 @@ export class GestionSolicitudesComponent implements OnInit {
     this.personaService.getMonitores().subscribe(result => {
       this.monitores = result;
     });
-    console.log('a');
   }
 
   agregardetalle() {
     this.detalle = new DetalleInsumo;
-    if (this.formGroup.value.detalle == '' || this.formGroup.value.cantidad == '') {
-      const messageBox = this.modalService.open(ModalComponent)
-      messageBox.componentInstance.title = "Resultado Operación";
+    if (this.formGroup.value.detalle === '' || this.formGroup.value.cantidad === '') {
+      const messageBox = this.modalService.open(ModalComponent);
+      messageBox.componentInstance.title = 'Resultado Operación';
       messageBox.componentInstance.cuerpo = 'Error al añadir detalle';
-    }
-    else {
-      
-      var fecha = new Date();
+    } else {
+      const fecha = new Date();
       this.detalle.cantidad = this.formGroup.value.cantidad;
-      var codinsumo = this.formGroup.value.detalle;
-      this.insumo = this.insumos.find(I => I.item == codinsumo);
+      const codinsumo = this.formGroup.value.detalle;
+      this.insumo = this.insumos.find(I => I.item === codinsumo);
       if (this.detalle.cantidad > this.insumo.cantidad) {
-        const messageBox = this.modalService.open(ModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
+        const messageBox = this.modalService.open(ModalComponent);
+        messageBox.componentInstance.title = 'Resultado Operación';
         messageBox.componentInstance.cuerpo = 'Error: la cantidad es mayor a la disponible ';
-      }
-      else {
-        var codigoDetalle = (this.detalles.length + 1).toString();
-        this.detalle.agregarDetalle(fecha,this.insumo,codigoDetalle);
-        var detallerespuesta = this.detalles.find(d => d.insumo.item == this.insumo.item);
+      } else {
+        const codigoDetalle = (this.detalles.length + 1).toString();
+        this.detalle.agregarDetalle(fecha, this.insumo, codigoDetalle);
+        const detallerespuesta = this.detalles.find(d => d.insumo.item === this.insumo.item);
         if (detallerespuesta != null) {
-          var numero = this.detalles.findIndex(d => d.insumo.item == this.insumo.item)
+          const numero = this.detalles.findIndex(d => d.insumo.item === this.insumo.item);
           this.detalles[numero].cantidad += this.detalle.cantidad;
           this.detalles[numero].fecha = this.detalle.fecha;
-        }
-        else {
+        } else {
           this.detalles.push(this.detalle);
           this.solicitud.detalles = this.detalles;
         }
-        const messageBox = this.modalService.open(ModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
+        const messageBox = this.modalService.open(ModalComponent);
+        messageBox.componentInstance.title = 'Resultado Operación';
         messageBox.componentInstance.cuerpo = 'Se ha añadido el insumo';
       }
     }
   }
-
-
-
-  private validCantidad(control: AbstractControl) {
-    const cantidad = control.value;
-    if (cantidad <= 0) {
-      return { validCantidad: true, messageCantidad: 'La cantidad no puede ser menor o igual a 0' };
-    }
-  }
-  private validafecha(control: AbstractControl) {
-    const fecha = control.value;
-    
-    var fechactual = new Date(Date.now());
-    var fecha2 = new Date(fecha);
-    
-    var day_as_milliseconds = 86400000;
-    var diff_in_millisenconds = fecha2.getTime() - fechactual.getTime();
-    var dias = (Math.round(diff_in_millisenconds / (1000 * 60 * 60 * 24))) + 1;
-    if (fecha2 < fechactual) {
-      return { validadFecha: true, messageFecha: 'Fecha No Valida' };
-    }
-    if (dias < 8) {
-      return { validadFecha: true, messageFecha: 'Dias menores a 8' };
-    }
-    return null;
-  }
-
-  get control() {
-    return this.formGroup.controls;
-  }
   onSubmit() {
-    
+
     if (this.formGroup.invalid) {
       return;
     }
-    if (this.detalles.length == 0) {
-      const messageBox = this.modalService.open(ModalComponent)
-      messageBox.componentInstance.title = "Resultado Operación";
+    if (this.detalles.length === 0) {
+      const messageBox = this.modalService.open(ModalComponent);
+      messageBox.componentInstance.title = 'Resultado Operación';
       messageBox.componentInstance.cuerpo = 'Error: No ha agregado ningun detalle';
       return;
     }
-    
-    if (this.persona.identificacion == "" && this.usuario.tipo == "Administrador") {
-      const messageBox = this.modalService.open(ModalComponent)
-      messageBox.componentInstance.title = "Resultado Operación";
+
+    if (this.persona.identificacion === '' && this.usuario.idRole === 4) {
+      const messageBox = this.modalService.open(ModalComponent);
+      messageBox.componentInstance.title = 'Resultado Operación';
       messageBox.componentInstance.cuerpo = 'Error: No ha agregado una persona a la solicitud';
       return;
     }
@@ -228,47 +208,45 @@ export class GestionSolicitudesComponent implements OnInit {
     this.personaService.get(this.formGroup.value.cedula).subscribe(result => {
       if (result != null) {
         this.persona = result;
-        const messageBox = this.modalService.open(ModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
+        const messageBox = this.modalService.open(ModalComponent);
+        messageBox.componentInstance.title = 'Resultado Operación';
         messageBox.componentInstance.cuerpo = 'Se ha añadido a la solicitud a ' + this.persona.nombre;
-      }
-      else {
+      } else {
         this.persona = undefined;
       }
-    })
+    });
   }
   agregar() {
     this.mapear();
     this.solicitudService.post(this.solicitud).subscribe(result => {
       if (result != null) {
-        const messageBox = this.modalService.open(ModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
+        const messageBox = this.modalService.open(ModalComponent);
+        messageBox.componentInstance.title = 'Resultado Operación';
         messageBox.componentInstance.cuerpo = 'Se ha creado la solicitud';
         this.solicitud = result;
       }
-    })
+    });
   }
 
   mapear() {
-    var codigoAsignatura = this.formGroup.value.asignatura;
-    this.asignatura = this.asignaturas.find(a => a.codigo == codigoAsignatura);
+    const codigoAsignatura = this.formGroup.value.asignatura;
+    this.asignatura = this.asignaturas.find(a => a.codigo === codigoAsignatura);
     this.solicitud = this.formGroup.value;
 
-    this.solicitud.estado = "Activo";
+    this.solicitud.estado = 'Activo';
     this.solicitud.detalles = this.detalles;
     this.solicitud.asignatura = this.asignatura;
-    
-    var hora = this.formGroup.value.hora;
-    this.solicitud.fecha = this.formGroup.value.fecha+" "+
-    hora.hour +":"+hora.minute+":00";
-    var codigoMonitor = this.formGroup.value.monitor;
-    this.monitor = this.monitores.find(a => a.identificacion == codigoMonitor);
+
+    const hora = this.formGroup.value.hora;
+    this.solicitud.fecha = this.formGroup.value.fecha + ' ' +
+    hora.hour + ':' + hora.minute + ':00';
+    const codigoMonitor = this.formGroup.value.monitor;
+    this.monitor = this.monitores.find(a => a.identificacion === codigoMonitor);
     this.solicitud.monitor = this.monitor.nombre;
 
-    if (this.usuario.tipo == "Administrador") {
+    if (this.usuario.idRole === 4) {
       this.solicitud.idpersona = this.persona.identificacion;
-    }
-    else {
+    } else {
       this.solicitud.idpersona = this.usuario.idPersona;
     }
   }

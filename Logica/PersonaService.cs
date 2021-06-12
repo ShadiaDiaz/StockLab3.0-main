@@ -24,20 +24,17 @@ namespace Logica
             {
                 Email = new Email();
                 var personaresponse = _context.Personas.Find(persona.Identificacion);
-                if(personaresponse == null)
-                {
-                    Usuario usuario = persona.Usuario;
-                    usuario.IdPersona = persona.Identificacion;
-                    persona.Usuario = usuario;
-                    _context.Personas.Add(persona);
-                    _context.SaveChanges();
-                    Email.EnviarEmail(usuario.User, "Registro Exitoso " + DateTime.Now.ToLongTimeString(),usuario.Nombre,usuario.Password);
-                    return new GuardarPersonaResponse(persona);
-                }
-                else
+                if(personaresponse != null)
                 {
                     return new GuardarPersonaResponse("Duplicado");
                 }
+                Usuario usuario = persona.Usuario;
+                usuario.IdPersona = persona.Identificacion;
+                persona.Usuario = usuario;
+                _context.Personas.Add(persona);
+                _context.SaveChanges();
+                Email.EnviarEmail(usuario.User, "Registro Exitoso " + DateTime.Now.ToLongTimeString(),usuario.Nombre,usuario.Password);
+                return new GuardarPersonaResponse(persona);
             }
             catch(Exception e)
             {
@@ -54,11 +51,7 @@ namespace Logica
                 {
                     return new BuscarPersonaResponse($"No existe");
                 }
-                else
-                {
-                    return new BuscarPersonaResponse(response);
-                }
-                
+                return new BuscarPersonaResponse(response);
             }
             catch(Exception e)
             {

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AsignaturaService } from 'src/app/services/asignatura.service';
-import { LoginService } from 'src/app/services/login.service';
 import { Asignatura } from '../models/asignatura';
 
 @Component({
@@ -14,11 +12,9 @@ export class ConsultaAsignaturasComponent implements OnInit {
   searchText: string;
   name = 'Angular';
   page = 1;
-  pageSize =5;
-  constructor(private asignaturaService: AsignaturaService, private router: Router, private loginService: LoginService) {
-    if(this.loginService.currentUserValue.tipo != 'Administrador'){
-      this.router.navigate(['/']);
-    }
+  pageSize = 5;
+  constructor(private asignaturaService: AsignaturaService) {
+
    }
 
   ngOnInit(): void {
@@ -26,11 +22,10 @@ export class ConsultaAsignaturasComponent implements OnInit {
     this.get();
   }
 
-  get()
-  {
+  get() {
     this.asignaturaService.get().subscribe(result => {
       this.asignaturas = result;
-    })
+    });
   }
 
 }

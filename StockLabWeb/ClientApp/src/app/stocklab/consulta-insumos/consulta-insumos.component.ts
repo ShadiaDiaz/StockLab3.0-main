@@ -19,11 +19,10 @@ usuario: Usuario;
 
   name = 'Angular';
   page = 1;
-  pageSize =5;
-  constructor(private insumoService: InsumoService, private modalService: NgbModal,private router: Router,private loginService:LoginService) {
-      if(loginService.currentUserValue.tipo == 'Docente'){
-        this.router.navigate(['/']);
-      }
+  pageSize = 5;
+  // tslint:disable-next-line:max-line-length
+  constructor(private insumoService: InsumoService, private modalService: NgbModal, private router: Router, private loginService: LoginService) {
+
    }
 
   ngOnInit(): void {
@@ -32,17 +31,16 @@ usuario: Usuario;
     this.usuario = this.loginService.currentUserValue;
   }
 
-  get()
-  {
-    this.insumoService.get().subscribe(result =>{
+  get() {
+    this.insumoService.get().subscribe(result => {
       this.insumos = result;
     });
   }
 
-  AgregarCantidad(insumo: Insumo){
+  AgregarCantidad(insumo: Insumo) {
         this.modalService.open(ActualizarCantidadInsumoModalComponent);
         localStorage.removeItem('insumo');
-        localStorage.setItem('insumo',insumo.item);
+        localStorage.setItem('insumo', insumo.item);
   }
 
 

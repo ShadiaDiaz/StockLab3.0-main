@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  @Output()
+  sideBar = new EventEmitter<boolean>() ;
 
   collapse() {
     this.isExpanded = false;
@@ -16,8 +18,12 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-  Logout(){
+  Logout() {
     sessionStorage.removeItem('login');
     window.location.reload();
+  }
+
+  propagar() {
+    this.sideBar.emit(true);
   }
 }

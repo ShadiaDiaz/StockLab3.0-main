@@ -101,7 +101,6 @@ namespace StockLabWeb.Controllers
         {
             string[] solicitu = numero.Split(';');
             var response = _service.ActualizarEstado(solicitu[0], solicitu[1]);
-
             if(response.Error)
             {
                 ModelState.AddModelError("Error al modificar la solicitud", response.Mensaje);

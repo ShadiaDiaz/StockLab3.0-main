@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { from } from 'rxjs';
 import { SolicitudService } from '../services/solicitud.service';
 import { Solicitud } from '../stocklab/models/solicitud';
-import { LoginService } from './../services/login.service';
-import { Usuario } from './../stocklab/models/usuario';
-import * as Chart from 'chart.js';
+import { Usuario } from '../stocklab/models/usuario';
 import { DetalleInsumo } from '../stocklab/models/detalle-insumo';
 import { Asignatura } from '../stocklab/models/asignatura';
 import { Insumo } from '../stocklab/models/insumo';
 import { InsumoService } from '../services/insumo.service';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -22,25 +21,28 @@ export class HomeComponent {
   asignaturas: Asignatura[];
 
   canvas: any;
-  canvas2: any;
 
   ctx: any;
-  ctx2: any;
 
   numberdetalle: number[];
   numberasignatura: number[];
   labelasignaturas: string[];
   colorasignaturas: string[];
   Insumos: Insumo[];
-  constructor(private insumoService: InsumoService, private SolicitudService: SolicitudService) {
+
+  dataInsumos: any = {};
+  dataAsignaturas: any = {};
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor(private insumoService: InsumoService, private solicitudService: SolicitudService) {
   }
 
 
 
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
     this.usuario = new Usuario;
-    this.solicitudes = []
+    this.solicitudes = [];
     this.detalles = [];
     this.numberasignatura = [];
     this.asignaturas = [];
@@ -50,18 +52,16 @@ export class HomeComponent {
     this.Insumos = [];
     this.get();
     this.obtenerUsuario();
-    this.llenarinsumografica();
-    this.graficaAsignaturas();
+   this.llenarinsumografica();
     this.llenarAsignaturasGrafica();
     this.getInsumos();
-    console.log('a');
   }
 
 
 
-  getInsumos(){
-    this.insumoService.get().subscribe(result =>{
-      if(result != null){
+  getInsumos() {
+    this.insumoService.get().subscribe(result => {
+      if (result != null) {
         this.Insumos = result;
       }
     });
@@ -69,17 +69,17 @@ export class HomeComponent {
 
   llenarAsignaturasGrafica() {
 
-    this.SolicitudService.gets().subscribe(result => {
+    this.solicitudService.gets().subscribe(result => {
       if (result != null) {
-        var color = [];
-        var r = new Array("00", "33", "66", "99", "CC", "FF");
-        var g = new Array("00", "33", "66", "99", "CC", "FF");
-        var b = new Array("00", "33", "66", "99", "CC", "FF");
+        const color = [];
+        const r = ['00', '33', '66', '99', 'CC', 'FF'];
+        const g = ['00', '33', '66', '99', 'CC', 'FF'];
+        const b = ['00', '33', '66', '99', 'CC', 'FF'];
 
-        for (var i = 0; i < r.length; i++) {
-          for (var j = 0; j < g.length; j++) {
-            for (var k = 0; k < b.length; k++) {
-              var nuevoc = "#" + r[i] + g[j] + b[k];
+        for (let i = 0; i < r.length; i++) {
+          for (let j = 0; j < g.length; j++) {
+            for (let k = 0; k < b.length; k++) {
+              const nuevoc = '#' + r[i] + g[j] + b[k];
               color.push(nuevoc);
             }
           }
@@ -87,12 +87,12 @@ export class HomeComponent {
 
         for (let index = 0; index < result.length; index++) {
 
-          var detallerespuesta = this.asignaturas.find(d => d.codigo == result[index].asignatura.codigo);
+          // tslint:disable-next-line:triple-equals
+          const detallerespuesta = this.asignaturas.find(d => d.codigo == result[index].asignatura.codigo);
           if (detallerespuesta != null) {
-            var numero = this.asignaturas.findIndex(d => d.codigo == result[index].asignatura.codigo);
+            const numero = this.asignaturas.findIndex(d => d.codigo === result[index].asignatura.codigo);
             this.numberasignatura[numero] += 1;
-          }
-          else {
+          } else {
             this.asignaturas.push(result[index].asignatura);
             this.labelasignaturas.push(result[index].asignatura.nombre);
             this.numberasignatura.push(1);
@@ -111,73 +111,61 @@ export class HomeComponent {
 
 
   graficaAsignaturas() {
-    this.canvas2 = document.getElementById('myChart2');
-    this.ctx2 = this.canvas2.getContext('2d');
 
-    const myChart2 = new Chart(this.ctx2, {
-      type: 'polarArea',
-      data: {
-        labels: this.labelasignaturas,
-        datasets: [{
-          label: 'Total cases.',
+    this.dataAsignaturas = {
+      labels: this.labelasignaturas,
+      datasets: [
+        {
           data: this.numberasignatura,
           backgroundColor: this.colorasignaturas,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        legend: {
-          display: true
-        },
-        responsive: true
-      }
-    });
+        }
+      ]
+    };
   }
 
+
+
   llenarinsumografica() {
-    
-    this.SolicitudService.gets().subscribe(result => {
+
+    this.solicitudService.gets().subscribe(result => {
       if (result != null) {
         for (let index = 0; index < result.length; index++) {
 
           for (let index2 = 0; index2 < result[index].detalles.length; index2++) {
-            
-            var detallerespuesta = this.detalles.find(d => d.insumo.item == result[index].detalles[index2].insumo.item);
+
+            const detallerespuesta = this.detalles.find(d => d.insumo.item === result[index].detalles[index2].insumo.item);
             if (detallerespuesta != null) {
-              var numero = this.detalles.findIndex(d => d.insumo.item == result[index].detalles[index2].insumo.item)
+              const numero = this.detalles.findIndex(d => d.insumo.item === result[index].detalles[index2].insumo.item);
               this.detalles[numero].cantidad += result[index].detalles[index2].cantidad;
-            }
-            else {
+            } else {
               this.detalles.push(result[index].detalles[index2]);
             }
           }
 
         }
-        
+
         this.graficaSolicitudes();
       }
     });
 
   }
   randomColor(lista: any) {
-    return lista[Math.floor(Math.random() * lista.length)]
+    return lista[Math.floor(Math.random() * lista.length)];
   }
 
 
   graficaSolicitudes() {
-    this.canvas = document.getElementById('myChart');
-    this.ctx = this.canvas.getContext('2d');
-    var labelsdetalle = [];
-    var colordetalle = [];
-    var colordetalle2 = [];
-    var r = new Array("00", "33", "66", "99", "CC", "FF");
-    var g = new Array("00", "33", "66", "99", "CC", "FF");
-    var b = new Array("00", "33", "66", "99", "CC", "FF");
+    const labelsdetalle = [];
+    const colordetalle = [];
+    const colordetalle2 = [];
+    const r = ['00', '33', '66', '99', 'CC', 'FF'];
+    const g = ['00', '33', '66', '99', 'CC', 'FF'];
+    const b = ['00', '33', '66', '99', 'CC', 'FF'];
 
-    for (var i = 0; i < r.length; i++) {
-      for (var j = 0; j < g.length; j++) {
-        for (var k = 0; k < b.length; k++) {
-          var nuevoc = "#" + r[i] + g[j] + b[k];
+    for (let i = 0; i < r.length; i++) {
+      for (let j = 0; j < g.length; j++) {
+        for (let k = 0; k < b.length; k++) {
+          const nuevoc = '#' + r[i] + g[j] + b[k];
           colordetalle.push(nuevoc);
         }
       }
@@ -190,35 +178,26 @@ export class HomeComponent {
 
     }
 
-    
-    const myChart = new Chart(this.ctx, {
-      type: 'doughnut',
-      data: {
-        labels: labelsdetalle,
-        datasets: [{
-          label: 'Total cases.',
+    this.dataInsumos = {
+      labels: labelsdetalle,
+      datasets: [
+        {
           data: this.numberdetalle,
-          backgroundColor: colordetalle2,
-          borderWidth: 1
+          backgroundColor: colordetalle2
         }]
-      },
-      options: {
-        legend: {
-          display: true
-        },
-        responsive: true
-      }
-    });
+    };
+
   }
+
   obtenerUsuario() {
-    var lista = JSON.parse(sessionStorage.getItem('login'));
+    const lista = JSON.parse(sessionStorage.getItem('login'));
     if (lista != null) {
       this.usuario = lista;
     }
   }
 
   get() {
-    this.SolicitudService.gets().subscribe(result => {
+    this.solicitudService.gets().subscribe(result => {
       if (result != null) {
         this.solicitudes = result;
         this.graficaSolicitudesFecha();
@@ -227,24 +206,38 @@ export class HomeComponent {
   }
 
   graficaSolicitudesFecha() {
-    var cantidadsolicitudes = 0;
-    var fechasolicitudes = [];
-    var labelsolicitudes = [];
+    let cantidadsolicitudes = 0;
     for (let index = 0; index < this.solicitudes.length; index++) {
       cantidadsolicitudes += 1;
     }
 
   }
 
-  updateEstado(solicitud: Solicitud) {
-    solicitud.estado = "leido";
-    this.SolicitudService.put(solicitud).subscribe(result => {
-      solicitud = result;
-    });
-  }
 
-  pdfPrueba(){
-    this.SolicitudService.pdf("semestre2");
+
+  downloadPDF() {
+    // Extraemos el
+    const DATA = document.getElementById('htmlData');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
+
+      const img = canvas.toDataURL('image/PNG');
+
+      // Add image Canvas to PDF
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+    });
   }
 
 }

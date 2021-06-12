@@ -124,9 +124,9 @@
                                                 [ngClass]="{'is-invalid': control.tipo.errors && control.tipo.touched}"
                                                 formControlName="tipo" name="tipo" id="tipo">
                                                 <option selected>Seleccionar</option>
-                                                <option>Docente</option>
-                                                <option>Monitor</option>
-                                                <option>Coordinador</option>
+                                                <option value=1>Docente</option>
+                                                <option value=1>Monitor</option>
+                                                <option value=3>Coordinador</option>
                                             </select>
                                             <div *ngIf="control.tipo.errors" class="invalid-feedback">
                                                 <div *ngIf="control.tipo.errors.required">Seleccione un tipo de usuario

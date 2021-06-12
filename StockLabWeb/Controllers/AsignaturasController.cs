@@ -15,7 +15,7 @@ namespace StockLabWeb.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class AsignaturasController : ControllerBase
-    {
+    {  
         private readonly AsignaturaService _service;
         public AsignaturasController(StockLabContext context)
         {

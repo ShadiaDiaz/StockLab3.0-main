@@ -36,17 +36,14 @@ namespace Logica
             try
             {
                 var insumoresponse = _context.Insumos.Find(codigo);
-                if(insumoresponse != null)
-                {
-                    insumoresponse.Cantidad += cantidad;
-                    _context.Insumos.Update(insumoresponse);
-                    _context.SaveChanges();
-                    return new GuardarInsumoResponse(insumoresponse);
-                }
-                else
+                if(insumoresponse == null)
                 {
                     return new GuardarInsumoResponse("No se encontro el insumo", "No existe");
                 }
+                insumoresponse.Cantidad += cantidad;
+                _context.Insumos.Update(insumoresponse);
+                _context.SaveChanges();
+                return new GuardarInsumoResponse(insumoresponse);
             }
             catch(Exception e)
             {
@@ -71,14 +68,11 @@ namespace Logica
             {
                 var insumoresponse = _context.Insumos.Find(codigo);
 
-                if(insumoresponse != null)
-                {
-                    return new GuardarInsumoResponse(insumoresponse);
-                }
-                else
+                if(insumoresponse == null)
                 {
                     return new GuardarInsumoResponse("El insumo no se encuentra registrado","No existe");
                 }
+                return new GuardarInsumoResponse(insumoresponse);
             }
             catch(Exception e)
             {

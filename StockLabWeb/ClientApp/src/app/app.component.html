@@ -3,16 +3,23 @@
     <app-inicio-sesion></app-inicio-sesion>
   </div>
   <ng-template #logged>
-    <div class="wrapper">
-      <div class="sidebar">
-          <app-sidebar></app-sidebar>
-      </div>
-      <div class="main-panel">
-          <app-nav-menu></app-nav-menu>
+
+
+
+      <div>
+
+          <app-nav-menu (sideBar)="procesaPropagar($event)"></app-nav-menu>
           <router-outlet></router-outlet>
           <app-footer></app-footer>
       </div>
-  </div>
+
+
+
+      <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+        <h1 style="font-weight:normal">Menu</h1>
+
+        <p-slideMenu  [model]="itemsMenu"   [viewportHeight]="500"></p-slideMenu>
+      </p-sidebar>
 
   </ng-template>
 
