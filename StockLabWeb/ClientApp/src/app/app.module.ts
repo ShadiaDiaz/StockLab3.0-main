@@ -19,7 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { LoginService } from './services/login.service';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { RegistroDocentesComponent } from './stocklab/registro-docentes/registro-docentes.component';
@@ -58,7 +57,6 @@ import {SlideMenuModule} from 'primeng/slidemenu';
     ConsultaInsumosComponent,
     FooterComponent,
     InicioSesionComponent,
-    SidebarComponent,
     PerfilComponent,
     NotificacionesComponent,
     RegistroDocentesComponent,
