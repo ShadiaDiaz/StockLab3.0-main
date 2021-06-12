@@ -1,9 +1,0 @@
-Q
-HC:\Users\norma\Desktop\StockLab3.0-main-main\Logica\AsignaturaService.csutf-8M
-DC:\Users\norma\Desktop\StockLab3.0-main-main\Logica\InsumoService.csutf-8L
-CC:\Users\norma\Desktop\StockLab3.0-main-main\Logica\LoginService.csutf-8W
-NC:\Users\norma\Desktop\StockLab3.0-main-main\Logica\PeriodoAcademicoService.csutf-8N
-EC:\Users\norma\Desktop\StockLab3.0-main-main\Logica\PersonaService.csutf-8P
-GC:\Users\norma\Desktop\StockLab3.0-main-main\Logica\SolicitudService.csutf-8‡
-|C:\Users\norma\Desktop\StockLab3.0-main-main\Logica\obj\Debug\netstandard2.0\.NETStandard,Version=v2.0.AssemblyAttributes.csutf-8n
-cC:\Users\norma\Desktop\StockLab3.0-main-main\Logica\obj\Debug\netstandard2.0\Logica.AssemblyInfo.csutf-8
