@@ -42,6 +42,12 @@ import {ChartModule} from 'primeng/chart';
 import {SidebarModule} from 'primeng/sidebar';
 import {ButtonModule} from 'primeng/button';
 import {SlideMenuModule} from 'primeng/slidemenu';
+import { ReportesInsumosComponent } from './stocklab/reportesLaboratorio/reportes-insumos/reportes-insumos.component';
+import { ReportesUsuarioComponent } from './stocklab/reportesLaboratorio/reportes-usuario/reportes-usuario.component';
+import { ReportesSolicitudComponent } from './stocklab/reportesLaboratorio/reportes-solicitud/reportes-solicitud.component';
+import { ReporteAsignaturasComponent } from './stocklab/reportesLaboratorio/reporte-asignaturas/reporte-asignaturas.component';
+import { ReporteStockInsumosComponent } from './stocklab/reportesLaboratorio/reporte-stock-insumos/reporte-stock-insumos.component';
+import { ReporteStockMinimoComponent } from './stocklab/reportesLaboratorio/reporte-stock-minimo/reporte-stock-minimo.component';
 
 
 
@@ -73,6 +79,12 @@ import {SlideMenuModule} from 'primeng/slidemenu';
     FitroEstadoSolicitudPipe,
     ChatComponent,
     ChatClienteComponent,
+    ReportesInsumosComponent,
+    ReportesUsuarioComponent,
+    ReportesSolicitudComponent,
+    ReporteAsignaturasComponent,
+    ReporteStockInsumosComponent,
+    ReporteStockMinimoComponent,
 
   ],
   imports: [

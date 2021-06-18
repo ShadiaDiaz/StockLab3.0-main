@@ -127,7 +127,7 @@ namespace Logica
                 var solicitudes = _context.Solicitudes.Include(d => d.Detalles).ToList();
                 var solicitudresponse = solicitudes.Find(s => s.Numero == numero);
                 var insumos = _context.Insumos.ToList();
-                if (solicitudresponse != null)
+                if (solicitudresponse == null)
                 {
                     return new ActualizarSolicitudResponse("No exsite la solicitud", "No existe", System.Net.HttpStatusCode.NotFound);
                 }

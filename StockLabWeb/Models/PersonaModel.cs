@@ -28,6 +28,9 @@ namespace StockLabWeb.Models
             Correo = persona.Correo;
             Edad = persona.Edad;
             Sexo = persona.Sexo;
+            ReporteCantidad = persona.CantidadReporte;
         }
+
+        public int ReporteCantidad { get; set; }
     }
 }

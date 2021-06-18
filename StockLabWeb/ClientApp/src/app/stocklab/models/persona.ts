@@ -1,7 +1,6 @@
-import { Asignatura } from "./asignatura";
-import { Chat } from "./chat";
-import { Solicitud } from "./solicitud";
-import { Usuario } from "./usuario";
+import { Chat } from './chat';
+import { Solicitud } from './solicitud';
+import { Usuario } from './usuario';
 export class Persona {
     identificacion: string;
     nombre: string;
@@ -13,10 +12,11 @@ export class Persona {
     solicitudes: Solicitud[];
     usuario: Usuario;
     mensaje: Chat;
+    reporteCantidad: number;
 
-    constructor()
-    {
+    constructor() {
         this.mensaje = new Chat();
-        this.mensaje.mensaje = "";
+        this.mensaje.mensaje = '';
+        this.reporteCantidad = 0;
     }
 }

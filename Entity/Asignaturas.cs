@@ -18,5 +18,6 @@ namespace Entity
         [Required(ErrorMessage = "Proporcione el horario")]
         [StringLength(30, ErrorMessage = "El horario no puede ser tan largo")]
         public string Horario { get; set; }
+        [NotMapped] public int CantidadReporte { get; set; }
     }
 }

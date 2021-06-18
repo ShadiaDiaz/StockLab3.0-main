@@ -63,7 +63,7 @@ namespace Logica
         {
             try
             {
-                var response = _context.Personas.Include(d => d.Usuario).Where(m => m.Usuario.Tipo == "Monitor").ToList();
+                var response = _context.Personas.Include(d => d.Usuario).Where(m => m.Usuario.IdRole == 2).ToList();
 
                 return new ConsultarPersonasReponse(response);
             }

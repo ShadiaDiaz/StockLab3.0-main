@@ -10,7 +10,7 @@ namespace StockLabWeb.Models
         public int Cantidad { get; set; }
         public int StockMinimo { get; set; }
     }
-      public class InsumoViewModel : InsumoInputModel
+    public class InsumoViewModel : InsumoInputModel
     {
         public InsumoViewModel()
         {

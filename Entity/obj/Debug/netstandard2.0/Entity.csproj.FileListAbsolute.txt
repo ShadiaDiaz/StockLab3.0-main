@@ -106,3 +106,4 @@ C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\obj\Debug\netstandard2.0\Ent
 C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\obj\Debug\netstandard2.0\Entity.dll
 C:\Users\norma\Desktop\StockLab3.0-main-main\Entity\obj\Debug\netstandard2.0\Entity.pdb
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\obj\Debug\netstandard2.0\Entity.csproj.AssemblyReference.cache
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Entity\obj\Debug\netstandard2.0\Entity.GeneratedMSBuildEditorConfig.editorconfig

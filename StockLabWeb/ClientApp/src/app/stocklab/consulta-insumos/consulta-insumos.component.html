@@ -3,13 +3,13 @@
         <div class="col-lg-14 col-md-12">
             <form>
                 <div class="form-group  row col-md-4">
-                    <label>Buscar por Descripcion</label> 
+                    <label>Buscar por Descripcion</label>
                     <input name="searchText" class="form-control ml-2" type="text"
                         [(ngModel)]="searchText" />
                 </div>
             </form>
-            
-    
+
+
             <div class="card">
                 <div class="card-header card-header-warning">
                     <h4 class="card-title">Consultar Insumos</h4>
@@ -32,21 +32,19 @@
                                 <div *ngIf="usuario.idRole!= 2">
                                     <th scope="col">Agregar Cantidad</th>
                                 </div>
-            
+
                             </tr>
                         </thead>
                         <tbody>
-            
+
                             <tr
                                 *ngFor="let insumo of insumos | filtroInsumo: searchText |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;index as i">
                                 <th scope="row">{{i+1}}</th>
                                 <td>{{insumo.item}}</td>
                                 <td>{{insumo.descripcion}}</td>
                                 <td>{{insumo.marca}}</td>
-                                <td *ngIf="insumo.cantidad >= 500" class="EstadoAlto">{{insumo.cantidad}}</td>
-                                <td *ngIf="insumo.cantidad <500 && insumo.cantidad > 100" class="EstadoMedio">{{insumo.cantidad}}
-                                </td>
-                                <td *ngIf="insumo.cantidad <= 100" class="EstadoBajo">{{insumo.cantidad}}</td>
+                              <td *ngIf="(insumo.stockMinimo + 100) < insumo.cantidad" class="EstadoAlto">{{insumo.cantidad}}</td>
+                              <td *ngIf="(insumo.stockMinimo + 50) >= insumo.cantidad" class="EstadoBajo">{{insumo.cantidad}}</td>
                                 <td>{{insumo.stockMinimo}}</td>
                                 <div *ngIf="usuario.tipo != 'Monitor'">
                                     <td><button (click)="AgregarCantidad(insumo);">Agregar</button></td>

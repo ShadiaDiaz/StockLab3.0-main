@@ -142,3 +142,4 @@ C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Dato
 C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Datos.dll
 C:\Users\norma\Desktop\StockLab3.0-main-main\Datos\obj\Debug\netstandard2.0\Datos.pdb
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Datos\obj\Debug\netstandard2.0\Datos.csproj.AssemblyReference.cache
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Datos\obj\Debug\netstandard2.0\Datos.GeneratedMSBuildEditorConfig.editorconfig

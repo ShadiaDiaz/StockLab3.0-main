@@ -33,6 +33,7 @@ namespace Entity
         public Usuario Usuario { get; set; }
         [NotMapped]
         public List<Solicitud> Solicitud { get; set; }
+        [NotMapped] public int CantidadReporte { get; set; }
 
 
         public class SexoValidacion : ValidationAttribute

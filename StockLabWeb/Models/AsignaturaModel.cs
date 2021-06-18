@@ -21,6 +21,8 @@ namespace StockLabWeb.Models
             Codigo = asignatura.Codigo;
             Nombre = asignatura.Nombre;
             Horario = asignatura.Horario;
+            CantidadReporte = asignatura.CantidadReporte;
         }
+        public int CantidadReporte { get; set; }
     }
 }

@@ -89,27 +89,39 @@ namespace Datos
             programasModulos.Add(new ProgramasModulo()
                 {Id = 8, Nombre = "Consultar Solicitudes", Ruta = "/ConsultaSolicitudes", IdModulo = 5});
             programasModulos.Add(new ProgramasModulo()
-                {Id = 9, Nombre = "Reporte Inventarios", Ruta = "/ReportesLaboratorios", IdModulo = 6});
+                {Id = 9, Nombre = "Reporte Insumos Usados", Ruta = "/ReportesInsumos", IdModulo = 6});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 10, Nombre = "Reporte Usuario Pedidos", Ruta = "/ReportesUsuario", IdModulo = 6});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 11, Nombre = "Reporte Asignaturas Solicitadas", Ruta = "/ReporteAsignturas", IdModulo = 6});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 12, Nombre = "Reporte Stock Insumos", Ruta = "/ReportesStock", IdModulo = 6});
+            programasModulos.Add(new ProgramasModulo()
+                {Id = 13, Nombre = "Reporte Stock Minimo", Ruta = "/ReportesSolicitud", IdModulo = 6});
 
             rolProgramasList = new List<RolPrograma>();
-            rolProgramasList.Add(new RolPrograma() {Id = 1, IdPrograma = 1, IdRole = 4});
-            rolProgramasList.Add(new RolPrograma() {Id = 2, IdPrograma = 4, IdRole = 4});
-            rolProgramasList.Add(new RolPrograma() {Id = 3, IdPrograma = 5, IdRole = 4});
-            rolProgramasList.Add(new RolPrograma() {Id = 4, IdPrograma = 6, IdRole = 4});
-            rolProgramasList.Add(new RolPrograma() {Id = 5, IdPrograma = 7, IdRole = 4});
-            rolProgramasList.Add(new RolPrograma() {Id = 6, IdPrograma = 8, IdRole = 4});
-            rolProgramasList.Add(new RolPrograma() {Id = 7, IdPrograma = 9, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 1, IdPrograma = 1, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 2, IdPrograma = 4, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 3, IdPrograma = 5, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 4, IdPrograma = 6, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 5, IdPrograma = 7, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 6, IdPrograma = 8, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 7, IdPrograma = 9, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 16, IdPrograma = 10, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 17, IdPrograma = 11, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 18, IdPrograma = 12, IdRole = 4});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 19, IdPrograma = 13, IdRole = 4});
+            
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 8, IdPrograma = 2, IdRole = 2});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 9, IdPrograma = 3, IdRole = 2});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 10, IdPrograma = 8, IdRole = 2});
 
-            rolProgramasList.Add(new RolPrograma() {Id = 8, IdPrograma = 2, IdRole = 2});
-            rolProgramasList.Add(new RolPrograma() {Id = 9, IdPrograma = 3, IdRole = 2});
-            rolProgramasList.Add(new RolPrograma() {Id = 10, IdPrograma = 8, IdRole = 2});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 11, IdPrograma = 2, IdRole = 3});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 12, IdPrograma = 3, IdRole = 3});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 13, IdPrograma = 8, IdRole = 3});
 
-            rolProgramasList.Add(new RolPrograma() {Id = 11, IdPrograma = 2, IdRole = 3});
-            rolProgramasList.Add(new RolPrograma() {Id = 12, IdPrograma = 3, IdRole = 3});
-            rolProgramasList.Add(new RolPrograma() {Id = 13, IdPrograma = 8, IdRole = 3});
-
-            rolProgramasList.Add(new RolPrograma() {Id = 14, IdPrograma = 7, IdRole = 1});
-            rolProgramasList.Add(new RolPrograma() {Id = 15, IdPrograma = 8, IdRole = 1});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 14, IdPrograma = 7, IdRole = 1});
+            rolProgramasList.Add(new RolPrograma() {IdRolePrograma = 15, IdPrograma = 8, IdRole = 1});
             return Roles;
         }
 

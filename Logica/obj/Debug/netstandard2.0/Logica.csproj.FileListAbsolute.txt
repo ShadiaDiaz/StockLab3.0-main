@@ -170,3 +170,4 @@ C:\Users\norma\Desktop\StockLab3.0-main-main\Logica\obj\Debug\netstandard2.0\Log
 C:\Users\norma\Desktop\StockLab3.0-main-main\Logica\obj\Debug\netstandard2.0\Logica.dll
 C:\Users\norma\Desktop\StockLab3.0-main-main\Logica\obj\Debug\netstandard2.0\Logica.pdb
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Debug\netstandard2.0\Logica.csproj.AssemblyReference.cache
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Logica\obj\Debug\netstandard2.0\Logica.GeneratedMSBuildEditorConfig.editorconfig

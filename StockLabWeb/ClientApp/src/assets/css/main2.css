@@ -7,30 +7,30 @@
 
 @font-face {
   font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+  src: url('../fonts/poppins/Poppins-Regular.ttf');
 }
 
 @font-face {
   font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+  src: url('../fonts/poppins/Poppins-Bold.ttf');
 }
 
 @font-face {
   font-family: Poppins-Medium;
-  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+  src: url('../fonts/poppins/Poppins-Medium.ttf');
 }
 
 @font-face {
   font-family: Montserrat-Bold;
-  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf');
 }
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
 * {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 }
 
@@ -157,7 +157,7 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;  
+  width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -168,7 +168,7 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  
+
   background-image: url("../images/_DC10405.JPG");
 }
 
@@ -2547,8 +2547,8 @@ pre {
           -ms-flex-align: center;
               align-items: center;
       margin-bottom: 0; }
-    
-    
+
+
     .form-inline .form-check {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -2924,7 +2924,7 @@ tbody.collapse.show {
   margin-bottom: 0;
   list-style: none; }
   .container-home {
-    width: 100%;  
+    width: 100%;
     min-height: 50vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -7950,7 +7950,7 @@ form {
   border-radius: .2rem; }
 
 
- 
+
 
 
 .was-validated .is-focused .form-check-input:valid ~ .form-check-label, .is-focused .form-check-input.is-valid ~ .form-check-label {
@@ -8342,7 +8342,7 @@ form {
   color: #555555; }
 
 
-  
+
 label {
   color: #AAAAAA; }
 
@@ -8378,7 +8378,7 @@ label {
   font-size: 0.75rem; }
 
 
-  
+
 
 
 
@@ -10043,7 +10043,7 @@ h2.title {
   .togglebutton label {
     cursor: pointer;
     color: rgba(0,0,0, 0.26); }
-    
+
     .togglebutton label input[type=checkbox] {
       opacity: 0;
       width: 0;
@@ -12995,7 +12995,7 @@ Copyright (c) 2015 Daniel Eden
     color: #FFFFFF;
     -webkit-box-shadow: none;
             box-shadow: none; }
-  
+
 
 .no-caret.dropdown-toggle::after {
   display: none; }
@@ -13421,7 +13421,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
       color: #FFFFFF; }
     .navbar a.dropdown-item {
       color: #888; }
-  
+
   .navbar p {
     display: inline-block;
     margin: 0;
@@ -13760,12 +13760,12 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
     .dropdown-menu.dropdown-warning .dropdown-divider {
       background-color: rgba(255, 255, 255, 0.2); }
   .dropdown .dropdown-menu,
-  
+
   .dropdown-menu.bootstrap-datetimepicker-widget.top, .dropdown-menu.bootstrap-datetimepicker-widget.bottom {
     -webkit-transform: translate3d(0, -20px, 0) !important;
     transform: translate3d(0, -20px, 0) !important; }
- 
-  
+
+
   .dropdown.show .dropdown-menu,
  .dropdown-menu.bootstrap-datetimepicker-widget.top.open, .dropdown-menu.bootstrap-datetimepicker-widget.bottom.open,
   .navbar .dropdown.show .dropdown-menu {
@@ -15087,7 +15087,7 @@ Created using IcoMoon - icomoon.io
   .navbar .container-fluid {
     padding-right: 15px;
     padding-left: 15px; }
-  
+
   .navbar .navbar-nav .nav-item:first-child {
     margin-top: 10px; }
   .navbar .navbar-nav .nav-item:not(:last-child) {

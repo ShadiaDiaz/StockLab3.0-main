@@ -22,3 +22,4 @@ C:\Users\norma\Desktop\StockLab3.0-main-main\Infraestructura\obj\Debug\netstanda
 C:\Users\norma\Desktop\StockLab3.0-main-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.dll
 C:\Users\norma\Desktop\StockLab3.0-main-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.pdb
 C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.csproj.AssemblyReference.cache
+C:\Users\norma\Documents\GitHub\StockLab3.0-main\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.GeneratedMSBuildEditorConfig.editorconfig

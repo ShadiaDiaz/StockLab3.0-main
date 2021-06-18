@@ -27,7 +27,7 @@
                                                 </div>
                                             </div>
                                         </div>
-    
+
                                         <div class="col">
                                             <label>Nombre</label>
                                             <input type="text"
@@ -54,7 +54,7 @@
                                                 </div>
                                             </div>
                                         </div>
-    
+
                                         <div class="col">
                                             <label>Edad</label>
                                             <input type="number"
@@ -86,22 +86,22 @@
                                                     {{control.sexo.errors.messageSexo}}</div>
                                             </div>
                                         </div>
-    
+
                                         <div class="col">
                                             <label>Correo</label>
-    
+
                                             <input type="text"
                                                 [ngClass]="{'is-invalid': control.correo.errors && control.correo.touched}"
                                                 formControlName="correo" name="Correo"
                                                 placeholder="ej: labortorio@unicesar.edu.co" class="form-control" />
-    
+
                                             ​<div *ngIf="control.correo.errors" class="invalid-feedback">
                                                 <div *ngIf="control.correo.errors.required">Se requiere un correo valido
                                                 </div>
                                                 <div *ngIf="control.correo.errors?.pattern">Correo invalido</div>
                                                 <div *ngIf="control.correo.errors.maxlength">Caracteres mayores a 30</div>
                                             </div>
-    
+
                                         </div>
                                     </div>
 
@@ -117,7 +117,7 @@
                                                 <div *ngIf="control.password.errors?.pattern">Contraseña invalida</div>
                                             </div>
                                         </div>
-    
+
                                         <div class="col">
                                             <label>Tipo Usuario</label>
                                             <select class="form-control"
@@ -125,7 +125,7 @@
                                                 formControlName="tipo" name="tipo" id="tipo">
                                                 <option selected>Seleccionar</option>
                                                 <option value=1>Docente</option>
-                                                <option value=1>Monitor</option>
+                                                <option value=2>Monitor</option>
                                                 <option value=3>Coordinador</option>
                                             </select>
                                             <div *ngIf="control.tipo.errors" class="invalid-feedback">

@@ -17,6 +17,11 @@ import { PeriodoRegistroComponent } from './stocklab/periodo-registro/periodo-re
 import { AuthGuard } from './services/guard/auth.guard';
 import { ChatComponent } from './chat/chat.component';
 import { ChatClienteComponent } from './chat-cliente/chat-cliente.component';
+import {ReportesInsumosComponent} from './stocklab/reportesLaboratorio/reportes-insumos/reportes-insumos.component';
+import {ReportesUsuarioComponent} from './stocklab/reportesLaboratorio/reportes-usuario/reportes-usuario.component';
+import {ReportesSolicitudComponent} from './stocklab/reportesLaboratorio/reportes-solicitud/reportes-solicitud.component';
+import {ReporteStockInsumosComponent} from './stocklab/reportesLaboratorio/reporte-stock-insumos/reporte-stock-insumos.component';
+import {ReporteStockMinimoComponent} from './stocklab/reportesLaboratorio/reporte-stock-minimo/reporte-stock-minimo.component';
 
 const routes: Routes = [
   { path: 'ConsultaInsumos', component: ConsultaInsumosComponent, canActivate: [AuthGuard] },
@@ -32,7 +37,12 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard]},
   { path: 'periodoRegistro', component: PeriodoRegistroComponent, canActivate: [AuthGuard]},
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
-  { path: 'chatUsuarios', component: ChatClienteComponent, canActivate: [AuthGuard]}
+  { path: 'chatUsuarios', component: ChatClienteComponent, canActivate: [AuthGuard]},
+  { path: 'ReportesInsumos', component: ReportesInsumosComponent, canActivate: [AuthGuard]},
+  { path: 'ReportesUsuario', component: ReportesUsuarioComponent, canActivate: [AuthGuard]},
+  { path: 'ReporteAsignaturas', component: ReportesSolicitudComponent, canActivate: [AuthGuard]},
+  { path: 'ReportesStock', component: ReporteStockInsumosComponent, canActivate: [AuthGuard]},
+  { path: 'ReporteStockMinimo', component: ReporteStockMinimoComponent, canActivate: [AuthGuard]}
 ];
 @NgModule({
   declarations: [],
