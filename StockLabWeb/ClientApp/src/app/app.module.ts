@@ -48,6 +48,15 @@ import { ReportesSolicitudComponent } from './stocklab/reportesLaboratorio/repor
 import { ReporteAsignaturasComponent } from './stocklab/reportesLaboratorio/reporte-asignaturas/reporte-asignaturas.component';
 import { ReporteStockInsumosComponent } from './stocklab/reportesLaboratorio/reporte-stock-insumos/reporte-stock-insumos.component';
 import { ReporteStockMinimoComponent } from './stocklab/reportesLaboratorio/reporte-stock-minimo/reporte-stock-minimo.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSelectModule} from '@angular/material/select';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -103,7 +112,16 @@ import { ReporteStockMinimoComponent } from './stocklab/reportesLaboratorio/repo
     ChartModule,
     SidebarModule,
     ButtonModule,
-    SlideMenuModule
+    SlideMenuModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatListModule,
+    MatPaginatorModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatInputModule
   ],
   providers: [LoginService, AsignaturaService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

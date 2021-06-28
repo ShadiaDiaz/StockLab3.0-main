@@ -13,6 +13,7 @@ export class ConsultaAsignaturasComponent implements OnInit {
   name = 'Angular';
   page = 1;
   pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
   constructor(private asignaturaService: AsignaturaService) {
 
    }
@@ -27,5 +28,11 @@ export class ConsultaAsignaturasComponent implements OnInit {
       this.asignaturas = result;
     });
   }
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    if (setPageSizeOptionsInput) {
+      this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+    }
+  }
+
 
 }

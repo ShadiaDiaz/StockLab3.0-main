@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Usuario } from './stocklab/models/usuario';
 import { LoginService } from './services/login.service';
 import { PrimeNGConfig } from 'primeng/api';
 import { MenuItem } from 'primeng/api';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {MatSidenav} from '@angular/material/sidenav';
 
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['app.component.css'],
 })
 export class AppComponent implements OnInit {
   usuario: Usuario;
@@ -18,9 +21,9 @@ export class AppComponent implements OnInit {
   itemsMenu: MenuItem[] = [];
   subItems: MenuItem[] = [];
   item: MenuItem;
-  constructor(private loginservice: LoginService, private primengConfig: PrimeNGConfig) {
+  panelOpenState = false;
+  constructor(private loginservice: LoginService, private primengConfig: PrimeNGConfig, private observer: BreakpointObserver) {
     loginservice.currentUser.subscribe(x => this.usuario = x);
-
     this.logg = !!this.usuario;
   }
 
@@ -35,8 +38,6 @@ export class AppComponent implements OnInit {
       this.loginservice.getMenu(this.usuario.idRole).subscribe( value => {
         // tslint:disable-next-line:triple-equals
         if (value != undefined) {
-          this.item = {label: 'Dashboard', icon: 'pi pi-home', routerLink: ['/'] };
-          this.items.push(this.item);
           for (let i = 0; i < value.length; i++) {
             this.subItems = [];
             for (let j = 0; j < value[i].programas.length; j++) {
@@ -60,6 +61,11 @@ export class AppComponent implements OnInit {
 
   procesaPropagar(event: any) {
     this.visibleSidebar1 = event;
+  }
+
+  Logout() {
+    sessionStorage.removeItem('login');
+    window.location.reload();
   }
 }
 

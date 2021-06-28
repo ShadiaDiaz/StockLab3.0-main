@@ -1,5 +1,5 @@
 .container-registroAsignatura {
-    width: 100%;  
+    width: 100%;
     min-height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -23,6 +23,7 @@
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
+    margin-top: -70px;
     flex-wrap: wrap;
     justify-content: space-between;
 

@@ -1,5 +1,5 @@
 .container-registroDocente {
-    width: 100%;  
+    width: 100%;
     min-height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -24,6 +24,7 @@
     display: -ms-flexbox;
     display: flex;
     flex-wrap: normal;
+    margin-top: -70px;
     justify-content: normal;
-  
+
   }

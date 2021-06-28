@@ -7,19 +7,72 @@
 
 
       <div>
+        <mat-toolbar  color="primary">
 
-          <app-nav-menu (sideBar)="procesaPropagar($event)"></app-nav-menu>
-          <router-outlet></router-outlet>
-          <app-footer></app-footer>
+          <button type="button" mat-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span class="example-spacer"></span>
+          <button mat-icon-button (click)="Logout()"  class="example-icon favorite-icon"  [routerLink]="['/InicioSesion']" aria-label="Example icon-button with heart icon">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+          <button mat-icon-button [routerLink]="['/chat']" class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>chat</mat-icon>
+          </button>
+
+        </mat-toolbar>
+
+        <mat-drawer-container class="example-container" autosize>
+          <mat-drawer #drawer class="example-sidenav" mode="side">
+
+            <mat-accordion>
+              <div >
+                <mat-expansion-panel>
+                  <mat-panel-title>
+                    <a [routerLink]="['/']">Dashboard</a>
+                  </mat-panel-title>
+                </mat-expansion-panel>
+                <mat-expansion-panel *ngFor="let titles of items" (opened)="panelOpenState = true"
+                                      (closed)="panelOpenState = false" style="margin-top: 20px; margin-bottom: 20px">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title style="margin-bottom: 20px">
+                      {{titles.label}}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+
+                  <mat-list>
+                    <mat-list-item *ngFor="let subItems of titles.items">
+                      <a [routerLink]="subItems.routerLink">{{subItems.label}}</a>
+
+                    </mat-list-item>
+                  </mat-list>
+
+                </mat-expansion-panel>
+              </div>
+            </mat-accordion>
+
+          </mat-drawer>
+
+          <div class="example-sidenav-content">
+            <router-outlet></router-outlet>
+          </div>
+        </mat-drawer-container>
+
+
+
+
+
+
+        <app-footer></app-footer>
       </div>
 
 
 
-      <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+      <!--<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
         <h1 style="font-weight:normal">Menu</h1>
 
         <p-slideMenu  [model]="itemsMenu"   [viewportHeight]="500"></p-slideMenu>
-      </p-sidebar>
+      </p-sidebar>-->
 
   </ng-template>
 

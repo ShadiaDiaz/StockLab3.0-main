@@ -98,14 +98,14 @@
 
                                     <div class="form-group row col-md-6 dropdown">
                                         <label>Asignatura</label>
-                                        <select class="form-control"
+                                        <mat-select class="form-control"
                                             [ngClass]="{'is-invalid': control.asignatura.errors && control.asignatura.touched}"
                                             formControlName="asignatura" name="asignatura" id="asignatura">
-                                            <option selected>Seleccionar</option>
-                                            <option [value]="asignatura.codigo" *ngFor="let asignatura of asignaturas; index as i">
-                                                {{asignatura.nombre}}</option>
-                                            
-                                        </select>
+                                            <mat-option value="" selected>Seleccionar</mat-option>
+                                            <mat-option [value]="asignatura.codigo" *ngFor="let asignatura of asignaturas; index as i">
+                                                {{asignatura.nombre}}</mat-option>
+
+                                        </mat-select>
                                         <div *ngIf="control.asignatura.errors" class="invalid-feedback">
                                             <div *ngIf="control.asignatura.errors.required">Se requiere una
                                                 asignatura</div>
@@ -116,14 +116,14 @@
 
                                     <div class="form-group row col-md-6">
                                         <label>Monitor</label>
-                                        <select class="form-control "
+                                        <mat-select class="form-control "
                                             [ngClass]="{'is-invalid': control.monitor.errors && control.monitor.touched}"
                                             formControlName="monitor">
-                                            <option value="" disabled selected>--Seleccionar--</option>
-                                            <option [value]="monit.identificacion" *ngFor="let monit of monitores">
+                                            <mat-option value=""  selected>Seleccionar</mat-option>
+                                            <mat-option [value]="monit.identificacion" *ngFor="let monit of monitores">
                                                 {{monit.nombre}}
-                                            </option>
-                                        </select>
+                                            </mat-option>
+                                        </mat-select>
                                         <div *ngIf="control.monitor.errors" class="invalid-feedback">
                                             <div *ngIf="control.monitor.errors.required">Se requiere el monitor
                                             </div>
@@ -149,14 +149,14 @@
                                         <div class="row col-md-8">
                                             <div class="col">
                                                 <label>Insumos</label>
-                                                <select class="mdb-select form-control md-form"
+                                                <mat-select class="mdb-select form-control md-form"
                                                     [ngClass]="{'is-invalid': control.detalle.errors && control.detalle.touched}"
                                                     formControlName="detalle">
 
-                                                    <option value="" disabled selected>--Seleccionar--</option>
-                                                    <option [value]="insumo.item" *ngFor="let insumo of insumos; index as i">
-                                                        {{insumo.descripcion}}</option>
-                                                </select>
+                                                    <mat-option value="" disabled selected>Seleccionar</mat-option>
+                                                    <mat-option [value]="insumo.item" *ngFor="let insumo of insumos; index as i">
+                                                        {{insumo.descripcion}}</mat-option>
+                                                </mat-select>
                                                 <div *ngIf="control.detalle.errors" class="invalid-feedback">
                                                     <div *ngIf="control.detalle.errors.required">Se requiere el insumo
                                                     </div>
@@ -189,7 +189,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row col-md-4">
+                                    <div class="row col-md-6">
                                         <table class="table table-hover">
                                             <thead class="">
                                                 <tr>
@@ -214,7 +214,7 @@
                                 <div style="padding-bottom: 50px;">
 
                                 </div>
-                                <div class="text-center">
+                                <div class="text-center" style="margin-bottom: 20px">
                                     <button class="btn btn-success mr-1" (click)="onSubmit()"
                                         [disabled]="formGroup.invalid">Register</button>
                                     <button class="btn btn-danger" type="reset">Cancel</button>

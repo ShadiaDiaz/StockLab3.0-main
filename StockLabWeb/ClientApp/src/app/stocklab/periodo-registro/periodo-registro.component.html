@@ -4,8 +4,8 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-6 offset-md-3">
-                    
+                <div style="margin-left: 150px" class="col-md-8 offset-md-3">
+
                     <div class="card">
 
                         <div class="card-header card-header-warning">
@@ -15,21 +15,21 @@
                         <div class="card-body col-md-8">
                             <div class="offset-md-1">
                                 <form autocomplete="off" [formGroup]="formGroup">
-    
-                        
+
+
                                     <div class="form-group">
                                         <label>Periodo</label>
                                         <input type="text"
                                         [ngClass]="{'is-invalid': control.periodo.errors && control.periodo.touched}"
                                         formControlName="periodo" placeholder="2020-2" name="nombre"
                                             class="form-control" />
-                                        
+
                                             <div *ngIf="control.periodo.errors" class="invalid-feedback">
                                                 <div *ngIf="control.periodo.errors.required">Se requiere el periodo</div>
-                                                
+                                              <div *ngIf="control.periodo.errors.maxlength">Caracteres mayores a 20</div>
                                             </div>
                                     </div>
-                
+
                                     <div class="form-group">
                                         <label>Corte</label>
                                         <select class="form-control"
@@ -40,16 +40,16 @@
                                             <option value="2">Segundo Corte</option>
                                             <option value="3">Tercer Corte</option>
                                         </select>
-                
+
                                         <div *ngIf="control.corte.errors" class="invalid-feedback">
                                             <div *ngIf="control.corte.errors.required">Se requiere el corte</div>
                                         </div>
                                     </div>
-                
+
                                     <div style="padding-bottom: 50px;">
 
                                     </div>
-                
+
                                     <div class="text-center offset-md-4">
                                         <button type="submit" class="btn btn-success mr-1"
                                         (click)="onSubmit()" [disabled]="formGroup.invalid"
@@ -57,14 +57,14 @@
                                         <button class="btn btn-danger" type="reset"
                                             >Cancel</button>
                                     </div>
-                
+
                                 </form>
                             </div>
                         </div>
                     </div>
-    
+
                 </div>
-    
+
             </div>
         </div>
 

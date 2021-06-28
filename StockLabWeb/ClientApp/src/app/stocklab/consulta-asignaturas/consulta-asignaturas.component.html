@@ -1,6 +1,6 @@
 <div class="container-ConsultarAsignatura">
     <div class="wrap-ConsultarAsignatura">
-        <div class="col-lg-14 col-md-12">
+        <div class="col-lg-14 col-md-12" style="margin-top: -70px">
             <form>
                 <div class="form-group col-md-4">
                     <label>Buscar Por Nombre:</label>
@@ -16,11 +16,7 @@
                     <table class="table table-hover">
                         <thead class="text-warning">
                             <tr>
-                                <th scope="col"><select [(ngModel)]="pageSize">
-                                    <option selected>5</option>
-                                    <option>10</option>
-                                    <option>20</option>
-                                    <option>50</option></select></th>
+                                <th scope="col">#</th>
                                 <th scope="col">Codigo</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Horario</th>
@@ -36,8 +32,14 @@
                             </tr>
                         </tbody>
                     </table>
+                  <mat-paginator [length]="asignaturas.length"
+                                 [pageSize]="pageSize"
+                                 [pageSizeOptions]="pageSizeOptions"
+                                 (page)="page = $event.pageIndex + 1"
+                                 (page)="pageSize = $event.pageSize">
+                  </mat-paginator>
                 </div>
-                <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="asignaturas.length"></ngb-pagination>
+
             </div>
         </div>
     </div>

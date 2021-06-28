@@ -14,6 +14,7 @@ export class ConsultaSolicitudesComponent implements OnInit {
   usuario: Usuario;
   page = 1;
   pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
   constructor(private service: SolicitudService) { }
 
   ngOnInit(): void {

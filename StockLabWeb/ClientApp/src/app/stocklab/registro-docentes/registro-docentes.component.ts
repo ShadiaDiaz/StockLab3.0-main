@@ -38,7 +38,7 @@ export class RegistroDocentesComponent implements OnInit {
 
   private static ValidaEdad(control: AbstractControl) {
     const edad = control.value;
-    if (edad < 0 || edad > 100) {
+    if (edad <= 0 || edad > 100) {
       return {validEdad: true, messageEdad: 'Edad no valida'};
     }
     return null;
@@ -66,7 +66,7 @@ export class RegistroDocentesComponent implements OnInit {
       edad: [this.docente.edad, [Validators.required, RegistroDocentesComponent.ValidaEdad]],
       tipo: [this.usuario.idRole, [Validators.required]],
       correo: [this.docente.correo, [Validators.required, Validators.maxLength(30), Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]],
-      password: [this.usuario.password, [Validators.required, Validators.pattern('(?=.*[-!#$%&/()?¡_])(?=.*[A-Z])(?=.*[a-z]).{8,}')]]
+      password: [this.usuario.password, [Validators.required, Validators.maxLength(15), Validators.minLength(8), Validators.pattern('(?=.*[-!#$%&/()?¡_])(?=.*[A-Z])(?=.*[a-z]).{8,}')]]
     });
   }
   onSubmit() {

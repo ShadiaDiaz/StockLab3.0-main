@@ -1,5 +1,5 @@
 .container-periodo {
-    width: 100%;  
+    width: 100%;
     min-height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -10,6 +10,7 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
+    margin-top: -10px;
     background-color:  rgb(223, 252, 224);
   }
   .wrap-periodo {
@@ -17,7 +18,7 @@
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-  
+
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;

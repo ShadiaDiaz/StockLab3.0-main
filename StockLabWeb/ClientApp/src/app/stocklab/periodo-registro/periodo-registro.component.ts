@@ -31,7 +31,7 @@ export class PeriodoRegistroComponent implements OnInit {
     this.periodo.corte = '';
 
     this.formGroup = this.formBuilder.group({
-      periodo: [this.periodo.periodo, [Validators.required]],
+      periodo: [this.periodo.periodo, Validators.maxLength(20), [Validators.required]],
       corte: [this.periodo.corte, [Validators.required]]
     });
   }
