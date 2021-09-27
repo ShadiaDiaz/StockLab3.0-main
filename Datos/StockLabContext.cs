@@ -22,7 +22,7 @@ namespace Datos
         public DbSet<RolPrograma> RolProgramas { get; set; }
         public DbSet<ModuloMenu> Modulos { get; set; }
         public DbSet<ProgramasModulo> Programas { get; set; }
-
+    commit
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
