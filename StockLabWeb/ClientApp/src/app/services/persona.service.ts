@@ -5,6 +5,8 @@ import { catchError, tap } from 'rxjs/operators';
 import { HandleHttpErrorService } from '../@base/handle-http-error.service';
 import { Persona } from '../stocklab/models/persona';
 
+const url = ""
+
 @Injectable({
   providedIn: 'root'
 })
